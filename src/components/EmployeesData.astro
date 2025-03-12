@@ -1,0 +1,9 @@
+---
+const employeesData = await fetch(
+  "https://frontend-design-theme.netlify.app/api/employees"
+).then((response) => response.json());
+---
+
+<ul>
+  {employeesData}
+</ul>
