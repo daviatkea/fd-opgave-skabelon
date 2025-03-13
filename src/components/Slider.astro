@@ -1,0 +1,177 @@
+---
+//@ts-nocheck
+const financialProjections = await fetch(
+  "https://frontend-design-theme.netlify.app/api/financialProjections"
+).then((response) => response.json());
+
+console.log(financialProjections);
+
+import ArrowRight from "../icons/arrow--right.svg";
+import ArrowLeft from "../icons/arrow-left.svg";
+---
+
+<div class="main">
+  <section class="full">
+    <div class="text">
+      <div>
+        <h2>{financialProjections.title}</h2>
+        <p>
+          {financialProjections.subtitle}<p></p>
+        </p>
+      </div>
+
+      <div class="svg">
+        <button class="right"><ArrowRight /></button>
+        <button class="left"><ArrowLeft /></button>
+      </div>
+    </div>
+
+    <ul role="list">
+      {
+        financialProjections.values.map((slider) => (
+          <li>
+            <h3>{slider.title}</h3>
+            <p>{slider.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</div>
+
+<style>
+  .main {
+    background-color: #f5f5f5;
+    padding-block: 4rem;
+    display: grid;
+    grid-template-columns:
+      [full-start]
+      1fr
+      [content]
+      minmax(0, var(--content-width))
+      1fr
+      [full-end];
+    column-gap: 1rem;
+
+    .text {
+      width: 645px;
+      display: flex;
+      align-items: flex-end;
+      gap: 20px;
+    }
+
+    .svg {
+      align-items: flex-start;
+      gap: 26px;
+      .right {
+        background-color: var(--primary01-color);
+        padding: 15px;
+        border-radius: 1000px;
+      }
+      .left {
+        background-color: var(--primary03-color);
+        color: var(--secondary02-color);
+        padding: 15px;
+        border-radius: 1000px;
+      }
+    }
+
+    > * {
+      grid-column: content;
+    }
+
+    .full {
+      grid-column: full;
+      display: grid;
+      grid-template-columns: inherit;
+      row-gap: 3rem;
+
+      > * {
+        grid-column: content;
+      }
+
+      > ul {
+        scroll-snap-type: x mandatory;
+        grid-column: full;
+        padding-inline: max(1rem, 50% - var(--content-width) / 2);
+        padding-block-end: 1rem;
+
+        li {
+          scroll-snap-align: center;
+        }
+      }
+    }
+  }
+
+  ul {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+
+    li {
+      flex-basis: min(400px, 90%);
+      flex-shrink: 0;
+      background: #ebebeb;
+      color: #595566;
+      border-radius: 8px;
+      font-size: 1rem;
+      padding: 2.75rem 2.1875rem;
+      align-self: start;
+
+      h3 {
+        font-weight: 700;
+        font-size: 1.5625rem;
+      }
+    }
+  }
+
+  h2,
+  h3 {
+    all: revert;
+    color: #181818;
+    margin-block: 0 0.625rem;
+    line-height: 1.125;
+  }
+
+  h2 {
+    font-size: 2.8125rem;
+  }
+
+  header {
+    color: #595566;
+
+    p {
+      max-inline-size: 67ch;
+    }
+  }
+
+  /* div {
+    background: #f5f5f5;
+    width: auto;
+    /* height: 893px; */
+  /* flex-shrink: 0;
+  } */
+  /* .title {
+    display: flex;
+    width: 648px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 17px; */
+
+  /* h3 {
+      color: var(secondary03-color);
+    }
+    p {
+      color: #595566;
+    }
+  } */
+
+  /* li {
+    display: flex;
+    width: 345px;
+    padding: 44px 35px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  } */
+</style>

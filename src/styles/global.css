@@ -1,5 +1,13 @@
 /* Globale styles her */
 
+:root{
+    --primary01-color:#FFCC4A;
+    --primary02-color:#4EAF4E;
+    --primary03-color:#181818;
+    --secondary01-color:#F5F5F5;
+    --secondary02-color:#FFFFFF;
+}
+
 p{
     line-height: 147.5%;
     font-family: Lato;
