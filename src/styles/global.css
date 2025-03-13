@@ -1,1 +1,16 @@
 /* Globale styles her */
+
+p{
+    line-height: 147.5%;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+h2{
+    font-family: Cabin;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 116%;
+}
