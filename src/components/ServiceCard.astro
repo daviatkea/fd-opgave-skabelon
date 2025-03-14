@@ -1,0 +1,72 @@
+---
+interface Props {
+  services: {
+    title: string;
+    description: string;
+    buttonText: string;
+  }[];
+}
+
+const { services } = Astro.props;
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+  {
+    services.map((service) => (
+      <div class="card">
+        <h2 class="card__heading">{service.title}</h2>
+        <p class="card__description">{service.description}</p>
+        <a href="#0">{service.buttonText}</a>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  @layer components {
+    .card {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.1),
+        0 1px 3px rgba(0, 0, 0, 0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: box-shadow 0.3s ease-in-out;
+
+      &:hover {
+        box-shadow:
+          0 10px 15px rgba(0, 0, 0, 0.2),
+          0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        color: #4a5568;
+        margin-bottom: 1rem;
+      }
+
+      a {
+        margin-top: auto;
+        display: inline-block;
+        background-color: #3b82f6;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: #2563eb;
+        }
+      }
+    }
+  }
+</style>

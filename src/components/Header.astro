@@ -1,0 +1,167 @@
+---
+import { Icon } from "astro-icon/components";
+// import { Icon } from "astro-icon";
+
+import Button from "./button.astro";
+import Popover from "./popover.astro";
+
+const { Theme } = Astro.props;
+
+const nav = [
+  { title: "Home", path: "/" },
+  { title: "Case Study", path: "/casestudy" },
+  { title: "Team", path: "/team" },
+  { title: "About", path: "/about" },
+];
+
+const isOpen = false;
+---
+
+<header data-theme={Theme}>
+  <nav>
+    <!-- Logo -->
+    <a href="/" class="heading-5">AskExperts</a>
+
+    <!-- Desktop Navigation -->
+    <ul class="desktop-nav">
+      {
+        nav.map((link) => (
+          <li>
+            <a href={link.path}>{link.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- Login Button (Same for Desktop & Mobile) -->
+    <Button popup="login" label="Login" variant="secondary" />
+    <Popover popoverID="login" />
+
+    <!-- Mobile Menu Icon -->
+    <Icon name="menu" class="menu-icon" id="menu-icon" />
+
+    <!-- Mobile Navigation -->
+    <ul id="mobile-nav" class={isOpen ? "active" : ""}>
+      {
+        nav.map((link) => (
+          <li>
+            <a href={link.path}>{link.title}</a>
+          </li>
+        ))
+      }
+      <li>
+        <Button popup="mobilelogin" label="Login" variant="secondary" />
+        <Popover popoverID="mobilelogin" />
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  /* General Header Styling */
+  header {
+    --clr-section-bg: oklch(from var(--clr-primary-03) calc(l + 0.02) c h);
+    padding: var(--space-s);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--clr-section-bg);
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-xl);
+    position: relative;
+  }
+
+  /* Logo */
+  .heading-5 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  /* Desktop Navigation */
+  .desktop-nav {
+    display: flex;
+    gap: var(--space-m);
+    list-style: none;
+  }
+
+  .desktop-nav a {
+    text-decoration: none;
+    transition: 0.15s ease-in;
+  }
+
+  .desktop-nav a:hover {
+    opacity: 0.75;
+  }
+
+  /* Mobile Menu Icon */
+  .menu-icon {
+    width: var(--space-m);
+    cursor: pointer;
+    display: none;
+  }
+
+  /* Mobile Navigation */
+  #mobile-nav {
+    display: none;
+    position: absolute;
+    top: var(--space-xl);
+    right: 0;
+    background: var(--clr-section-bg);
+    padding: var(--space-s);
+    border-radius: var(--crn-card);
+    flex-direction: column;
+    gap: var(--space-2xs);
+    width: 12rem;
+    align-items: center;
+    list-style: none;
+  }
+
+  #mobile-nav.active {
+    display: flex;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 700px) {
+    .desktop-nav {
+      display: none;
+    }
+    .login-button {
+      display: none;
+    }
+    .menu-icon {
+      display: block;
+    }
+  }
+</style>
+
+<!-- <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuIcon = document.getElementById("menu-icon");
+    const mobileNav = document.getElementById("mobile-nav");
+
+    menuIcon.addEventListener("click", () => {
+      mobileNav.classList.toggle("active");
+    });
+  });
+</script> -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuIcon = document.getElementById("menu-icon");
+    const mobileNav = document.getElementById("mobile-nav");
+
+    if (menuIcon && mobileNav) {
+      // Check if both elements exist
+      menuIcon.addEventListener("click", () => {
+        mobileNav.classList.toggle("active");
+      });
+    } else {
+      console.error("Menu icon or mobile navigation not found.");
+    }
+  });
+</script>

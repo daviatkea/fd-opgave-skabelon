@@ -1,0 +1,64 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from "./button.astro";
+
+const { data } = Astro.props;
+---
+
+<article class="flow-space">
+  <header>
+    {data.icon && <Icon name={data.icon} />}
+    <h3 class="heading-6">{data.title}</h3>
+  </header>
+  <p>{data.description}</p>
+  {data.button && <Button label={data.button.label} url={data.button.url} />}
+</article>
+
+<style>
+  .heading-1,
+  .heading-2,
+  .heading-3,
+  .heading-4,
+  .heading-5,
+  .heading-6 {
+    color: var(--clr-card-heading);
+  }
+
+  article {
+    --flow-space: var(--space-3xs);
+    color: var(--clr-card-text);
+    background: var(--clr-card-bg);
+    border-radius: var(--crn-card);
+    padding: var(--space-m) var(--space-s);
+    transition: 0.15s ease-out;
+
+    header {
+      display: grid;
+      gap: var(--space-xs) var(--space-s);
+      align-items: center;
+      @container card (420px < width) {
+        display: flex;
+      }
+    }
+
+    a {
+      --flow-space: var(--space-s);
+    }
+
+    ul.hero & {
+      --clr-card-text: var(--clr-secondary-02);
+      --clr-card-heading: var(--clr-card-text);
+      background: rgba(38, 38, 38, 0.9);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+
+      a:hover {
+        --clr-btn-bg: oklch(from var(--clr-primary-03) calc(l + 0.05) c h);
+      }
+    }
+  }
+  [data-icon] {
+    width: var(--step-6);
+    color: var(--clr-icon);
+  }
+</style>
