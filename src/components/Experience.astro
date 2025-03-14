@@ -1,0 +1,35 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+
+const header = {
+  title: "More than 25 years of experience",
+  tagline: "Experience",
+  description: "3000+ our clients are insured around the World",
+  stats: [
+    {
+      percent: "85%",
+      value: "Consistency",
+    },
+    {
+      percent: "95%",
+      value: "Improvement",
+    },
+    {
+      percent: "90%",
+      value: "Branching",
+    },
+  ],
+};
+---
+
+<section data-theme="pop">
+  <SectionHeader data={header} />
+</section>
+
+<style>
+  section {
+    > article {
+      margin-block-end: 0;
+    }
+  }
+</style>
