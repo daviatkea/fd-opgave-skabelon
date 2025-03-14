@@ -1,0 +1,38 @@
+---
+const { Theme } = Astro.props;
+---
+
+<footer data-theme={Theme}>
+  <p class="heading-5">AskExperts</p>
+  <p>©2022 Consultalk. All rights reserved | Terms of Service | Privacy Policy</p>
+</footer>
+
+<style>
+  footer {
+    padding: var(--space-m) 0;
+
+    /* Nested styling for footer elements */
+    > * {
+      place-self: center;
+      text-align: center;
+    }
+
+    /* Margin for the second <p> element */
+    > * + * {
+      margin-block-start: var(--space-s);
+      padding-top: var(--space-s);
+      border-top: 0.0625rem solid #707070;
+    }
+
+    /* Specific styling for the first <p> element */
+    p .heading-5 {
+      line-height: 105%; /* 1.96875rem */
+    }
+
+    /* General styling for all <p> elements inside footer */
+    p {
+      width: 100%;
+      line-height: 147.5%; /* 1.475rem */
+    }
+  }
+</style>

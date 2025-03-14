@@ -1,18 +1,16 @@
 ---
 //@ts-nocheck
-const servicesData = await fetch(
-  "https://frontend-design-theme.netlify.app/api/services"
-).then((response) => response.json());
+import Card from "../components/ServiceCard.astro";
+
+const financialProjections = await fetch("https://frontend-design-theme.netlify.app/api/financialProjections").then((response) => response.json());
+console.log(financialProjections);
 ---
 
-<ul>
-  {
-    servicesData.services.map((service) => (
-      <li>
-        <h2>{service.title}</h2>
-        <p>{service.description}</p>
-        <a href="#0">{service.buttonText}</a>
-      </li>
-    ))
+<Card services={servicesData.services} />
+<style>
+  /**@layer components{
+  li{
   }
-</ul>
+  
+  } */
+</style>

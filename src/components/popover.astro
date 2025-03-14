@@ -1,0 +1,65 @@
+---
+import Button from "./button.astro";
+
+const { popoverID } = Astro.props;
+---
+
+<section popover id={popoverID}>
+  <form name="login" action="" data-theme="dark" class="flow-space">
+    <h2 class="heading-2">Dashboard Login</h2>
+    <input type="email" id="email" name="email" placeholder="Enter Email" />
+    <input type="password" id="password" name="password" placeholder="Enter Password" />
+    <Button form="login" label="Go to dashboard" variant="secondary" />
+  </form>
+
+  <style>
+    section {
+      --clr-section-bg: var(--clr-primary-03);
+      background: var(--clr-section-bg);
+      padding: var(--space-s) var(--space-l) var(--space-l);
+      border-radius: var(--crn-popup);
+      width: min(100% - var(--space-2xs) * 2, 46.875rem);
+
+      form {
+        display: grid;
+        place-content: center;
+        text-align: center;
+        input {
+          --flow-space: var(--space-s);
+          color: var(--clr-card-text);
+          background-color: var(--clr-card-bg);
+          border-radius: var(--crn-input);
+          padding: var(--space-xs) var(--space-s);
+        }
+      }
+    }
+
+    [popover] {
+      &,
+      &::backdrop {
+        transition:
+          display 0.5s allow-discrete,
+          overlay 0.5s allow-discrete,
+          opacity 0.5s;
+        opacity: 0;
+      }
+
+      &:popover-open {
+        opacity: 1;
+
+        &::backdrop {
+          opacity: 0.99;
+          background-color: rgba(0, 0, 0, 0.6);
+          backdrop-filter: blur(12px);
+        }
+      }
+
+      @starting-style {
+        &:popover-open,
+        &:popover-open::backdrop {
+          opacity: 0;
+        }
+      }
+    }
+  </style>
+</section>
