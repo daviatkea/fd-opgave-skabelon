@@ -1,0 +1,111 @@
+---
+//@ts-nocheck
+import Tagline from "./Tagline.astro";
+
+const questions = [
+  {
+    question: "What will happen when I’ve sent my application?",
+    answer: "Ippsum is the result of synergy between our teams and our customers...",
+  },
+  {
+    question: "Can I get a free trial before I purchase?",
+    answer: "Ippsum is the result of synergy between our teams and our customers. Our company culture is focused on excellent productivity, customer satisfaction, respect for team and individual achievements",
+  },
+  {
+    question: "What should I include in my personal statement?",
+    answer: "Ippsum is the result of synergy between our teams and our customers...",
+  },
+  {
+    question: "Will membership plans be charged automatically?",
+    answer: "Ippsum is the result of synergy between our teams and our customers...",
+  },
+  {
+    question: "What will happen when I’ve sent my application?",
+    answer: "Ippsum is the result of synergy between our teams and our customers. Our company culture is focused on excellent productivity, customer satisfaction, respect for team and individual achievements.",
+  },
+  {
+    question: "Can I get a free trial before I purchase?",
+    answer: "Ippsum is the result of synergy between our teams and our customers. Our company culture is focused on excellent productivity, customer satisfaction, respect for team and individual achievements.",
+  },
+];
+---
+
+<section>
+  <article>
+    <header>
+      <Tagline>FAQ</Tagline>
+      <h2 class="heading-2">Customer Questions</h2>
+    </header>
+    <ul class="flow-space" role="list">
+      {
+        questions.map((item) => {
+          return (
+            <li>
+              <details class="flow-space">
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </article>
+</section>
+
+<style>
+  section {
+    padding: 0;
+
+    article {
+      display: grid;
+      gap: var(--space-m);
+      background: var(--clr-secondary-01);
+      padding: var(--space-2xl) var(--space-m);
+      border-radius: var(--crn-popup);
+      place-content: center;
+
+      header {
+        display: grid;
+        gap: var(--space-xs);
+        --clr-tagline-text: var(--clr-secondary-02);
+        --clr-tagline-bg: var(--clr-primary-02);
+        text-align: center;
+
+        > * {
+          place-self: center;
+        }
+      }
+
+      ul {
+        --flow-space: var(--space-xs);
+
+        details > summary {
+          color: var(--clr-heading);
+          font-family: Cabin;
+          font-size: var(--step-2);
+          font-weight: 500;
+          /* line-height: 116%; */
+          line-height: 1.45rem;
+          list-style: none;
+          display: flex;
+          justify-content: space-between;
+          gap: var(--space-l);
+          transition: 0.15s ease-in;
+
+          &:hover {
+            cursor: pointer;
+          }
+
+          &::after {
+            content: url("../icons/plus.svg");
+          }
+
+          details[open] > &::after {
+            content: url("../icons/minus.svg");
+          }
+        }
+      }
+    }
+  }
+</style>

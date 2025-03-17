@@ -1,0 +1,87 @@
+---
+//@ts-nocheck
+import { Icon } from "astro-icon/components";
+
+import Button from "./button.astro";
+import Tagline from "./Tagline.astro";
+import ProgressCircle from "./ProgressCircle.astro";
+
+const { data } = Astro.props;
+---
+
+<article>
+  <header class="flow-space">
+    {data.icon && <Icon name={data.icon} />}
+    {data.tagline && <Tagline>{data.tagline}</Tagline>}
+    <h2 class="heading-2">{data.title}</h2>
+    <p>{data.description}</p>
+  </header>
+  {data.button && <Button label={data.button.label} variant={data.button.variant} url={data.button.url} />}
+  {
+    data.nav && (
+      <nav>
+        {data.nav.map((icon) => {
+          return <Icon name={icon} />;
+        })}
+      </nav>
+    )
+  }
+  {
+    data.stats && (
+      <ul role="list">
+        {data.stats.map((stat) => {
+          return <ProgressCircle data={stat} />;
+        })}
+      </ul>
+    )
+  }
+</article>
+
+<style>
+  article {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-s) var(--space-xl);
+    margin-block-end: var(--space-l);
+    place-content: end;
+    place-items: center;
+
+    > header {
+      --flow-space: var(--space-3xs);
+      flex: 2 2 22rem;
+      [data-icon] {
+        width: var(--space-xl);
+      }
+    }
+
+    > nav {
+      display: flex;
+      gap: var(--space-xs);
+      place-self: end;
+
+      > * {
+        cursor: pointer;
+        transition: 0.15s ease-in;
+        width: var(--space-l);
+        &:hover {
+          scale: 1.1;
+        }
+      }
+    }
+
+    > ul {
+      display: flex;
+      flex: 2 2 60%;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--space-xs) var(--space-m);
+      place-content: center;
+    }
+
+    > nav,
+    > a {
+      place-self: end;
+    }
+  }
+</style>

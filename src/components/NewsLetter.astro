@@ -1,0 +1,92 @@
+---
+import Button from "./button.astro";
+---
+
+<section>
+  <article data-theme="dark">
+    <header>
+      <h2 class="heading-4">Subscribe to Our Newsletter</h2>
+      <p>Build stronger Customer Relationships with Consultalk</p>
+    </header>
+    <form name="newsletter" action="">
+      <input type="email" id="nl-email" name="email" placeholder="your email address" />
+      <Button label="Subscribe" variant="secondary" />
+    </form>
+  </article>
+</section>
+
+<style>
+  section {
+    padding: var(--space-2xl) 0;
+    article {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-m) var(--space-2xl);
+      justify-content: space-between;
+      padding: var(--space-xl) var(--space-l);
+      border-radius: var(--crn-card);
+      position: relative;
+      overflow: hidden;
+
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        flex: 1;
+        place-items: center;
+        gap: var(--space-2xs) var(--space-xs);
+        z-index: 5;
+        input {
+          --flow-space: var(--space-s);
+          color: var(--clr-card-text);
+          background-color: var(--clr-card-bg);
+          border-radius: var(--crn-input);
+          padding: var(--space-2xs) var(--space-xs);
+          border: 1px solid var(--clr-card-bg);
+          flex: 1 1;
+          max-width: 20rem;
+        }
+
+        a {
+          padding: var(--space-2xs) var(--space-m);
+        }
+      }
+
+      &::before {
+        --square-count: 12;
+        --square-size: 1.6rem;
+
+        --_square-size: var(--square-size, 1rem);
+        --_square-half: calc(var(--square-size) / 2);
+        --_square-sum: calc(var(--square-count) * var(--square-size));
+        content: "";
+        position: absolute;
+        opacity: 0.5;
+        inset: 0 0 auto auto;
+        transform-origin: 0 0;
+        inline-size: calc(round(var(--_square-sum), var(--_square-size)) - var(--_square-half));
+        aspect-ratio: 0.7;
+        background: linear-gradient(135deg, #be965d, #976f40, #c99b61, #f0be7b, #ffcb85, #eebc79, #c0935b, #976f40) 0 0 / 100% 100%;
+        mask:
+          var(--square-pattern) 0 0 / var(--_square-size) var(--_square-size),
+          var(--square-pattern) var(--_square-half) var(--_square-half) / var(--_square-size) var(--_square-size);
+        /*clip-path: polygon(-3% 0%, 100% 0%, 100% 103%);*/
+        rotate: -45deg;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 25rem;
+        aspect-ratio: 2 / 1;
+        border-radius: var(--crn-popup);
+        background: var(--clr-primary-02);
+        inset: 45% 3rem auto auto;
+        /* top: 60%; */
+        /* bottom: 0; */
+        /* right: 3rem; */
+        rotate: -45deg;
+        transform-origin: right top;
+      }
+    }
+  }
+</style>

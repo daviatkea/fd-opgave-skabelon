@@ -1,0 +1,68 @@
+---
+//@ts-nocheck
+import Card from "./card.astro";
+import SectionHeader from "./SectionHeader.astro";
+
+const content = await fetch("https://frontend-design-theme.netlify.app/api/coreValues")
+  .then((response) => response.json())
+  .catch((error) => {
+    console.error("Error fetching data:", error);
+    return []; // Return an empty array in case of an error
+  });
+
+const { theme } = Astro.props;
+
+const header = {
+  title: content.title,
+  tagline: "Growing with our Clients",
+  description: content.subtitle,
+  button: {
+    label: content.button.text,
+    variant: "primary",
+    url: content.button.link,
+  },
+};
+---
+
+<section data-theme={theme}>
+  <SectionHeader data={header} />
+  <ul role="list">
+    {
+      content.values.map((card) => {
+        return (
+          <li>
+            <a href={card.link.url}>
+              <Card data={card} />
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</section>
+
+<style>
+  section {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-s);
+      place-items: center;
+
+      li {
+        container: card / inline-size;
+        flex: 1 2 min(260px, 90%);
+        align-self: start;
+        transition: 0.15s ease-in;
+
+        &:has(a:hover) {
+          scale: 1.03;
+        }
+
+        [data-theme="medium"] & {
+          --clr-card-bg: var(--clr-secondary-02);
+        }
+      }
+    }
+  }
+</style>

@@ -1,0 +1,48 @@
+---
+//@ts-nocheck
+import SectionHeader from "./SectionHeader.astro";
+import TeamCard from "./TeamCard.astro";
+
+const header = {
+  title: "We champion the bold to achieve the extraordinary",
+  tagline: "Our Team",
+  description: "Ippsum is the result of synergy between our teams and our customers. Our company culture is focused on excellent productivity, customer satisfaction, respect for team.",
+};
+
+const employees = await fetch("https://frontend-design-theme.netlify.app/api/employees").then((res) => res.json());
+
+const team = employees.slice(0, 3);
+---
+
+<section>
+  <SectionHeader data={header} />
+  <ul role="list">
+    {
+      team.map((card) => {
+        return (
+          <li>
+            <TeamCard data={card} socials={card.social_links} />
+          </li>
+        );
+      })
+    }
+  </ul>
+</section>
+
+<style>
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-l) var(--space-l);
+
+    > li {
+      container: teamcard / inline-size;
+      flex: 1 1 280px;
+
+      &:hover figure {
+        opacity: 0.75;
+      }
+    }
+  }
+</style>

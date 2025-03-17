@@ -1,10 +1,30 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
+import Hero from "../components/heroOne.astro";
+import ExpectSection from "../components/ExpectSection.astro";
+import FinalProjections from "../components/sections/Finalprojections.astro";
+import Experience from "../components/Experience.astro";
+import CoreValue from "../components/CoreValue.astro";
+import ContactUs from "../components/ContactUs.astro";
+import NewsLetter from "../components/NewsLetter.astro";
+
+const header = {
+  title: "What To Expect",
+  tagline: "We'll Work With You",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  img: "/src/assets/images/businesshelp.png",
+  list: [{ item: "Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day." }, { item: "Capitalize on low hanging fruit to identify a ballpark value added activity to beta test override the digital." }],
+};
 ---
 
 <Layout>
   <Hero />
+  <ExpectSection data={header} />
+  <FinalProjections />
+  <Experience />
+  <CoreValue />
+  <ContactUs />
+  <NewsLetter />
 </Layout>
 
 <style></style>
