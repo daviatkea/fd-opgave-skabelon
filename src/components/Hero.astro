@@ -1,15 +1,56 @@
 ---
 import Services from "./Services.astro";
-import EmployeesData from "./EmployeesData.astro";
 ---
 
 <section class="hero">
+  <img class="pattern" src="../../public/images/pattern.svg" alt="" />
   <!-- Markup her -->
-
-  <EmployeesData />
-  <Services />
+  <section>
+    <div>
+      <h1>Empowering Your Business Growth</h1>
+      <p>
+        Discover tailored strategies and expert insights to take your business
+        to the next level. Let us help you navigate challenges and achieve
+        sustainable success.
+      </p>
+      <button>Book a Meeting</button>
+    </div>
+    <img src="../../public/images/photohero.jpg" alt="" />
+  </section>
 </section>
+<Services />
 
 <style>
-  /* Styles her */
+  /* Styles her  */
+  .pattern {
+    position: absolute;
+  }
+  .hero {
+    background-color: var(--primary03-color);
+    color: var(--secondary02-color);
+    padding: 20px auto 20px;
+    section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 29px;
+    }
+    h1 {
+      font-size: 50px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 116%;
+    }
+    p {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 147.5%;
+      max-width: 500.716px;
+    }
+  }
 </style>

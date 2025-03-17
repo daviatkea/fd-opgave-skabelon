@@ -14,9 +14,32 @@ import Footer from "../components/Footer.astro";
   </head>
   <body>
     <Header />
+    <!-- <main> -->
     <slot />
+    <!-- </main> -->
     <Footer />
   </body>
 </html>
 
-<style></style>
+<style>
+  body {
+    display: grid;
+  }
+  /* grid-template-columns: [full-start] 1fr [content-start] minmax(0, 1000px) [content-end] 1fr [full-end];
+  } */
+
+  /* main {
+    grid-column: full;
+    display: grid;
+    grid-template-columns: subgrid;
+    > section {
+      grid-column: full;
+      display: grid;
+      grid-template-columns: subgrid;
+
+      > * {
+        grid-column: content;
+      }
+    }
+  } */
+</style>
