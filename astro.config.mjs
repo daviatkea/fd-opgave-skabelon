@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from "astro/config";
+import icon from "astro-icon"; // Import the icon integration
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,4 +12,5 @@ export default defineConfig({
     svg: true,
     clientPrerender: true,
   },
+  integrations: [icon()], // Add the icon integration here
 });
