@@ -1,6 +1,11 @@
+---
+
+---
+
 <section>
   <img src="../../public/images/photoWTE.jpg" alt="" />
   <div>
+    <p>We'll work with you</p>
     <h2>What To Expect</h2>
     <p>
       Our collaboration is built on transparency, efficiency, and measurable
@@ -8,13 +13,13 @@
       goals.
     </p>
 
-    <!-- icon -->
+    <img src="../icons/checkmark.svg" alt="" />
     <p>
       Collaborate to build actionable strategies that drive sustainable growth
       and deliver tangible outcomes.
     </p>
 
-    <!-- icon -->
+    <img src="../icons/chechmark.svg" alt="" />
     <p>
       Identify opportunities to optimize processes and implement impactful
       solutions with measurable results.
@@ -24,7 +29,27 @@
 
 <style>
   section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 82px;
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+
+    &::before {
+      content: "";
+      background: green;
+      height: 100px;
+      width: 200px;
+      display: block;
+      position: absolute;
+      top: 2rem;
+      right: 18rem;
+      z-index: -1;
+      border-radius: 9px;
+    }
   }
 </style>
