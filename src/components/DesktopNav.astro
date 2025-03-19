@@ -1,0 +1,39 @@
+---
+//@ts-nocheck
+import Button from "./button.astro";
+import Popover from "./popover.astro";
+
+const { data } = Astro.props;
+---
+
+<ul role="list">
+  {
+    data.map((link) => {
+      return (
+        <li>
+          <a href={link.path}>{link.title}</a>
+        </li>
+      );
+    })
+  }
+</ul>
+<Button popup="login" label="Login" variant="secondary" />
+<Popover popoverID="login" />
+
+<style>
+  ul {
+    display: flex;
+    gap: var(--space-s);
+
+    @media (width < 700px) {
+      display: none;
+    }
+  }
+
+  a {
+    transition: 0.15s ease-in;
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+</style>

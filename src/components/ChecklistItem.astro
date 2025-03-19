@@ -1,0 +1,16 @@
+---
+const { data } = Astro.props;
+---
+
+<p>{data}</p>
+
+<style>
+  p {
+    display: flex;
+    gap: var(--space-xs);
+
+    &::before {
+      content: url("../icons/tick.svg");
+    }
+  }
+</style>

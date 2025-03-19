@@ -1,0 +1,50 @@
+---
+const { data } = Astro.props;
+---
+
+<li style=`--percent: ${data.percent}`>
+  <h3 class="heading-1">{data.percent}</h3>
+  <p class="heading-6">{data.value}</p>
+</li>
+
+<style>
+  li {
+    display: grid;
+    place-items: center;
+    gap: var(--space-xs);
+    flex: 1;
+
+    h3 {
+      --size: 12rem;
+      --offset-pos: calc(var(--size) * 0.03);
+      aspect-ratio: 1;
+      width: 100%;
+      min-width: 8rem;
+      max-width: 14rem;
+      border-radius: 100%;
+      border: var(--offset-pos) solid transparent;
+      background:
+        linear-gradient(var(--clr-section-bg), var(--clr-section-bg)) padding-box,
+        conic-gradient(var(--clr-secondary-02) var(--percent), #daae3c 0) border-box;
+
+      display: grid;
+      place-items: center;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: calc(var(--size) * 0.15);
+        aspect-ratio: 1;
+        offset-path: border-box;
+        offset-distance: var(--percent);
+        offset-anchor: 50% calc(50% - var(--offset-pos) / 2);
+        border-radius: inherit;
+        border: var(--offset-pos) solid transparent;
+        background:
+          linear-gradient(var(--clr-primary-03), var(--clr-primary-03)) padding-box,
+          linear-gradient(var(--clr-secondary-02), var(--clr-secondary-02)) border-box;
+      }
+    }
+  }
+</style>

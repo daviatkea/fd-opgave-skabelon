@@ -1,0 +1,51 @@
+---
+//@ts-nocheck
+import Button from "./button.astro";
+import Popover from "./popover.astro";
+
+const { data } = Astro.props;
+---
+
+<ul role="list" id="mobile">
+  {
+    data.map((link) => {
+      return (
+        <li>
+          <a href={link.path}>{link.title}</a>
+        </li>
+      );
+    })
+  }
+  <li><Button popup="mobilelogin" label="Login" variant="secondary" /></li>
+  <Popover popoverID="mobilelogin" />
+</ul>
+
+<style>
+  ul {
+    position: absolute;
+    width: 12rem;
+    top: var(--space-xl);
+    right: 0;
+    display: none;
+    gap: var(--space-2xs);
+    background: var(--clr-section-bg);
+    padding: var(--space-s) var(--space-m);
+    border-radius: var(--crn-card);
+
+    li:last-child {
+      place-self: center;
+      a {
+        padding: var(--space-3xs) var(--space-s);
+      }
+    }
+  }
+  #mobile.active {
+    display: grid;
+  }
+  @media (width > 700px) {
+    #mobile,
+    #mobile.active {
+      display: none;
+    }
+  }
+</style>

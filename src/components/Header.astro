@@ -1,0 +1,83 @@
+---
+//@ts-nocheck
+import { Icon } from "astro-icon/components";
+import DesktopNav from "./DesktopNav.astro";
+import MobileNav from "./MobileNav.astro";
+
+const { Theme } = Astro.props;
+
+const nav = [
+  {
+    title: "Home",
+    path: "/",
+  },
+  {
+    title: "Case Study",
+    path: "/casestudy",
+  },
+  {
+    title: "Team",
+    path: "/team",
+  },
+  {
+    title: "About",
+    path: "/about",
+  },
+];
+---
+
+<header data-theme={Theme}>
+  <nav>
+    <a href={nav[0].path} class="heading-5">AskExperts</a>
+    <Icon name="menu" />
+    <MobileNav data={nav} />
+    <DesktopNav data={nav} />
+  </nav>
+</header>
+
+<style>
+  header {
+    --clr-section-bg: oklch(from var(--clr-primary-03) calc(l + 0.02) c h);
+    padding: var(--space-s);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-xl);
+      position: relative;
+      place-self: stretch;
+      align-items: flex-start;
+    }
+
+    a.heading-5 {
+      line-height: 105%;
+    }
+
+    [data-icon] {
+      width: var(--space-m);
+      cursor: pointer;
+      @media (width > 700px) {
+        display: none;
+      }
+    }
+
+    @media (width < 700px) {
+      ul + a {
+        display: none;
+      }
+    }
+  }
+</style>
+
+<script>
+  //@ts-nocheck
+  const icon = document.querySelector("nav svg");
+  const nav = document.getElementById("mobile");
+
+  icon.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+</script>

@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro"; // Corrected import path
+import TeamList from "../components/sections/TeamList.astro"; // Corrected import path
+import NewsLetter from "../components/NewsLetter.astro"; // Corrected import path
+import heroImg from "../assets/images/team-hero.jpg"; // Corrected import path
+import AboutHero from "../components/AboutHero.astro"; // Corrected import path
+---
+
+<!-- ---
+import TeamList from "../../components/TeamList.astro";
+---
+
+<TeamList /> -->
+<Layout PageTitle="AskExperts | Meet Our Great Team">
+  <!-- Hero section -->
+  <AboutHero title="The Consultors" tagline="Team" src={heroImg} />
+  <TeamList />
+  <NewsLetter />
+</Layout>
