@@ -1,0 +1,176 @@
+---
+// @ts-nocheck
+
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import Layout from "../../layouts/Layout.astro"; // Import Layout instead of MainLayout
+
+export async function getStaticPaths() {
+  const employees = await fetch("https://frontend-design-theme.netlify.app/api/employees").then((res) => res.json());
+
+  return employees.map((data) => {
+    return {
+      params: { slug: data.slug },
+      props: { data },
+    };
+  });
+}
+
+const { data } = Astro.props;
+const socials = [{ icon: "facebook" }, { icon: "instagram_v2" }, { icon: "twitter_v2" }, { icon: "linked-in" }];
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/images/*.{jpeg,jpg,png,gif}");
+
+// Fix image fetching logic
+let employeeImage;
+if (data.img && images[`/src/assets/images/${data.img}`]) {
+  employeeImage = await images[`/src/assets/images/${data.img}`]();
+} else {
+  employeeImage = null; // Or use a fallback image if needed
+}
+---
+
+<Layout PageTitle={`AskExperts | ${data.name}`}>
+  <section>
+    <div class="container">
+      <article>
+        <figure>
+          {employeeImage ? <Image src={employeeImage} alt={data.name} /> : <p>No image available</p>}
+        </figure>
+        <div class="content flow-space">
+          <header>
+            <div>
+              <h1 class="heading-2">{data.name}</h1>
+              <p>{data.description || "No description available."}</p>
+            </div>
+            <ul role="list">
+              {
+                socials.map((social) => (
+                  <li>
+                    <a href="#">
+                      <Icon name={social.icon} />
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </header>
+          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do.</p>
+        </div>
+
+        <div class="content flow-space">
+          <h2 class="heading-2">Past Experience</h2>
+          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  section {
+    padding-block: var(--space-2xl) 0;
+
+    .container {
+      container: employee / inline-size;
+    }
+
+    article {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), auto));
+      gap: var(--space-s) var(--space-xl);
+
+      @container employee (width < 970px) {
+        gap: var(--space-s);
+      }
+
+      figure {
+        border-radius: var(--crn-img);
+        position: relative;
+        grid-row: 1 / 3;
+        place-self: center;
+
+        img {
+          aspect-ratio: 1;
+          width: min(100%, 30rem);
+          object-fit: cover;
+          border-radius: inherit;
+        }
+
+        &::before {
+          --square-count: 15;
+          --square-size: 1.8rem;
+
+          --_square-size: var(--square-size, 1rem);
+          --_square-half: calc(var(--square-size) / 2);
+          --_square-sum: calc(var(--square-count) * var(--square-size));
+          content: "";
+          z-index: -2;
+          position: absolute;
+          inset: -5rem auto auto -7.75rem;
+          inline-size: calc(round(var(--_square-sum), var(--_square-size)) - var(--_square-half));
+          aspect-ratio: 1;
+          background: linear-gradient(135deg, #be965d, #976f40, #c99b61, #f0be7b, #ffcb85, #eebc79, #c0935b, #976f40) 0 0 / 100% 100%;
+          mask:
+            var(--square-pattern) 0 0 / var(--_square-size) var(--_square-size),
+            var(--square-pattern) var(--_square-half) var(--_square-half) / var(--_square-size) var(--_square-size);
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          inset: -1.5rem -2.3rem auto;
+          height: var(--space-3xl);
+          aspect-ratio: 1.4 / 1;
+          background-color: var(--clr-primary-02);
+          z-index: -1;
+          border-radius: inherit;
+        }
+      }
+
+      .content {
+        header {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--space-xs) var(--space-l);
+          place-items: start;
+
+          h1 {
+            line-height: 110%;
+          }
+
+          p {
+            font-family: Cabin;
+            font-size: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+            line-height: 116%;
+          }
+
+          ul {
+            padding-inline-start: var(--space-l);
+            display: flex;
+            gap: var(--space-xs);
+            border-inline-start: 1px solid oklch(from var(--clr-secondary-01) calc(l - 0.05) c h);
+          }
+        }
+
+        h2:first-child {
+          border-block-start: 1px solid oklch(from var(--clr-secondary-01) calc(l - 0.05) c h);
+          padding: var(--space-s) 0 0;
+        }
+
+        @container employee (630px < width < 970px) {
+          &:last-child {
+            grid-column: span 2;
+            place-self: center;
+          }
+        }
+      }
+    }
+  }
+
+  [data-icon] {
+    width: 2rem;
+    color: var(--clr-icon);
+  }
+</style>

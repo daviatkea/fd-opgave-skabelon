@@ -1,0 +1,97 @@
+/* Override styles here */
+
+/* DEFAULT */
+/** my basic styles of heading are here */
+body {
+  /* FONT */
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  color: var(--clr-section-text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* COLOUR | THEMES */
+
+[data-theme] {
+  color: var(--clr-section-text);
+  background: var(--clr-section-bg);
+}
+
+[data-theme="medium"] {
+  --clr-section-text: var(--clr-primary-04);
+  --clr-section-bg: var(--clr-secondary-01);
+  --clr-card-text: var(--clr-primary-04);
+  --clr-card-bg: oklch(from var(--clr-secondary-01) calc(l - 0.025) c h);
+
+  .active {
+    --clr-card-bg: var(--clr-primary-03);
+    --clr-card-text: var(--clr-secondary-02);
+    --clr-card-heading: var(--clr-card-text);
+    --clr-icon: var(--clr-primary-01);
+  }
+}
+
+[data-theme="dark"] {
+  --clr-section-text: var(--clr-secondary-02);
+  --clr-heading: var(--clr-section-text);
+  --clr-section-bg: var(--clr-primary-03);
+  --clr-card-text: var(--clr-primary-03);
+  --clr-card-bg: var(--clr-secondary-01);
+}
+
+[data-theme="pop"] {
+  --clr-section-text: var(--clr-primary-03);
+  --clr-heading: var(--clr-section-text);
+  --clr-section-bg: oklch(from var(--clr-primary-01) calc(l - 0.015) calc(c + 0.007) calc(h - 0.015));
+  --clr-card-text: var(--clr-primary-03);
+  --clr-card-bg: none;
+  --clr-tagline-bg: var(--clr-secondary-02);
+}
+
+/* TYPE */
+
+p {
+  font-size: var(--step-0);
+  line-height: 147.5%; /* 1.475rem */
+  max-width: 75ch;
+}
+
+.heading-1,
+.heading-2,
+.heading-3,
+.heading-4,
+.heading-5,
+.heading-6 {
+  font-family: Cabin;
+  font-weight: 600;
+  line-height: 130%; /* 2.03125rem */
+  text-wrap: balance;
+  color: var(--clr-heading);
+}
+
+.heading-1 {
+  font-size: var(--step-8);
+}
+.heading-2 {
+  font-size: var(--step-7);
+}
+
+.heading-3 {
+  font-size: var(--step-6);
+}
+
+.heading-4 {
+  font-size: var(--step-5);
+}
+
+.heading-5 {
+  font-size: var(--step-3);
+}
+
+.heading-6 {
+  font-size: var(--step-2);
+}

@@ -1,18 +1,26 @@
 ---
 import "../styles/main.css";
+
+import Header from "../components/Header.astro";
+import Footer from "../components/footer.astro";
+// import { ViewTransitions } from "astro:transitions";
+
+const { PageTitle } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>DIN TITEL HER. MÅSKE SOM PROP?</title>
+    <title>{PageTitle}</title>
   </head>
   <body>
-    <slot />
+    <Header Theme="dark" />
+    <main>
+      <slot />
+    </main>
+    <Footer Theme="dark" />
   </body>
 </html>
-
-<style></style>
