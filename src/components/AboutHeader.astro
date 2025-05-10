@@ -1,0 +1,126 @@
+---
+//@ts-nocheck
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import Tagline from "./Tagline.astro";
+import ChecklistItem from "./ChecklistItem.astro";
+
+const { data } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/images/*.{jpeg,jpg,png,gif}");
+---
+
+<section data-variant={data.variant}>
+  <article>
+    <figure>
+      <Image src={images[data.img]()} alt="Professionals help each other." />
+    </figure>
+    <div>
+      <header>
+        <Tagline>{data.tagline}</Tagline>
+        <h2 class="heading-2">{data.title}</h2>
+        <p>{data.description}</p>
+      </header>
+      <ul role="list">
+        {
+          data.list.map((list) => {
+            return (
+              <li>
+                <ChecklistItem data={list.item} />
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </article>
+</section>
+
+<style>
+  section {
+    article {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 530px), 1fr));
+      gap: var(--space-s) var(--space-m);
+      place-items: start center;
+
+      > div,
+      header,
+      ul {
+        display: grid;
+      }
+
+      > div {
+        gap: var(--space-s);
+      }
+      header,
+      ul {
+        gap: var(--space-2xs);
+      }
+      figure {
+        max-width: 46rem;
+        position: relative;
+        border-radius: var(--crn-img);
+        padding: var(--space-l) min(3svw, var(--space-s)) 0;
+
+        img {
+          border-radius: inherit;
+          min-height: 20rem;
+          object-fit: cover;
+        }
+
+        &::before {
+          --square-count: 15;
+          --square-size: 1.4rem;
+
+          --_square-size: var(--square-size, 1rem);
+          --_square-half: calc(var(--square-size) / 2);
+          --_square-sum: calc(var(--square-count) * var(--square-size));
+          content: "";
+          z-index: -2;
+          position: absolute;
+          inset: 0;
+          left: min(-6%, -2rem);
+          inline-size: calc(round(var(--_square-sum), var(--_square-size)) - var(--_square-half));
+          aspect-ratio: 1;
+          background: linear-gradient(135deg, #be965d, #976f40, #c99b61, #f0be7b, #ffcb85, #eebc79, #c0935b, #976f40) 0 0 / 100% 100%;
+          mask:
+            var(--square-pattern) 0 0 / var(--_square-size) var(--_square-size),
+            var(--square-pattern) var(--_square-half) var(--_square-half) / var(--_square-size) var(--_square-size);
+        }
+
+        &::after {
+          content: "";
+          z-index: -1;
+          width: min(45%, 12rem);
+          aspect-ratio: 1;
+          border-radius: inherit;
+          background-color: var(--clr-primary-02);
+          position: absolute;
+          inset: 0;
+          top: calc(var(--space-l) / 2);
+          right: calc(0 - var(--space-l) / 2);
+        }
+      }
+    }
+  }
+
+  [data-variant="secondary"] {
+    --clr-tagline-text: var(--clr-secondary-02);
+    --clr-tagline-bg: var(--clr-primary-02);
+    padding-block-end: var(--space-l);
+    figure {
+      @media (1164px < width) {
+        order: 2;
+      }
+
+      &::before {
+        left: auto;
+        right: min(-6%, -2rem);
+      }
+      &::after {
+        right: 0;
+        left: calc(0 - var(--space-l) / 2);
+      }
+    }
+  }
+</style>

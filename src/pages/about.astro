@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AboutHero from "../components/AboutHero.astro";
+
+import heroImg from "../assets/images/about-hero.png";
+import AboutHeader from "../components/AboutHeader.astro";
+import AboutStatistics from "../components/AboutStatistics.astro";
+import CoreValue from "../components/CoreValue.astro";
+import AboutTeam from "../components/AboutTeam.astro";
+import AboutAccordian from "../components/AboutAccordian.astro";
+import NewsLetter from "../components/NewsLetter.astro";
+
+const header = {
+  title: "Turn your ideas into reality.",
+  tagline: "Our Vision",
+  description: "Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps.",
+  img: "/src/assets/images/ourvision.jpg",
+  list: [{ item: "Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day." }, { item: "Capitalize on low hanging fruit to identify a ballpark value added activity to beta test override the digital." }],
+  variant: "secondary",
+};
+---
+
+<Layout>
+  <AboutHero title="Creative Services For Boost Your Business Growth" tagline="Services" src={heroImg} />
+  <AboutHeader data={header} />
+  <AboutStatistics />
+  <CoreValue theme="medium" />
+  <AboutAccordian />
+  <AboutTeam />
+  <NewsLetter />
+</Layout>
+<style></style>

@@ -1,0 +1,53 @@
+---
+//@ts-nocheck
+import Button from "./button.astro";
+import SectionHeader from "./SectionHeader.astro";
+import TeamCard from "./TeamCard.astro";
+
+const employees = await fetch("https://frontend-design-theme.netlify.app/api/employees").then((res) => res.json());
+
+const header = {
+  title: "Meet Our Great Team",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. enim ad minim veniam, quis nostrud exercitation.",
+  button: {
+    label: "Join Our Team",
+    variant: "primary",
+    url: "#",
+  },
+};
+---
+
+<section>
+  <SectionHeader data={header} />
+  <ul role="list">
+    {
+      employees.map((employee) => {
+        return (
+          <li>
+            <TeamCard data={employee} socials={employee.social_links} />
+          </li>
+        );
+      })
+    }
+  </ul>
+</section>
+
+<style>
+  section {
+    padding: var(--space-2xl) 0 0;
+    gap: var(--space-m);
+
+    > ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-l) var(--space-m);
+
+      > li {
+        container: teamcard / inline-size;
+        &:hover figure {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+</style>

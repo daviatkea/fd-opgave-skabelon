@@ -1,0 +1,28 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { data } = Astro.props;
+---
+
+<li>
+  <Icon name={data.icon} />
+  <header>
+    <h3>{data.title}</h3>
+    <p class="heading-6">{data.details}</p>
+  </header>
+</li>
+
+<style>
+  li {
+    display: flex;
+    gap: var(--step-0);
+
+    p {
+      font-size: var(--step-1);
+    }
+  }
+
+  [data-icon] {
+    width: var(--space-m);
+  }
+</style>
