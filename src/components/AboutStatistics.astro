@@ -1,0 +1,56 @@
+---
+//@ts-nocheck
+const data = [
+  {
+    title: "1128+",
+    subtitle: "Successful Works",
+  },
+  {
+    title: "908+",
+    subtitle: "Team Members",
+  },
+  {
+    title: "258+",
+    subtitle: "Happy Customers",
+  },
+  {
+    title: "564+",
+    subtitle: "Creative Ideas",
+  },
+];
+---
+
+<section>
+  <ul role="list">
+    {
+      data.map((item) => {
+        return (
+          <li>
+            <h3 class="heading-1">{item.title}</h3>
+            <p class="heading-6">{item.subtitle}</p>
+          </li>
+        );
+      })
+    }
+  </ul>
+</section>
+
+<style>
+  section {
+    padding-block-start: 0;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      place-self: center;
+      place-content: center;
+      gap: var(--space-s) var(--space-2xl);
+      text-align: center;
+
+      p {
+        font-size: var(--step-1);
+        font-weight: 500;
+      }
+    }
+  }
+</style>

@@ -1,0 +1,64 @@
+---
+//@ts-nocheck
+const { url, form, popup, label, variant } = Astro.props;
+---
+
+<a href={url} data-theme={variant}>
+  <button form={form} popovertarget={popup}>
+    {label}
+  </button>
+</a>
+
+<style>
+  a {
+    display: inline-block;
+    color: var(--clr-btn-label);
+    background: var(--clr-btn-bg);
+    border-radius: var(--crn-btn);
+    font-size: var(--step-1);
+    font-weight: 600;
+    line-height: 160%; /* 1.8rem */
+    padding: var(--space-2xs) var(--space-s);
+    border: 2px solid var(--clr-btn-border);
+    cursor: pointer;
+    transition: 0.15s ease-in;
+
+    header nav > & {
+      font-size: var(--step-0);
+      font-weight: 400;
+      padding: var(--space-4xs) var(--space-2xs);
+    }
+
+    button {
+      margin: 0;
+      padding: 0;
+    }
+  }
+  [data-theme="primary"] {
+    --clr-btn-bg: var(--clr-primary-03);
+    --clr-btn-label: var(--clr-secondary-02);
+    --clr-btn-border: var(--clr-primary-03);
+    &:hover {
+      --clr-btn-bg: var(--clr-secondary-02);
+      --clr-btn-label: var(--clr-primary-03);
+    }
+
+    [data-theme="dark"] & {
+      --clr-btn-bg: var(--clr-secondary-02);
+      --clr-btn-label: var(--clr-primary-03);
+
+      &:hover {
+        --clr-btn-bg: oklch(from var(--clr-secondary-01) calc(l - 0.07) c h);
+        --clr-btn-label: var(--clr-primary-03);
+      }
+    }
+  }
+
+  [data-theme="secondary"] {
+    --clr-btn-bg: var(--clr-primary-01);
+    --clr-btn-label: var(--clr-primary-03);
+    &:hover {
+      --clr-btn-bg: oklch(from var(--clr-primary-01) calc(l - 0.025) calc(c + 0.07) calc(h - 0.15));
+    }
+  }
+</style>

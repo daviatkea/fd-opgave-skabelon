@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AboutHero from "../components/AboutHero.astro";
+import CaseStudyHeader from "../components/CaseStudyHeader.astro";
+import CaseStudyText from "../components/CaseStudyText.astro";
+import NewsLetter from "../components/NewsLetter.astro";
+import heroImg from "../assets/images/casestudy-hero.png";
+---
+
+<Layout PageTitle="AskExperts | Case Study">
+  <AboutHero title="Taxes & Efficiency" tagline="Case Studies Single" src={heroImg} />
+  <CaseStudyHeader />
+  <CaseStudyText />
+  <NewsLetter />
+</Layout>
+
+<style></style>
