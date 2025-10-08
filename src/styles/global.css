@@ -1,1 +1,8 @@
 /* Globale styles her */
+:root {
+  --primary01: #ffcc4a;
+  --primary02: #4eaf4e;
+  --primary03: #181818;
+  --secondary01: #f5f5f5;
+  --secondary02: #ffffff;
+}
