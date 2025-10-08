@@ -1,0 +1,82 @@
+---
+import DynamicImage from "./helpers/DynamicImage.astro";
+import DynamicIcon from "./helpers/DynamicIcon.astro";
+
+interface SocialLink {
+  platform: string;
+  url: string;
+  icon: string;
+}
+
+interface Employee {
+  id: number;
+  name: string;
+  title: string;
+  description: string;
+  description_long?: string;
+  past_experience?: string;
+  social_links?: SocialLink[];
+  slug?: string;
+  img?: string;
+}
+
+const { employee } = Astro.props as { employee: Employee };
+if (!employee) {
+  throw new Error("Team-card requires an `employee` prop");
+}
+---
+
+<article class="team-card">
+  <div class="team-card__header">
+    <a class="team-card__link" href={`/team/${employee.slug}`}>
+      {employee.img ? (
+        <DynamicImage
+          imagePath={employee.img}
+          altText={employee.name}
+          class="team-card__image"
+          width={320}
+          height={320}
+        />
+      ) : null}
+
+      <div class="team-card__meta">
+        <h3 class="team-card__name">{employee.name}</h3>
+        <p class="team-card__title">{employee.title}</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="team-card__body">
+    <p class="team-card__desc">{employee.description}</p>
+
+    {employee.social_links && (
+      <div class="team-card__social">
+        {employee.social_links.map((link) => (
+          <a href={link.url} aria-label={link.platform} class="social-link">
+            <DynamicIcon name={link.icon} class="social-link__icon" />
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+</article>
+
+<style>
+.team-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+.team-card__image {
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.team-card__name { margin: 0; }
+.team-card__title { margin: 0.25rem 0; color: var(--muted, #666); }
+.team-card__social { display:flex; gap:0.5rem; }
+.social-link__icon { width:20px; height:20px; }
+</style>

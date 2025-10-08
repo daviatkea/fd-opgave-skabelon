@@ -1,0 +1,56 @@
+---
+//@ts-nocheck
+import Layout from "../../layouts/Layout.astro";
+import DynamicImage from "../../components/helpers/DynamicImage.astro";
+import DynamicIcon from "../../components/helpers/DynamicIcon.astro";
+import employees from "../../data/employees.json";
+
+const { slug } = Astro.params;
+const employee = employees.find((e) => e.slug === slug);
+
+export async function getStaticPaths() {
+    // Import employees data
+    const employees = (await import("../../data/employees.json")).default;
+
+    // Return paths for each employee slug
+    return employees.map((employee) => ({
+        params: { slug: employee.slug }
+    }));
+}
+
+---
+
+<Layout Title={employee.name}>
+  <main class="employee-page">
+    <a href="/team">← Back to team</a>
+    <header>
+      <h1>{employee.name}</h1>
+      <p class="muted">{employee.title}</p>
+    </header>
+
+    {employee.img && (
+      <DynamicImage imagePath={employee.img} altText={employee.name} width={600} height={400} />
+    )}
+
+    <section class="employee-bio">
+      <p>{employee.description_long ?? employee.description}</p>
+      {employee.past_experience && (
+       
+          <h2>Past experience</h2>
+          <p>{employee.past_experience}</p>
+     
+      )}
+
+      {employee.social_links && (
+        <div class="employee-social">
+          {employee.social_links.map((link) => (
+            <a href={link.url} aria-label={link.platform} class="social-link">
+              <DynamicIcon name={link.icon} class="social-link__icon" />
+            </a>
+          ))}
+        </div>
+      )}
+    </section>
+  </main>
+</Layout>
+
