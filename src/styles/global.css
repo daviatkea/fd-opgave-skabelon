@@ -1,2 +1,7 @@
 /* Globale styles her */
 @import 'tailwindcss';
+
+@theme inline {
+	--font-cabin: var(--font-cabin);
+	--font-lato: var(--font-lato);
+}

@@ -1,0 +1,31 @@
+---
+---
+<header class="w-[100%] h-16 bg-neutral-800 text-white flex justify-between items-center px-5 md:px-40 z-50 fixed">
+    <a href="/index" class="font-cabin text-2xl">AskExperts</a>
+    <nav class="gap-5 hidden md:flex">
+        <a href="/index" class="font-lato">Home</a>
+        <a href="/cases" class="font-lato">Case Study</a>
+        <a href="/team" class="font-lato">Team</a>
+        <a href="/about" class="font-lato">About</a>
+    </nav>
+    <button class="bg-amber-300 text-neutral-800 px-4 py-0.5 rounded-xl font-lato hidden md:block">Login</button>
+    <button id="menu-button" class="flex flex-col gap-1.5 text-neutral-800 py-0.5 rounded-xl font-lato block md:hidden">
+        <div class="w-10 h-1 bg-amber-300" ></div>
+        <div class="w-8 h-1 bg-amber-300"></div>
+        <div class="w-10 h-1 bg-amber-300"></div>
+    </button>
+    <nav class="hidden nav flex flex-col items-center gap-5 absolute top-16 left-0 w-full h-screen bg-neutral-800 text-white p-5 md:hidden">
+        <a href="/index" class="font-lato text-2xl">Home</a>
+        <a href="/cases" class="font-lato text-2xl">Case Study</a>
+        <a href="/team" class="font-lato text-2xl">Team</a>
+        <a href="/about" class="font-lato text-2xl">About</a>
+    </nav>
+</header>
+
+<script>
+    const menuButton = document.getElementById('menu-button');
+    const nav = document.querySelector('.nav');
+    menuButton?.addEventListener('click', () => {
+        nav?.classList.toggle('hidden');
+    });
+</script>
