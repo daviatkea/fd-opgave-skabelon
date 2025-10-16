@@ -4,17 +4,17 @@ import Services from "./Services.astro";
 import CEOImage from "@assets/images/ceo.png";
 ---
 
-<section class="hero">
-  <div class="hero-content">
-    <h1 class="text-5xl">Empowering Your Business Growth</h1>
-    <p>
+<section class="grid grid-cols-1 md:grid-cols-2 h-200 w-full">
+  <div class="col-span-1 bg-neutral-900 text-white p-10 flex flex-col justify-center gap-5">
+    <h1 class="text-5xl font-cabin ">Empowering Your Business Growth</h1>
+    <p class="font-lato text-md">
       Discover tailored strategies and expert insights to take your business to
       the next level. Let us help you navigate challenges and achieve
       sustainable success.
     </p>
-    <a href="#0">Book a Meeting</a>
+    <a href="#0" class="w-40 h-12 text-center flex items-center justify-center bg-neutral-50 text-neutral-800 px-6 py-4 rounded-3xl font-lato text-sm font-semibold">Book a Meeting</a>
   </div>
-  <Image src={CEOImage} alt="CEO" />
+  <Image src={CEOImage} alt="CEO" class="col-span-1 object-fill content-stretch !h-full"/>
 
   <Services />
 </section>
