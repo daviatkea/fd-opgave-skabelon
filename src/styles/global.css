@@ -1,1 +1,55 @@
-/* Globale styles her */
+/* globale styles her */
+
+:root {
+  /* farver */
+  --primary-yellow: #ffcc4a;
+  --primary-green: #4eaf4e;
+  --primary-black: #181818;
+
+  --secondary-grey: #f5f5f5;
+  --secondary-white: #ffffff;
+
+  --primary-yellow-hover: #e6b93a;
+  --border: #444;
+  --backdrop-overlay: rgba(0, 0, 0, 0.5);
+
+  /* layout og spacing */
+  --border-radius: 42px;
+  --gtc-1200: 1fr minmax(0, 1200px) 1fr;
+  --header-max-width: 1200px;
+
+  /* flow space system */
+  --flow-xs: 0.25rem;
+  --flow-sm: 0.625rem;
+  --flow-md: 1.25rem;
+  --flow-lg: 2.875rem;
+  --flow-xl: 5rem;
+
+  /* responsiv typografi */
+  --h1: clamp(2rem, 5vw, 3.125rem);
+  --h2: clamp(1.75rem, 4.5vw, 2.8125rem);
+  --p: clamp(0.875rem, 2vw, 1rem);
+  --card-h2: 1.563rem;
+  --card-a: 1.125rem;
+
+  /* gamle text sizes (kan fjernes når alle er opdateret) */
+  --text-xs: 0.875rem;
+  --text-sm: 1rem;
+  --text-md: 1.106rem;
+  --text-lg: 1.875rem;
+  --text-xl: 2.813rem;
+
+  /* border radius skala */
+  --radius-sm: 0.5rem;
+  --radius-md: 1.25rem;
+  --radius-lg: 1.875rem;
+
+  /* overgange */
+  --transition-fast: 0.3s ease;
+  --transition-normal: 0.6s;
+  --transition-props-popup: opacity, display, overlay, translate;
+  --transition-props-backdrop: opacity, backdrop-filter;
+
+  /* skygger */
+  --focus-ring: 0 0 0 2px rgba(255, 204, 74, 0.2);
+}

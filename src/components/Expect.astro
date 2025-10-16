@@ -1,0 +1,177 @@
+---
+import { Image } from "astro:assets";
+import Pattern from "@assets/images/pattern.svg";
+import ExpectImage from "@assets/images/expect-image.png";
+import Section from "@layouts/Section.astro";
+import Checkmark from "@icons/checkmark.svg";
+---
+
+<Section background="light">
+  <div class="expect-wrapper">
+    <div class="expect">
+      <div class="image-stack">
+        <img src={Pattern.src} alt="" class="pattern" />
+        <div class="green-box"></div>
+        <Image src={ExpectImage} alt="What to expect" class="billede" />
+      </div>
+
+      <div class="content">
+        <span class="title">WE'LL WORK WITH YOU</span>
+        <h2>What To Expect</h2>
+        <p>Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals.</p>
+
+        <ul class="checklist">
+          <li><Checkmark class="checkmark" />Collaborate to build actionable strategies that drive sustainable growth and deliver tangible outcomes.</li>
+          <li><Checkmark class="checkmark" />Identify opportunities to optimize processes and implement impactful solutions with measurable results.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style>
+  @layer components {
+    .expect-wrapper {
+      container-type: inline-size;
+      container-name: expect;
+      grid-column: 1 / -1;
+      width: 100%;
+    }
+
+    .expect {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding-inline: var(--flow-md);
+      width: 100%;
+    }
+
+    .image-stack {
+      display: grid;
+      position: relative;
+      width: 100%;
+      max-width: 729px;
+      margin: 0 auto;
+      padding: var(--flow-md);
+
+      > * {
+        grid-area: 1 / 1;
+      }
+    }
+
+    .pattern {
+      width: 100%;
+      max-width: 328px;
+      height: auto;
+      aspect-ratio: 1;
+      margin-top: -2%;
+      margin-left: -12%;
+    }
+
+    .green-box {
+      width: 164px;
+      height: 183px;
+      transform: rotate(-90deg);
+      background: var(--primary-green);
+      border-radius: var(--radius-md);
+      justify-self: start;
+      align-self: start;
+      margin-top: 3%;
+      margin-left: -4%;
+      transform: rotate(270deg);
+      z-index: 1;
+    }
+
+    .billede {
+      width: 100%;
+      max-width: 634px;
+      height: auto;
+      aspect-ratio: 634 / 396;
+      border-radius: 20px;
+      object-fit: cover;
+      justify-self: start;
+      align-self: start;
+      margin-top: 10%;
+      z-index: 2;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--flow-md);
+      width: 100%;
+      margin-left: 0;
+      margin-top: var(--flow-sm);
+    }
+
+    .title {
+      color: var(--primary-black);
+      font-size: 16px;
+      letter-spacing: 2.32px;
+      text-transform: uppercase;
+      padding: 0 12px;
+      border-radius: 20px;
+      width: fit-content;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 2.8125rem);
+      font-weight: 700;
+      color: var(--primary-black);
+      line-height: 1.16;
+      margin: 0;
+    }
+
+    p {
+      font-size: var(--p);
+      line-height: 1.475;
+    }
+
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: var(--flow-sm);
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      li {
+        display: grid;
+        grid-template-columns: 20px 1fr;
+        gap: var(--flow-md);
+        align-items: start;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .checkmark {
+        width: 20px;
+        height: 20px;
+        color: var(--primary-green);
+      }
+    }
+
+    @container expect (min-width: 1200px) {
+      .expect {
+        grid-template-columns: 1fr minmax(0, 600px) minmax(0, 600px) 1fr;
+        padding-inline: 0;
+        align-items: center;
+      }
+
+      .image-stack {
+        grid-column: 2;
+        justify-self: stretch;
+        margin: 0;
+        max-width: 100%;
+        padding: 0;
+      }
+
+      .content {
+        grid-column: 3;
+        justify-self: start;
+        max-width: 100%;
+        margin-left: 82px;
+        margin-top: 0;
+      }
+    }
+  }
+</style>
