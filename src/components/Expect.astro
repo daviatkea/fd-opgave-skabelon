@@ -1,0 +1,18 @@
+---
+import { Image } from "astro:assets";
+import ExpectImage from "@assets/images/expect.png";
+---
+<section class="grid grid-cols-1 md:grid-cols-2 mx-auto px-20 w-full gap-10">
+    <div>
+        <Image src={ExpectImage} alt="Expect"  class="rounded-2xl"/>
+    </div>
+    <div>
+        <p class="text-lg font-lato uppercase">We'll work with you</p>
+        <h1 class="text-4xl font-cabin font-bold">What to Expect</h1>
+        <p class="text-md font-lato">Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals.</p>
+        <ul class="text-sm font-lato">
+            <li>Collaborate to build actionable strategies that drive sustainable growth and deliver tangible outcomes.</li>
+            <li>Identify opportunities to optimize processes and implement impactful solutions with measurable results.</li>
+        </ul>
+    </div>
+</section>
