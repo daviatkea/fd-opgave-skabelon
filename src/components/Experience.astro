@@ -3,7 +3,7 @@ import experienceData from '@data/experience.json';
 ---
 
 <section class="bg-amber-300 flex flex-col py-20 px-4 md:px-20 lg:px-20 gap-5">
-    <h1 class="font-lato text-md">Experience</h1>
+    <h1 class="font-lato text-md uppercase">Experience</h1>
     <section class="flex flex-row gap-10">
         <div class="flex flex-col w-[35%]">
             <h2 class="font-cabin text-2xl font-bold">
@@ -11,10 +11,105 @@ import experienceData from '@data/experience.json';
             </h2>
             <h3 class="font-lato text-lg">{experienceData.subheading}</h3>
         </div>
-        <div class="flex flex-row w-[65%]">
-            {experienceData.stats.map((stat) => <h1> {stat.label} </h1>
-<h2>{stat.value}</h2>
-)}
+        <div class="flex flex-col w-[65%] gap-8">
+            <div class="stats" scroll-trigger>
+                {
+                    experienceData.stats.map((stat) => (
+                        <div
+                            class="stat flex flex-col items-center gap-2"
+                            style={`--percent: ${stat.value}`}
+                        >
+                            <div class="text-center">
+                                <h3 class="font-cabin text-lg font-medium text-gray-800 translate-y-[50px] justify-center">
+                                    {stat.label}
+                                </h3>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
         </div>
     </section>
 </section>
+
+<style>
+    [scroll-trigger] {
+        --transition-duration: 1s;
+        animation: --switch linear both;
+        animation-timeline: view();
+        animation-range: 12.5% 25%;
+
+        > * {
+            transition: var(--transition-duration) --animatedNumber ease;
+        }
+    }
+
+    @keyframes --switch {
+        to {
+            --sentinel: 1;
+        }
+    }
+
+    @property --animatedNumber {
+        syntax: '<number>';
+        inherits: true;
+        initial-value: 0;
+    }
+
+    .stats {
+        display: flex;
+        gap: 1rem;
+        width: min(400px, 100% - 1rem);
+    }
+
+    .stat {
+        --animatedNumber: calc(var(--percent) * var(--sentinel));
+        --actualPercent: calc(var(--animatedNumber) * 1%);
+        --border-width: 5px;
+        aspect-ratio: 1;
+        width: 150px;
+        border-radius: calc(infinity * 1px);
+        border: var(--border-width) solid transparent;
+        background:
+            conic-gradient(#ffd22f 0 0) padding-box,
+            radial-gradient(
+                    circle at calc(50% + 0.5px) calc(var(--border-width) / 2),
+                    #fff calc(var(--border-width) / 2),
+                    transparent 0
+                )
+                border-box,
+            conic-gradient(#fff var(--actualPercent), #daae3c 0) border-box;
+
+        display: grid;
+
+        counter-reset: c calc(var(--actualPercent) / 1%);
+
+        &::before,
+        &::after {
+            grid-area: 1 / 1;
+        }
+
+        &::after {
+            content: counter(c, decimal-leading-zero) '%';
+            place-self: center;
+            transform: translateY(1.5rem);
+            font-size: max(2vmin, 1.5rem);
+            font-variant-numeric: tabular-nums;
+            font-family: var(--font-cabin);
+            font-weight: bold;
+            color: #181818;
+        }
+
+        &::before {
+            content: '';
+            aspect-ratio: 1;
+            border-radius: 99px;
+            border: 3px solid #fff;
+            width: 20px;
+            offset-path: border-box;
+            offset-distance: var(--actualPercent);
+            offset-anchor: 50% calc(50% - var(--border-width) / 2);
+            background: #181818;
+        }
+    }
+</style>

@@ -5,6 +5,21 @@ import meet from '../data/images/meet.jpg';
 import talk from '../data/images/talk.jpg';
 ---
 
+<style>
+    .pattern-bg::before {
+        --square-count: 10;
+        --square-size: 1.34rem;
+        --_square-size: var(--square-size, 1rem);
+        --_square-half: calc(var(--square-size) / 2);
+        --_square-sum: calc(var(--square-count) * var(--square-size));
+
+        mask:
+            var(--square-pattern) 0 0 / var(--_square-size) var(--_square-size),
+            var(--square-pattern) var(--_square-half) var(--_square-half) /
+                var(--_square-size) var(--_square-size);
+    }
+</style>
+
 <section class="bg-neutral-0 flex flex-row py-20 px-4 lg:px-20 gap-10">
     <div class="flex flex-col gap-5 w-full md:w-[40%]">
         <h2 class="font-lato text-md uppercase">Process</h2>
@@ -95,7 +110,8 @@ import talk from '../data/images/talk.jpg';
         </div>
     </div>
     <div
-        class="grid-cols-2 grid-rows-2 hidden md:grid w-[60%] h-full gap-5 place-self-center"
+        class="grid-cols-2 grid-rows-2 hidden md:grid w-[60%] h-full gap-5 place-self-center relative pattern-bg before:content-[''] before:absolute before:-z-10 before:-top-[30px] before:-right-[30px] before:w-[calc(10*1.34rem-0.67rem)] before:aspect-square before:bg-gradient-to-br before:from-[#BE965D] before:via-[#976F40] before:to-[#C99B61] before:via-[#F0BE7B] before:via-[#FFCB85] before:via-[#EEBC79] before:via-[#C0935B] before:to-[#976F40] after:content-[''] after:absolute after:-z-10 after:-left-4 after:-bottom-4 after:w-[150px] after:h-[100px] after:bg-green-500 after:rounded-[10px]"
+        style='--square-pattern: url(&apos;data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red"><path d="M7.47662 4.02206C6.50635 3.05178 5.53232 2.07774 4.56205 1.10745C4.28482 0.83023 3.80905 0.83023 3.53183 1.10745C2.56155 2.07774 1.59128 3.04803 0.621002 4.02206C0.343781 4.29929 0.343781 4.77506 0.621002 5.05229C1.59128 6.02258 2.5653 6.99661 3.53558 7.9669C3.8128 8.24412 4.28857 8.24412 4.56579 7.9669C5.53607 6.99661 6.51009 6.02258 7.48037 5.05229C7.63022 4.90244 7.69016 4.73011 7.69016 4.56527C7.69016 4.55403 7.69016 4.54654 7.69016 4.5353C7.69016 4.52781 7.69016 4.51657 7.69016 4.50908C7.69016 4.34424 7.63022 4.17191 7.47662 4.02206ZM4.04881 6.41968C3.41944 5.79031 2.79382 5.16468 2.16445 4.5353C2.79382 3.90593 3.41944 3.2803 4.04881 2.65092C4.67818 3.2803 5.3038 3.90593 5.93317 4.5353C5.3038 5.16468 4.67818 5.79031 4.04881 6.41968Z"/></svg>&apos;);'
     >
         <Image
             src={curls}
