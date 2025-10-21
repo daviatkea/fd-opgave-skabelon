@@ -4,31 +4,8 @@ import servicesData from '@data/services.json';
 // console.log(servicesData);
 ---
 
-<!-- <ul class="col-span-2 h-80 grid grid-cols-1 md:grid-cols-3 gap-5 w-full mx-auto lg:w-[80%] p-10 translate-y-[-100px]">
-  {
-    servicesData.services.map((service) => (
-      <li class="text-white col-span-1 p-10 gap-5 bg-neutral-900/70 backdrop-blur-xl rounded-xl border border-neutral-700 grid-rows-subgrid z-10"> 
-        <div class=" grid grid-rows-subgrid justify-between">  
-        <h2 class="text-lg font-cabin">{service.title}</h2>
-          <p class="font-lato text-xs">{service.description}</p>
-          <a href="#0" class="bg-neutral-900 text-neutral-50 my-5 w-fit px-6 py-4 rounded-3xl font-lato text-xs font-semibold">{service.buttonText}</a>
-        </div>
-      </li>
-    ))
-  }
-</ul> --><!-- <ul class="col-span-2 grid grid-cols-1 md:grid-cols-3 grid-rows-[auto_1fr_auto] gap-5 w-full mx-auto lg:w-[80%] p-10 translate-y-[-100px]">
-  {
-    servicesData.services.map((service) => (
-      <li class="text-white col-span-1 p-10 gap-5 bg-neutral-900/80 backdrop-blur-sm rounded-xl border border-neutral-700 grid grid-rows-subgrid"> 
-        <h2 class="text-lg font-cabin">{service.title}</h2>
-        <p class="font-lato text-xs">{service.description}</p>
-        <a href="#0" class="bg-neutral-900 text-neutral-50 my-5 w-fit px-6 py-4 rounded-3xl font-lato text-xs font-semibold">{service.buttonText}</a>
-      </li>
-    ))
-  }
-</ul> -->
 <ul
-    class="col-span-2 grid grid-cols-1 md:grid-cols-3 mb-10 gap-5 w-full mx-auto lg:w-[80%] p-10 translate-y-[-150px] lg:translate-y-[-150px] z-10"
+    class="col-span-2 grid grid-cols-1 md:grid-cols-3 gap-5 w-full mx-auto lg:w-[80%] p-10 translate-y-[-150px] lg:translate-y-[-150px] z-10"
 >
     {
         servicesData.services.map((service) => (
@@ -39,7 +16,7 @@ import servicesData from '@data/services.json';
                 </div>
                 <a
                     href="#0"
-                    class="bg-neutral-900 text-neutral-50 w-fit px-6 py-4 rounded-3xl font-lato text-xs font-semibold mt-auto"
+                    class="bg-neutral-900 hover:bg-neutral-50 hover:text-neutral-900 hover:border-neutral-900 border border-transparent transition-all duration-300 text-neutral-50 w-fit px-6 py-4 rounded-3xl font-lato text-xs font-semibold mt-auto"
                 >
                     {service.buttonText}
                 </a>
