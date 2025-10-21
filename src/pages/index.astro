@@ -1,8 +1,82 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Hero from "@components/Hero.astro";
+import ScrollContainer from "@components/containers/ScrollContainer.astro";
+import ScrollCard from "@components/ScrollCard.astro";
+import FlexCard from "@components/FlexCard.astro";
+import CircleStarts from "@components/CircleStarts.astro";
+
+// svgs
+import Cal from "@icons/cal.svg";
+import Money from "@icons/money.svg";
+import Law from "@icons/law.svg";
+import Card from "@icons/card.svg";
 ---
 
-<Layout>
+<Layout Title="Frontpage">
   <Hero />
+  <section>
+    <p class="tagline">we'll work with you</p>
+    <h2>what to expect</h2>
+    <p>Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals.</p>
+  </section>
+
+  <section>
+    <h2>Financial Projections</h2>
+    <p>Financial projections are essential for planning and monitoring a company’s performance. They provide insights into potential revenue, expenses, and profitability over specific periods.</p>
+
+    <ScrollContainer>
+      <ScrollCard>
+        <Cal />
+        <h3>The Balance Sheet</h3>
+        <p>The Balance Sheet is a summary of the assets and liabilities and equity of a business at a specific point of time.</p>
+      </ScrollCard>
+      <ScrollCard>
+        <Card />
+        <h3>Income Statement</h3>
+        <p>The Income (Profit and Loss) Statement, commonly referred to as the P&L statement, summarizes the revenue and expenses for a specific time period (one month, one quarter, one year, etc.)</p>
+      </ScrollCard>
+      <ScrollCard>
+        <Law />
+        <h3>Financial Plan</h3>
+        <p>Keep your information current and review the documents on a regular basis (monthly or more often if needed). Review them with key individuals within your company.</p>
+      </ScrollCard>
+
+      <ScrollCard>
+        <Money />
+        <h3>Financial Ratios</h3>
+        <p>Ratios are useful when comparing your company with the competition on financial performance and also when benchmarking the performance of your company.</p>
+      </ScrollCard>
+    </ScrollContainer>
+  </section>
+  <section class="yellow">
+    <p class="tagline">Experience</p>
+    <h2>More than 25 years of experience</h2>
+    <p>3000+ our clients are insured around the World</p>
+    <div class="statsContainer">
+      <CircleStarts Text="Consistency" Procent={85} />
+      <CircleStarts Text="Improvement" Procent={95} />
+      <CircleStarts Text="Branching" Procent={90} />
+    </div>
+  </section>
+  <section>
+    <p class="tagline">Growing with our Clients</p>
+    <h2>Our core values & principles</h2>
+    <p>Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps.</p>
+    <FlexCard>
+      <!-- hvordan ikon? -->
+      <img src="" alt="" />
+      <h4>Creative Ideas</h4>
+      <p>Explore innovative strategies tailored to your goals. Unlock unique solutions that inspire growth and creativity. Drive impactful change.</p>
+    </FlexCard>
+  </section>
 </Layout>
+<style>
+  .statsContainer {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+  }
+</style>

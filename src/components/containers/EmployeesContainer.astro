@@ -1,0 +1,16 @@
+---
+import EmployeeCard from "@components/EmployeeCard.astro";
+import employees from "@data/employees.json";
+---
+
+<section>
+  {employees.map((emp) => <EmployeeCard employee={emp} />)}
+</section>
+
+<style>
+  section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(335px, 1fr));
+    gap: 1.5625rem;
+  }
+</style>

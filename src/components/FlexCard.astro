@@ -1,0 +1,14 @@
+---
+const Type = Astro.props.Type;
+---
+
+<article class={Type}>
+  <slot />
+  <button>Read More</button>
+</article>
+
+<style>
+  article {
+    display: grid;
+  }
+</style>

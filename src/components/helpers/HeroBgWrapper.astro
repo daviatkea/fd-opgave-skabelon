@@ -5,13 +5,8 @@ const { imagePath, class: className } = Astro.props;
 
 const importedImage = `/src/assets/images/${imagePath}`;
 
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/images/*.{jpeg,jpg,png,gif,webp}"
-);
-if (!images[importedImage])
-  throw new Error(
-    `"${importedImage}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif,webp}"`
-  );
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/images/*.{jpeg,jpg,png,gif,webp}");
+if (!images[importedImage]) throw new Error(`"${importedImage}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif,webp}"`);
 
 const optimizedBackground = await getImage({
   src: images[importedImage](),
@@ -19,9 +14,29 @@ const optimizedBackground = await getImage({
 });
 ---
 
-<section
-  style={`background-image: url(${optimizedBackground.src});`}
-  class={className}
->
-  <slot />
+<section style={`background-image: url(${optimizedBackground.src});`} class={className}>
+  <div>
+    <slot />
+  </div>
 </section>
+
+<style>
+  section {
+    grid-column: edge;
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    place-items: center;
+    border-radius: 20px;
+    color: var(--secondary02);
+    text-align: center;
+  }
+  div {
+    background-color: #ffffffd9;
+    border-radius: 1.8125rem;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+</style>

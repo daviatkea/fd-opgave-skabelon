@@ -26,57 +26,82 @@ if (!employee) {
 }
 ---
 
-<article class="team-card">
-  <div class="team-card__header">
-    <a class="team-card__link" href={`/team/${employee.slug}`}>
-      {employee.img ? (
-        <DynamicImage
-          imagePath={employee.img}
-          altText={employee.name}
-          class="team-card__image"
-          width={320}
-          height={320}
-        />
-      ) : null}
-
-      <div class="team-card__meta">
-        <h3 class="team-card__name">{employee.name}</h3>
-        <p class="team-card__title">{employee.title}</p>
+<article>
+  <a href={`/team/${employee.slug}`}>
+    <div class="grid">
+      <div class="img">
+        {employee.img ? <DynamicImage imagePath={employee.img} altText={employee.name} /> : null}
       </div>
-    </a>
-  </div>
+      <p>{employee.title}</p>
+    </div>
 
-  <div class="team-card__body">
-    <p class="team-card__desc">{employee.description}</p>
+    <h3>{employee.name}</h3>
+  </a>
 
-    {employee.social_links && (
-      <div class="team-card__social">
-        {employee.social_links.map((link) => (
-          <a href={link.url} aria-label={link.platform} class="social-link">
-            <DynamicIcon name={link.icon} class="social-link__icon" />
-          </a>
-        ))}
+  <p>{employee.description}</p>
+
+  {
+    employee.social_links && (
+      <div class="socials">
+        <a href="">
+          <DynamicIcon name="facebook" />
+        </a>
+        <a href="">
+          <DynamicIcon name="instagram" />
+        </a>
+        <a href="">
+          <DynamicIcon name="twitter" />
+        </a>
       </div>
-    )}
-  </div>
+    )
+  }
 </article>
 
 <style>
-.team-card {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-  border-radius: 8px;
-  padding: 0.5rem;
-}
-.team-card__image {
-  border-radius: 8px;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-.team-card__name { margin: 0; }
-.team-card__title { margin: 0.25rem 0; color: var(--muted, #666); }
-.team-card__social { display:flex; gap:0.5rem; }
-.social-link__icon { width:20px; height:20px; }
+  h3 {
+    color: var(--primary03);
+    text-align: center;
+    font-family: Cabin;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 116%;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  p {
+    color: var(--primary-font-color);
+    text-align: center;
+  }
+  .img {
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  .socials {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    .img {
+      grid-column: 1 / 1;
+      grid-row: 1 / 1;
+    }
+    p {
+      grid-column: 1 / 1;
+      grid-row: 1 / 1;
+      place-self: end end;
+      margin: 25px;
+      background-color: var(--primary03);
+      color: var(--secondary02);
+      border-radius: 29px;
+      padding: 0.25rem 1.31rem;
+    }
+  }
 </style>

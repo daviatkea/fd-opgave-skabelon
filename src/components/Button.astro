@@ -1,0 +1,39 @@
+---
+const Type = Astro.props.Type;
+---
+
+<a href="" class={Type}>
+  <slot />
+</a>
+
+<style>
+  a {
+    display: flex;
+    padding: 0.9375rem 1.875rem;
+    align-items: flex-start;
+    gap: 0.625rem;
+    border-radius: 2.625rem;
+
+    text-align: center;
+    font-family: Lato;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 160%;
+    text-decoration: none;
+    width: fit-content;
+    height: fit-content;
+  }
+  .yellow {
+    background: var(--primary01);
+    color: var(--primary03);
+  }
+  .black {
+    background: var(--primary03);
+    color: var(--secondary01);
+  }
+  .white {
+    background: var(--secondary02);
+    color: var(--primary03);
+  }
+</style>

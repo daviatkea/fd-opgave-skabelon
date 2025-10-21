@@ -1,0 +1,65 @@
+---
+const Procent = Astro.props.Procent;
+const Text = Astro.props.Text;
+---
+
+<article>
+  <div style={`--percent: ${Procent}`}></div>
+  <p>{Text}</p>
+</article>
+
+<style>
+  article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    p {
+      text-align: center;
+      font-size: 1.5625rem;
+      font-weight: 600;
+    }
+  }
+
+  div {
+    container: stat / inline-size;
+    --actualPercent: calc(var(--percent) * 1%);
+    --border-width: 5px;
+    aspect-ratio: 1;
+    width: 150px;
+    border-radius: calc(Infinity * 1px);
+    border: var(--border-width) solid transparent;
+    background:
+      conic-gradient(var(--backgroundPrimary01)) padding-box,
+      conic-gradient(var(--secondary02) var(--actualPercent), #daae3c 0) border-box;
+    display: grid;
+
+    counter-reset: c var(--percent);
+
+    &::before,
+    &::after {
+      grid-area: 1 / 1;
+    }
+
+    &::after {
+      content: counter(c, decimal-leading-zero) "%";
+      place-self: center;
+      font-size: 3.125rem;
+      font-family: cabin, sans-serif;
+    }
+
+    &::before {
+      content: "";
+      aspect-ratio: 1;
+      border-radius: 99px;
+      width: 30px;
+      border: 3px solid white;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+      background: black;
+      offset-path: border-box;
+      offset-distance: var(--actualPercent);
+      offset-anchor: 50% calc(50% - var(--border-width) / 2);
+    }
+  }
+</style>
