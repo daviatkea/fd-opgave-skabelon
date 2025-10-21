@@ -1,0 +1,85 @@
+---
+import projectionsData from '@data/financialProjections.json';
+import { Image } from 'astro:assets';
+import cal from '../icons/cal.svg';
+import card from '../icons/card.svg';
+import law from '../icons/law.svg';
+import money from '../icons/money.svg';
+---
+
+<section class="bg-neutral-100 flex flex-col py-20 px-4 lg:px-20 gap-10">
+    <div class="flex flex-row">
+        <div class="flex flex-col justify-center">
+            <h1 class="text-neutral-900 text-4xl font-cabin max-w-2xl px-4">
+                {projectionsData.title}
+            </h1>
+            <p class="text-neutral-700 max-w-2xl mt-4 px-4 font-lato text-md">
+                {projectionsData.subtitle}
+            </p>
+        </div>
+        <div class="flex flex-row h-10 place-self-center mx-auto">
+            <div
+                class="bg-neutral-900
+            rounded-full
+            flex
+            items-center
+            justify-center
+            p-2
+            mr-4"
+            >
+                <svg
+                    width="25"
+                    height="21"
+                    viewBox="0 0 25 21"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M22.6947 10.3839L1.82227 10.3839M1.82227 10.3839L10.3609 18.9222M1.82227 10.3839L10.3609 1.84473"
+                        stroke="#FFF"
+                        stroke-width="3.19444"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+            </div>
+            <div
+                class="bg-amber-300 rounded-full flex items-center justify-center p-2"
+            >
+                <svg
+                    width="25"
+                    height="22"
+                    viewBox="0 0 25 22"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M1.68262 10.8491H22.8341M22.8341 10.8491L14.1812 2.19629M22.8341 10.8491L14.1812 19.5021"
+                        stroke="currentcolor"
+                        stroke-width="3.23715"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-row gap-10">
+        {
+            projectionsData.values.map((projection) => (
+                <div class="flex flex-col justify-center bg-neutral-200 p-4 rounded-xl">
+                    <!-- <Image -->
+                    <!--     src=`${projection.icon}` -->
+                    <!--     alt={projection.title} -->
+                    <!--     width="50" -->
+                    <!--     height="50" -->
+                    <!-- /> -->
+                    <h1 class="text-neutral-900 text-lg font-cabin">
+                        {projection.title}
+                    </h1>
+                    <p class="text-neutral-700 text-sm font-lato">
+                        {projection.description}
+                    </p>
+                </div>
+            ))
+        }
+    </div>
+</section>

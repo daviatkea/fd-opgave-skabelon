@@ -1,18 +1,72 @@
 ---
-import { Image } from "astro:assets";
-import ExpectImage from "@assets/images/expect.png";
+import { Image } from 'astro:assets';
+import ExpectImage from '@assets/images/expect.png';
 ---
-<section class="grid grid-cols-1 md:grid-cols-2 mx-auto px-20 w-full gap-10">
+
+<section
+    class="grid grid-cols-1 md:grid-cols-2 mx-auto px-20 w-full max-w-5xl gap-10"
+>
     <div>
-        <Image src={ExpectImage} alt="Expect"  class="rounded-2xl"/>
+        <Image src={ExpectImage} alt="Expect" class="rounded-2xl" />
     </div>
     <div>
         <p class="text-lg font-lato uppercase">We'll work with you</p>
         <h1 class="text-4xl font-cabin font-bold">What to Expect</h1>
-        <p class="text-md font-lato">Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals.</p>
+        <p class="text-md font-lato mb-6 mt-4">
+            Our collaboration is built on transparency, efficiency, and
+            measurable results. Together, we create strategies tailored to your
+            unique needs and goals.
+        </p>
         <ul class="text-sm font-lato">
-            <li>Collaborate to build actionable strategies that drive sustainable growth and deliver tangible outcomes.</li>
-            <li>Identify opportunities to optimize processes and implement impactful solutions with measurable results.</li>
+            <li class="flex items-center gap-2 mb-4">
+                <svg
+                    width="33"
+                    height="33"
+                    viewBox="0 0 23 23"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M15.855 8.83838L9.83628 14.5803L6.83203 11.7093"
+                        stroke="#4EAF4E"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                    <path
+                        d="M11.3433 21.1426C16.7795 21.1426 21.1865 16.7356 21.1865 11.2993C21.1865 5.86303 16.7795 1.45605 11.3433 1.45605C5.90698 1.45605 1.5 5.86303 1.5 11.2993C1.5 16.7356 5.90698 21.1426 11.3433 21.1426Z"
+                        stroke="#4EAF4E"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+                Collaborate to build actionable strategies that drive sustainable
+                growth and deliver tangible outcomes.
+            </li>
+
+            <li class="flex items-center gap-2 mb-4">
+                <svg
+                    width="33"
+                    height="33"
+                    viewBox="0 0 23 23"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M15.855 8.83838L9.83628 14.5803L6.83203 11.7093"
+                        stroke="#4EAF4E"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                    <path
+                        d="M11.3433 21.1426C16.7795 21.1426 21.1865 16.7356 21.1865 11.2993C21.1865 5.86303 16.7795 1.45605 11.3433 1.45605C5.90698 1.45605 1.5 5.86303 1.5 11.2993C1.5 16.7356 5.90698 21.1426 11.3433 21.1426Z"
+                        stroke="#4EAF4E"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+                Identify opportunities to optimize processes and implement impactful
+                solutions with measurable results.
+            </li>
         </ul>
     </div>
 </section>
