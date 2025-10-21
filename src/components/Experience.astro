@@ -11,5 +11,10 @@ import experienceData from '@data/experience.json';
             </h2>
             <h3 class="font-lato text-lg">{experienceData.subheading}</h3>
         </div>
+        <div class="flex flex-row w-[65%]">
+            {experienceData.stats.map((stat) => <h1> {stat.label} </h1>
+<h2>{stat.value}</h2>
+)}
+        </div>
     </section>
 </section>

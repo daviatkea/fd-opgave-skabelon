@@ -5,16 +5,16 @@ import meet from '../data/images/meet.jpg';
 import talk from '../data/images/talk.jpg';
 ---
 
-<section class="bg-neutral-50 flex flex-row py-20 px-4 lg:px-20 gap-10">
-    <div class="flex flex-col gap-10 w-full md:w-[40%]">
+<section class="bg-neutral-0 flex flex-row py-20 px-4 lg:px-20 gap-10">
+    <div class="flex flex-col gap-5 w-full md:w-[40%]">
         <h2 class="font-lato text-md uppercase">Process</h2>
         <h1 class="font-cabin text-4xl">Contact Us. It’s Easy.</h1>
-        <p class="font-lato text-md">
+        <p class="font-lato text-md mb-10">
             Leverage agile frameworks to provide a robust synopsis for high
             level overviews. Iterative approaches to corporate strategy foster
             collaborative.
         </p>
-        <div class="flex flex-row gap-2 align-center">
+        <div class="flex flex-row gap-2 align-center mb-5">
             <svg
                 class="bg-amber-200 rounded-full p-3 w-12 h-12"
                 width="6"
@@ -35,7 +35,7 @@ import talk from '../data/images/talk.jpg';
                 <p class="font-lato font-semibold">+1 800 100 900</p>
             </div>
         </div>
-        <div class="flex flex-row gap-2 align-center">
+        <div class="flex flex-row gap-2 align-center mb-5">
             <svg
                 class="bg-green-200 rounded-full p-3 w-12 h-12"
                 width="25"
@@ -94,21 +94,23 @@ import talk from '../data/images/talk.jpg';
             </div>
         </div>
     </div>
-    <div class="grid-cols-2 grid-rows-2 hidden md:grid w-[60%] h-full gap-5">
+    <div
+        class="grid-cols-2 grid-rows-2 hidden md:grid w-[60%] h-full gap-5 place-self-center"
+    >
         <Image
             src={curls}
             alt="Curls"
-            class="col-start-1 col-end-1 row-span-full object-cover content-stretch rounded-2xl"
+            class="col-start-1 col-end-1 row-span-full object-fill content-stretch rounded-2xl !h-[100%] w-full"
         />
         <Image
             src={meet}
             alt="Meet"
-            class="col-start-2 col-end-2 row-span-1 object-cover content-stretch rounded-2xl"
+            class="col-start-2 col-end-2 row-span-1 object-fill content-stretch rounded-2xl !h-[100%] w-full"
         />
         <Image
             src={talk}
             alt="Talk"
-            class="col-start-2 col-end-2 row-span-2 object-cover content-stretch rounded-2xl h-full w-full"
+            class="col-start-2 col-end-2 row-start-2 object-fill content-stretch rounded-2xl !h-[100%] w-full"
         />
     </div>
 </section>

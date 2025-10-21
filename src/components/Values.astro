@@ -1,5 +1,6 @@
 ---
 import coreValuesData from '@data/coreValues.json';
+import DynamicIcon from '@components/helpers/DynamicIcon.astro';
 ---
 
 <section
@@ -28,6 +29,7 @@ import coreValuesData from '@data/coreValues.json';
         {
             coreValuesData.values.map((value) => (
                 <div class="flex flex-col bg-neutral-200 p-4 rounded-xl w-64 gap-2 h-fit">
+            <DynamicIcon name={value.icon} class="w-10 h-10 text-neutral-100 bg-neutral-800 p-2 rounded-full" />
             <h1 class="font-cabin text-lg font-bold">{value.title}</h1>
             <p class='font-lato text-md'>{value.description}</p>
                 <div class="flex flex-row gap-1">

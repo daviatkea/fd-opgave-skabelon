@@ -1,10 +1,6 @@
 ---
 import projectionsData from '@data/financialProjections.json';
-import { Image } from 'astro:assets';
-import cal from '../icons/cal.svg';
-import card from '../icons/card.svg';
-import law from '../icons/law.svg';
-import money from '../icons/money.svg';
+import DynamicIcon from '@components/helpers/DynamicIcon.astro';
 ---
 
 <section class="bg-neutral-100 flex flex-col py-20 px-4 lg:px-20 gap-10">
@@ -66,12 +62,10 @@ import money from '../icons/money.svg';
         {
             projectionsData.values.map((projection) => (
                 <div class="flex flex-col justify-center bg-neutral-200 p-4 rounded-xl h-fit w-fit">
-                    <!-- <Image -->
-                    <!--     src=`${projection.icon}` -->
-                    <!--     alt={projection.title} -->
-                    <!--     width="50" -->
-                    <!--     height="50" -->
-                    <!-- /> -->
+                    <DynamicIcon
+                        name={projection.icon}
+                        class="w-10 h-10 text-neutral-900"
+                    />
                     <h1 class="text-neutral-900 text-lg font-cabin">
                         {projection.title}
                     </h1>
