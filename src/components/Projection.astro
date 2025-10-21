@@ -3,7 +3,9 @@ import projectionsData from '@data/financialProjections.json';
 import DynamicIcon from '@components/helpers/DynamicIcon.astro';
 ---
 
-<section class="bg-neutral-100 flex flex-col py-20 px-4 lg:px-20 gap-10">
+<section
+    class="bg-neutral-100 transition-all duration-300 flex flex-col py-20 px-4 lg:px-20 gap-10"
+>
     <div class="flex flex-row">
         <div class="flex flex-col justify-center">
             <h1 class="text-neutral-900 text-4xl font-cabin max-w-2xl px-4">
@@ -15,6 +17,7 @@ import DynamicIcon from '@components/helpers/DynamicIcon.astro';
         </div>
         <div class="flex flex-row h-10 place-self-center mx-auto">
             <div
+                id="projection-button-back" 
                 class="bg-neutral-900
             rounded-full
             flex
@@ -39,6 +42,7 @@ import DynamicIcon from '@components/helpers/DynamicIcon.astro';
                 </svg>
             </div>
             <div
+                id="projection-button-forward"
                 class="bg-amber-300 rounded-full flex items-center justify-center p-2"
             >
                 <svg
@@ -61,15 +65,15 @@ import DynamicIcon from '@components/helpers/DynamicIcon.astro';
     <div class="flex flex-row gap-10">
         {
             projectionsData.values.map((projection) => (
-                <div class="flex flex-col justify-center bg-neutral-200 p-4 rounded-xl h-fit w-fit">
+                <div class="projectionCard group bg-neutral-200 transition-all duration-300 flex flex-col justify-center p-4 rounded-xl h-fit w-fit">
                     <DynamicIcon
                         name={projection.icon}
-                        class="w-10 h-10 text-neutral-900"
+                        class="w-10 h-10 text-neutral-900 group-[.active]:text-amber-300"
                     />
-                    <h1 class="text-neutral-900 text-lg font-cabin">
+                    <h1 class="text-neutral-900 group-[.active]:text-neutral-50 text-lg font-cabin">
                         {projection.title}
                     </h1>
-                    <p class="text-neutral-700 text-sm font-lato">
+                    <p class="text-neutral-700 group-[.active]:text-neutral-50 text-sm font-lato">
                         {projection.description}
                     </p>
                 </div>
@@ -77,3 +81,51 @@ import DynamicIcon from '@components/helpers/DynamicIcon.astro';
         }
     </div>
 </section>
+
+<style>
+    .projectionCard.active {
+        background-color: rgb(23 23 23); /* bg-neutral-900 */
+    }
+</style>
+
+<script>
+    const projectionButtonBack = document.getElementById(
+        'projection-button-back',
+    );
+    const projectionButtonForward = document.getElementById(
+        'projection-button-forward',
+    );
+    let currentIndex = 0;
+    document.addEventListener('DOMContentLoaded', () => {
+        const projectionCards = document.querySelectorAll('.projectionCard');
+        projectionCards[currentIndex].classList.add('active');
+        projectionCards.forEach((card) => {
+            card.addEventListener('click', () => {
+                projectionCards.forEach((card) => {
+                    card.classList.remove('active');
+                });
+                card.classList.add('active');
+                currentIndex = Array.from(projectionCards).indexOf(card);
+                console.log(currentIndex);
+            });
+        });
+        projectionButtonBack.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                projectionCards.forEach((card) => {
+                    card.classList.remove('active');
+                });
+                projectionCards[currentIndex]?.classList.add('active');
+            }
+        });
+        projectionButtonForward.addEventListener('click', () => {
+            if (currentIndex < projectionCards.length - 1) {
+                currentIndex++;
+                projectionCards.forEach((card) => {
+                    card.classList.remove('active');
+                });
+                projectionCards[currentIndex]?.classList.add('active');
+            }
+        });
+    });
+</script>
