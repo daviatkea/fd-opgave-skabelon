@@ -10,50 +10,49 @@ import Gear from "@icons/gear.svg";
 import Layers from "@icons/layers.svg";
 ---
 
-<div class="padding">
-  <div class="grid1-1">
-    <div class="col">
-      <p class="tagline">Growing with our Clients</p>
-      <h2>Our core values & principles</h2>
-      <p>Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps.</p>
-    </div>
-    <div class="col">
-      <Button Type={Type}>
-        <p>Get in touch</p>
-      </Button>
-    </div>
+<div class="grid1-1">
+  <div class="col">
+    <p class="tagline">Growing with our Clients</p>
+    <h2>Our core values & principles</h2>
+    <p>Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps.</p>
   </div>
-  <div class="flex">
-    <FlexCard Color={Type}>
-      <div class="iconContainer">
-        <Layers width={20} height={20} class="icon" />
-      </div>
-      <h4>Creative Ideas</h4>
-      <p>Explore innovative strategies tailored to your goals. Unlock unique solutions that inspire growth and creativity. Drive impactful change.</p>
-    </FlexCard>
-    <FlexCard Color={Type}>
-      <div class="iconContainer">
-        <Bars width={24.918} height={24.918} class="icon" />
-      </div>
-      <h4>Best Features</h4>
-      <p>Deliver advanced tools designed for seamless integration. Optimize workflows with cutting-edge technology.</p>
-    </FlexCard>
-    <FlexCard Color={Type}>
-      <div class="iconContainer">
-        <Globe width={20} height={20} class="icon" />
-      </div>
-      <h4>Experience</h4>
-      <p>Leverage years of proven expertise across diverse industries. Empower your business with our skilled professionals. Achieve sustainable success.</p>
-    </FlexCard>
-    <FlexCard Color={Type}>
-      <div class="iconContainer">
-        <Gear width={20} height={20} class="icon" />
-      </div>
-      <h4>Easy Solutions</h4>
-      <p>Streamline your challenges with simple, effective solutions. Ensure hassle-free implementation for measurable results.</p>
-    </FlexCard>
+  <div class="col">
+    <Button Type={Type}>
+      <p>Get in touch</p>
+    </Button>
   </div>
 </div>
+<div class="flex">
+  <FlexCard Color={Type}>
+    <div class="iconContainer">
+      <Layers width={20} height={20} class="icon" />
+    </div>
+    <h4>Creative Ideas</h4>
+    <p>Explore innovative strategies tailored to your goals. Unlock unique solutions that inspire growth and creativity. Drive impactful change.</p>
+  </FlexCard>
+  <FlexCard Color={Type}>
+    <div class="iconContainer">
+      <Bars width={24.918} height={24.918} class="icon" />
+    </div>
+    <h4>Best Features</h4>
+    <p>Deliver advanced tools designed for seamless integration. Optimize workflows with cutting-edge technology.</p>
+  </FlexCard>
+  <FlexCard Color={Type}>
+    <div class="iconContainer">
+      <Globe width={20} height={20} class="icon" />
+    </div>
+    <h4>Experience</h4>
+    <p>Leverage years of proven expertise across diverse industries. Empower your business with our skilled professionals. Achieve sustainable success.</p>
+  </FlexCard>
+  <FlexCard Color={Type}>
+    <div class="iconContainer">
+      <Gear width={20} height={20} class="icon" />
+    </div>
+    <h4>Easy Solutions</h4>
+    <p>Streamline your challenges with simple, effective solutions. Ensure hassle-free implementation for measurable results.</p>
+  </FlexCard>
+</div>
+
 <style>
   .flex {
     display: grid;
@@ -87,8 +86,5 @@ import Layers from "@icons/layers.svg";
     :first-child {
       place-self: end end;
     }
-  }
-  .padding {
-    padding: 75px 0;
   }
 </style>

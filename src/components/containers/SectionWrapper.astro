@@ -1,9 +1,8 @@
 ---
-const Background = Astro.props.Background;
-const Type = Astro.props.Type;
+const { Background, Type, Padding } = Astro.props;
 ---
 
-<section class={Background}>
+<section class={Background} style={`padding: ${Padding};`}>
   <div class="inner" class={Type}>
     <slot />
   </div>

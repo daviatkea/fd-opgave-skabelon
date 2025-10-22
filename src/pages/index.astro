@@ -17,12 +17,15 @@ import Card from "@icons/card.svg";
 
 // images
 import expect from "@assets/images/expect.jpg";
+import contact1 from "@assets/images/contact1.png";
+import contact2 from "@assets/images/contact2.png";
+import contact3 from "@assets/images/contact3.png";
 import { Image } from "astro:assets";
 ---
 
 <Layout Title="Frontpage">
   <Hero />
-  <SectionWrapper>
+  <SectionWrapper Padding="100px 0">
     <div class="grid1-1">
       <Image class="img" src={expect} alt="What to expect illustration" width={634.18} height={395.97} />
 
@@ -30,7 +33,7 @@ import { Image } from "astro:assets";
         <p class="tagline">we'll work with you</p>
         <h2>what to expect</h2>
         <p>Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals.</p>
-        <ul>
+        <ul class="checkmarks">
           <li>Collaborate to build actionable strategies that drive sustainable growth and deliver tangible outcomes.</li>
           <li>Identify opportunities to optimize processes and implement impactful solutions with measurable results.</li>
         </ul>
@@ -38,7 +41,7 @@ import { Image } from "astro:assets";
     </div>
   </SectionWrapper>
 
-  <SectionWrapper Background="gray">
+  <SectionWrapper Background="lightgray" Padding="93px 0">
     <h2>Financial Projections</h2>
     <p>Financial projections are essential for planning and monitoring a company’s performance. They provide insights into potential revenue, expenses, and profitability over specific periods.</p>
 
@@ -67,7 +70,7 @@ import { Image } from "astro:assets";
     </ScrollContainer>
   </SectionWrapper>
 
-  <SectionWrapper Background="yellow">
+  <SectionWrapper Background="yellow" Padding="132px 0">
     <div class="grid1-1">
       <div>
         <p class="tagline">Experience</p>
@@ -82,18 +85,27 @@ import { Image } from "astro:assets";
     </div>
   </SectionWrapper>
 
-  <SectionWrapper Background="darkgray">
+  <SectionWrapper Background="darkgray" Padding="100px 0">
     <CoreValues Type="white" />
   </SectionWrapper>
-  <SectionWrapper>
-    <p class="tagline">Process</p>
-    <h2>Contact Us. It’s Easy.</h2>
-    <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative.</p>
-    <ul>
-      <li>call me</li>
-      <li>email me</li>
-      <li>visit us</li>
-    </ul>
+  <SectionWrapper Padding="70px 0">
+    <div class="grid1-1">
+      <div class="col">
+        <p class="tagline">Process</p>
+        <h2>Contact Us. It’s Easy.</h2>
+        <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative.</p>
+        <ul>
+          <li>call me</li>
+          <li>email me</li>
+          <li>visit us</li>
+        </ul>
+      </div>
+      <div class="bentoGrid">
+        <Image class="img" src={contact1} alt="What to expect illustration" />
+        <Image class="img" src={contact2} alt="What to expect illustration" />
+        <Image class="img" src={contact3} alt="What to expect illustration" />
+      </div>
+    </div>
   </SectionWrapper>
 </Layout>
 <style>
@@ -109,7 +121,6 @@ import { Image } from "astro:assets";
     gap: 1rem;
     line-height: 1.5;
   }
-
   li {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -117,23 +128,35 @@ import { Image } from "astro:assets";
     font-size: 1rem;
     color: #595566;
   }
-
-  li::before {
-    content: "";
-    width: 1.6rem;
-    height: 1.6rem;
-    mask: url("/src/icons/checkmark.svg") no-repeat;
-    -webkit-mask: url("/src/icons/checkmark.svg") no-repeat;
-    mask-position: 50% 50%;
-    -webkit-mask-position: 50% 50%;
-    mask-size: 100% auto;
-    -webkit-mask-size: 100% auto;
-    background-color: var(--primary02); /* Change this color to whatever you want */
+  .checkmarks {
+    li::before {
+      content: "";
+      width: 1.6rem;
+      height: 1.6rem;
+      mask: url("/src/icons/checkmark.svg") no-repeat;
+      -webkit-mask: url("/src/icons/checkmark.svg") no-repeat;
+      mask-position: 50% 50%;
+      -webkit-mask-position: 50% 50%;
+      mask-size: 100% auto;
+      -webkit-mask-size: 100% auto;
+      background-color: var(--primary02);
+    }
   }
   .img {
     border-radius: var(--border-radius);
   }
   .grid1-1 {
     gap: 80px;
+  }
+
+  .bentoGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    :first-child {
+      grid-column: 1/2;
+      grid-row: 1/3;
+    }
   }
 </style>
