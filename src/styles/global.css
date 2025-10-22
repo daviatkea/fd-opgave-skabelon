@@ -66,6 +66,32 @@ h6 {
   font-size: 1.5625rem;
 }
 
+.checkmarks {
+  ul {
+    display: grid;
+    gap: 1rem;
+    line-height: 1.5;
+  }
+  li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    font-size: 1rem;
+    color: #595566;
+  }
+  li::before {
+    content: "";
+    width: 1.6rem;
+    height: 1.6rem;
+    mask: url("/src/icons/checkmark.svg") no-repeat;
+    -webkit-mask: url("/src/icons/checkmark.svg") no-repeat;
+    mask-position: 50% 50%;
+    -webkit-mask-position: 50% 50%;
+    mask-size: 100% auto;
+    -webkit-mask-size: 100% auto;
+    background-color: var(--primary02);
+  }
+}
 .tagline {
   color: var(--primary03);
   font-family: Lato;
@@ -80,6 +106,7 @@ h6 {
 .grid1-1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 main {
@@ -104,9 +131,3 @@ main {
     color: var(--secondary02);
   }
 }
-
-/* section {
-  display: grid;
-  grid-template-columns: subgrid;
-  grid-column: edge;
-} */
