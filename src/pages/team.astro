@@ -2,19 +2,39 @@
 import Layout from "../layouts/Layout.astro";
 import EmployeesContainer from "@components/containers/EmployeesContainer.astro";
 import Button from "@components/Button.astro";
+import SectionWrapper from "@components/containers/SectionWrapper.astro";
+import HeroBgWrapper from "@components/helpers/HeroBgWrapper.astro";
 ---
 
 <Layout Title="Team">
-  <main>
-    <!-- <div class="grid1-1">
+  <HeroBgWrapper imagePath="team.jpg">
+    <p>Team</p>
+    <h1>The Consultors</h1>
+  </HeroBgWrapper>
+  <SectionWrapper Padding="70px 0">
+    <div class="grid1-1">
       <div class="col">
         <h2>Meet Our Great Team</h2>
         <p>Welcome to our amazing team! We are a group of passionate individuals dedicated to excellence and innovation. Each member brings unique skills and experiences, working together to achieve our goals. Join us as we embark on exciting projects and create lasting impacts.</p>
       </div>
-      <Button Text="Join our team" Type="black" />
-    </div> -->
+      <div class="col">
+        <Button Type="black">Join our team </Button>
+      </div>
+    </div>
+  </SectionWrapper>
+  <SectionWrapper>
     <EmployeesContainer />
-  </main>
+  </SectionWrapper>
 </Layout>
 
-<style></style>
+<style>
+  .col + .col {
+    display: grid;
+    grid-column: 1fr;
+    grid-row: 1fr;
+
+    :first-child {
+      place-self: end end;
+    }
+  }
+</style>
