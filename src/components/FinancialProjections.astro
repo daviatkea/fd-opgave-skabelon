@@ -1,0 +1,176 @@
+---
+import FinancialCards from "./FinancialCards.astro";
+import Section from "@layouts/Section.astro";
+import ArrowLeft from "@icons/arrow-left.svg?raw";
+import ArrowRight from "@icons/arrow--right.svg?raw";
+---
+
+<Section background="grey">
+  <div class="financial-wrapper">
+    <div class="financial-container">
+      <div class="title-section">
+        <div class="text-content">
+          <h2>Financial Projections</h2>
+          <p>Financial projections are essential for planning and monitoring a company’s performance. They provide insights into potential revenue, expenses, and profitability over specific periods.</p>
+        </div>
+        <div class="navigation">
+          <button class="nav-button" aria-label="Previous">
+            <span set:html={ArrowLeft} />
+          </button>
+          <button class="nav-button" aria-label="Next">
+            <span set:html={ArrowRight} />
+          </button>
+        </div>
+      </div>
+      <div class="full">
+        <FinancialCards />
+      </div>
+    </div>
+  </div>
+</Section>
+
+<script>
+  const prevButton = document.querySelector('.nav-button[aria-label="Previous"]');
+  const nextButton = document.querySelector('.nav-button[aria-label="Next"]');
+  const scroller = document.querySelector(".card-scroller");
+
+  if (prevButton && nextButton && scroller) {
+    prevButton.addEventListener("click", () => {
+      scroller.scrollBy({ left: -400, behavior: "smooth" });
+    });
+
+    nextButton.addEventListener("click", () => {
+      scroller.scrollBy({ left: 400, behavior: "smooth" });
+    });
+  }
+</script>
+
+<style>
+  @layer components {
+    .financial-wrapper {
+      container-type: inline-size;
+      container-name: financial;
+
+      grid-area: 1 / 1;
+    }
+
+    .financial-container {
+      display: grid;
+      grid-template-columns: var(--gtc-1200);
+
+      > * {
+        grid-column: 2;
+      }
+
+      .full {
+        grid-column: 1 / -1;
+      }
+    }
+
+    .title-section {
+      display: flex;
+      flex-direction: column;
+      gap: var(--flow-md);
+      padding: var(--flow-md);
+      width: 100%;
+
+      .text-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--flow-md);
+      }
+
+      h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1.16;
+        color: var(--primary-black);
+        margin: 0;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.475;
+        margin: 0;
+      }
+
+      .navigation {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+      }
+    }
+
+    .nav-button {
+      background-color: var(--primary-yellow);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      flex-shrink: 0;
+      transition: background-color 0.3s ease;
+
+      span {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        transition: filter 0.3s ease;
+
+        :global(svg) {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      &:hover {
+        background-color: var(--primary-black);
+
+        span {
+          filter: brightness(0) invert(1);
+        }
+      }
+    }
+
+    @container financial (width > 1200px) {
+      .financial-container {
+        padding-block: var(--flow-lg);
+        gap: 0;
+      }
+
+      .title-section {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 0;
+
+        .text-content {
+          max-width: 648px;
+        }
+
+        h2 {
+          font-size: 2.8125rem;
+        }
+
+        p {
+          max-width: 645px;
+        }
+
+        .navigation {
+          justify-content: flex-end;
+        }
+      }
+
+      .nav-button {
+        width: 70px;
+        height: 70px;
+      }
+    }
+  }
+</style>

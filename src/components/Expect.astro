@@ -68,16 +68,14 @@ import Checkmark from "@icons/checkmark.svg";
     }
 
     .green-box {
-      width: 164px;
-      height: 183px;
-      transform: rotate(-90deg);
+      width: 183px;
+      height: 164px;
       background: var(--primary-green);
       border-radius: var(--radius-md);
       justify-self: start;
       align-self: start;
-      margin-top: 3%;
+      margin-top: 5%;
       margin-left: -4%;
-      transform: rotate(270deg);
       z-index: 1;
     }
 
@@ -103,18 +101,15 @@ import Checkmark from "@icons/checkmark.svg";
       margin-top: var(--flow-sm);
     }
 
-    .title {
+    span {
       color: var(--primary-black);
-      font-size: 16px;
-      letter-spacing: 2.32px;
-      text-transform: uppercase;
-      padding: 0 12px;
-      border-radius: 20px;
-      width: fit-content;
+      font-size: var(--p);
+      letter-spacing: var(--title-letter-spacing);
+      text-transform: var(--title-text-transform);
     }
 
     h2 {
-      font-size: clamp(2rem, 5vw, 2.8125rem);
+      font-size: var(--h2);
       font-weight: 700;
       color: var(--primary-black);
       line-height: 1.16;
@@ -154,6 +149,7 @@ import Checkmark from "@icons/checkmark.svg";
       .expect {
         grid-template-columns: 1fr minmax(0, 600px) minmax(0, 600px) 1fr;
         padding-inline: 0;
+        padding-block: var(--flow-lg);
         align-items: center;
       }
 
@@ -168,7 +164,8 @@ import Checkmark from "@icons/checkmark.svg";
       .content {
         grid-column: 3;
         justify-self: start;
-        max-width: 100%;
+        width: 100%;
+        max-width: 481px;
         margin-left: 82px;
         margin-top: 0;
       }

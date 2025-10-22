@@ -1,0 +1,99 @@
+---
+import HeroBgWrapper from "./helpers/HeroBgWrapper.astro";
+---
+
+<HeroBgWrapper imagePath="about-imgs/hero.png" class="about-hero">
+  <div class="hero-content">
+    <div class="text-wrapper">
+      <span class="title">About</span>
+      <h1>Creative Services For Boost Your Business Growth</h1>
+    </div>
+  </div>
+</HeroBgWrapper>
+
+<style>
+  @layer components {
+    :global(.about-hero) {
+      container-type: inline-size;
+      container-name: about-hero;
+      background-color: var(--primary-black);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: grid;
+      grid-template-columns: var(--gtc-1200);
+      min-height: 798px;
+      padding: var(--flow-lg);
+      position: relative;
+    }
+
+    .hero-content {
+      grid-column: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding-bottom: var(--flow-lg);
+      z-index: 2;
+    }
+
+    .text-wrapper {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(5.5px);
+      border-radius: 1.8125rem;
+      padding: 3rem 3.75rem 3.625rem 3.75rem;
+      display: grid;
+      grid-template-columns: max-content;
+      grid-template-rows: max-content;
+      place-items: start;
+      max-width: 788px;
+      overflow: hidden;
+    }
+
+    .title {
+      grid-area: 1 / 1;
+      background: var(--primary-yellow);
+      color: var(--primary-black);
+      font-size: var(--p);
+      font-family: var(--font-lato);
+      font-weight: 400;
+      line-height: 1.475;
+      letter-spacing: 2.32px;
+      text-transform: uppercase;
+      padding: 0 0.9375rem;
+      border-radius: 1.25rem;
+      display: inline-block;
+      width: fit-content;
+      margin: 0;
+      z-index: 1;
+    }
+
+    h1 {
+      grid-area: 1 / 1;
+      color: var(--primary-black);
+      font-family: var(--font-cabin);
+      font-size: clamp(1.75rem, 4vw, 3.125rem);
+      font-weight: 700;
+      line-height: 1.16;
+      margin: 0;
+      margin-top: 2.8125rem;
+      max-width: 668px;
+      text-shadow: none;
+    }
+
+    @container about-hero (width > 1200px) {
+      :global(.about-hero) {
+        min-height: 500px;
+        padding: 0;
+      }
+
+      .hero-content {
+        padding-bottom: var(--flow-xl);
+      }
+
+      h1 {
+        font-size: 3.125rem;
+      }
+    }
+  }
+</style>

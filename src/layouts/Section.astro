@@ -1,6 +1,6 @@
 ---
 interface Props {
-  background?: "dark" | "light";
+  background?: "dark" | "light" | "grey" | "yellow";
 }
 
 const { background = "dark" } = Astro.props;
@@ -13,21 +13,37 @@ const { background = "dark" } = Astro.props;
 <style>
   @layer components {
     section {
+      container-type: inline-size;
+      container-name: section;
       display: grid;
       grid-template-columns: subgrid;
-      padding-block: 5rem;
+      padding-block: var(--flow-md);
+
+      &.dark {
+        background-color: var(--primary-black);
+      }
+
+      &.light {
+        background-color: var(--secondary-white);
+      }
+
+      &.grey {
+        background-color: var(--secondary-grey);
+      }
+
+      &.yellow {
+        background-color: var(--primary-yellow);
+      }
 
       > * {
         grid-column: content;
       }
     }
 
-    section.dark {
-      background-color: var(--primary-black);
-    }
-
-    section.light {
-      background-color: var(--secondary-white);
+    @container section (width > 768px) {
+      section {
+        padding-block: var(--flow-xl);
+      }
     }
   }
 </style>
