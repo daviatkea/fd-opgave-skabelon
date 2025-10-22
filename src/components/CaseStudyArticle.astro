@@ -29,7 +29,7 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
       <Button Type="yellow">Live preview</Button>
     </div>
   </header>
-  <div class="test">
+  <div class="inner">
     {
       caseStudy.sections.map((section) => (
         <section>
@@ -79,11 +79,18 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
     }
   }
 
-  section {
-    grid-column: 2;
-  }
   .img {
     border-radius: var(--border-radius);
     overflow: hidden;
+  }
+
+  /* "easy" solution - not optimal */
+  .case-details {
+    max-width: 1028px;
+    margin: 0 auto;
+  }
+  .inner {
+    max-width: 750px;
+    margin: 0 auto;
   }
 </style>
