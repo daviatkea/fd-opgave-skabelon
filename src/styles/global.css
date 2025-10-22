@@ -17,6 +17,7 @@
   --border-radius: 20px;
 }
 body {
+  /* layout setup */
   --side-space: clamp(1.2rem, 7vw, 3.5rem);
   --wide: minmax(var(--side-space), 1fr);
   --main: min(1200px, calc(100% - var(--side-space) * 2));
