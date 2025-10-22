@@ -1,0 +1,41 @@
+---
+import CoreValuesData from "../../data/coreValues.json";
+import DynamicIcon from "./DynamicIcon.astro";
+---
+
+<div class="boxes-container">
+{CoreValuesData.values.map((boxItem) => (
+  <div class="box">
+    <DynamicIcon name={boxItem.icon} class="icon" />
+    <h3>{boxItem.title}</h3>
+    <p>{boxItem.description}</p>
+    <a href={boxItem.link.url} class="read-more-link">
+      {boxItem.link.text}
+    </a>
+  </div>
+))}
+</div>
+
+<style>
+    .boxes-container {
+        display: flex;
+        padding: 36px 23px;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .box {
+        border-radius: 20px;
+        border: 1px solid #EAEAEA;
+        background: #F5F5F5;
+    }
+
+    .icon {
+        width: 45px;
+        height: 45px;
+        margin-bottom: 16px;
+        border: solid 1px black;
+        padding: 8px;
+        border-radius: 12px;
+    }
+</style>

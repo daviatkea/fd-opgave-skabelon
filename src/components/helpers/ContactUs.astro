@@ -1,0 +1,254 @@
+---
+import DynamicIcon from './DynamicIcon.astro';
+import DynamicImage from './DynamicImage.astro';
+---
+
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-content">
+      <div class="contact-info">
+        <p class="subtitle">PROCESS</p>
+        <h2>Contact Us. It's Easy.</h2>
+        <p class="description">
+          Leverage agile frameworks to provide a robust synopsis for high level overviews. 
+          Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.
+        </p>
+        
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <DynamicIcon name="phone" />
+            </div>
+            <div>
+              <h4>Call today</h4>
+              <p>+1 800 100 900</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <DynamicIcon name="clock" />
+            </div>
+            <div>
+              <h4>Monday to Friday</h4>
+              <p>9am - 5pm</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <DynamicIcon name="pin" />
+            </div>
+            <div>
+              <h4>USA Office</h4>
+              <p>195 Devonshire St Boston, MA 02110</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="images-grid">
+        <div class="image-card large">
+          <DynamicImage 
+            imagePath="/src/assets/images/kvinde.jpg"
+            altText="Forside billede"
+          />
+        </div>
+        <div class="image-card small top">
+          <DynamicImage imagePath="/src/assets/images/to_kvinder.jpg" altText="Team member" />
+        </div>
+        <div class="image-card small bottom">
+          <DynamicImage imagePath="/src/assets/images/hænder.jpg" altText="Team member" />
+        </div>
+      </div>
+    </div>
+    
+    <div class="newsletter-section">
+      <div class="newsletter-content">
+        <h3>Subscribe Our Newsletter</h3>
+        <p>Build stronger Customer Relationships with Consultalk</p>
+      </div>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Enter your email address" />
+        <button type="submit">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    background: #f8f9fa;
+    padding: 4rem 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-bottom: 4rem;
+  }
+
+  .subtitle {
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+  }
+
+  .contact-info h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    background: #e8f5e8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .contact-icon :global(svg) {
+    width: 20px;
+    height: 20px;
+    fill: #4CAF50;
+  }
+
+  .contact-item h4 {
+    margin: 0 0 0.25rem 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+  }
+
+  .contact-item p {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .images-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+    height: 400px;
+  }
+
+  .image-card {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .image-card.large {
+    grid-row: span 2;
+  }
+
+  .image-card :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .newsletter-section {
+    background: #2a2a2a;
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .newsletter-content h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .newsletter-content p {
+    margin: 0;
+    color: #ccc;
+    font-size: 14px;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 1rem;
+    min-width: 300px;
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+
+  .newsletter-form button {
+    background: #FBC336;
+    color: #333;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .newsletter-form button:hover {
+    background: #e6af2e;
+  }
+
+  @media (max-width: 768px) {
+    .contact-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .newsletter-section {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .newsletter-form {
+      width: 100%;
+      min-width: auto;
+    }
+  }
+</style>

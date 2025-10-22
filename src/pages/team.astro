@@ -1,0 +1,17 @@
+
+---
+import Layout from "@layouts/Layout.astro";
+import DynamicImage from "@components/helpers/DynamicImage.astro";
+import employees from "@data/employees.json";
+---
+
+<Layout>
+      {employees.map((employee) => (
+  <DynamicImage
+    imagePath={employee.img}
+    altText={employee.name}
+    width={200}
+    height={200}
+  />
+))}
+</Layout>

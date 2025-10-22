@@ -1,0 +1,148 @@
+---
+import FinancialData from "../../data/financialProjections.json";
+import DynamicIcon from "./DynamicIcon.astro";
+---
+
+<div class="full">
+  <div class="header">
+     <h2>{FinancialData.title}</h2>
+  <p>{FinancialData.subtitle}</p>
+    </div>
+  <ul>
+    {FinancialData.values.map((item) => (
+      <li>
+        <DynamicIcon name={item.icon} class="icon" />
+        <h3>{item.title}</h3>
+        <p>{item.description}</p>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+
+  .header{
+    text-align: left;
+    margin: 0 auto 3rem 100px;
+  }
+
+  .header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .header p {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 600px;
+  }
+  .full {
+    background: #F5F5F5;
+    grid-column: full;
+    display: grid;
+    grid-template-columns: inherit;
+    row-gap: 3rem;
+    padding: 50px;
+  }
+
+  .full > * {
+    grid-column: content;
+  }
+
+  .full > h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .full > p {
+    color: #333;
+    margin-bottom: 2rem;
+  }
+
+  .full > ul {
+    scroll-snap-type: x mandatory;
+    grid-column: full;
+    padding-inline: max(1rem, 50% - var(--content-width) / 2);
+    padding-block-end: 1rem;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+
+  ul {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    container-type: scroll-state;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul li {
+    flex-basis: min(280px, 80%);
+    flex-shrink: 0;
+    background: #EBEBEB;
+    color: black;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    padding: 1.5rem 1.25rem;
+    align-self: start;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  ul li:hover {
+    background: #000;
+    color: #fff;
+  }
+
+  ul li:hover :global(.icon) {
+    fill: #FBC336;
+    color: #FBC336;
+  }
+
+  ul li:hover :global(.icon svg) {
+    fill: #FBC336;;
+    color: #FBC336;
+  }
+
+  ul li:hover p {
+    color: #fff;
+  }
+
+  @container scroll-state(snapped: inline) {
+    ul li {
+      opacity: .25;
+    }
+  }
+
+  ul li:nth-child(2) {
+    scroll-initial-target: nearest;
+  }
+
+  ul li h3 {
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  ul li p {
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    color: black;
+    font-size: 0.85rem;
+  }
+
+  .icon {
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+</style>

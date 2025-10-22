@@ -1,0 +1,123 @@
+---
+import ExperienceData from '../../data/experience.json';
+---
+
+<div class="experience-section">
+  <div class="experience-content">
+    <div class="text-content">
+       <p class="subtitle">EXPERIENCE</p>
+      <h2>{ExperienceData.heading}</h2>
+      <p>{ExperienceData.subheading}</p>
+    </div>
+    <div class="stats">
+      {ExperienceData.stats.map((stat) => (
+        <div class="stat" style={`--percent: ${stat.value}`}>
+          <span class="stat-label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .experience-section {
+    --bg-color: #FBC336;
+    background: var(--bg-color);
+    padding: 6rem 2rem;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+
+  .experience-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+    .text-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+  .text-content h2 {
+    margin-bottom: 1rem;
+    text-align: left;
+    font-size: 40px;
+  }
+
+  .text-content p {
+    margin-bottom: 0;
+    text-align: left;
+  }
+
+  .stats {
+    padding: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .stat {
+    --p: calc(var(--percent) * 1%);
+    --border-width: 8px;
+    --border-color: #FFFFFF;
+    --border-bg: #DAAE3C;
+    
+    aspect-ratio: 1;
+    width: 150px;
+    border-radius: calc(Infinity * 1px);
+    border: var(--border-width) solid #0000;
+    background:
+      radial-gradient(circle at 50% calc(var(--border-width) / 2), var(--border-color) calc(var(--border-width) / 2), transparent 0) border-box,
+      linear-gradient(var(--bg-color) 0 0) padding-box,
+      conic-gradient(var(--border-color) var(--p), var(--border-bg) 0) border-box;
+    
+    display: grid;
+    counter-reset: count var(--percent);
+    position: relative;
+  }
+  
+  .stat::before,
+  .stat::after {
+    grid-area: 1 / 1;
+  }
+  
+  .stat::after {
+    content: counter(count) "%";
+    place-self: center;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .stat::before {
+    content: '';
+    aspect-ratio: 1;
+    border-radius: calc(Infinity * 1px);
+    width: calc(var(--border-width) * 3);
+    background: #000;
+    outline: 2px solid #fff;
+    outline-offset: -4px;
+    offset-path: border-box;
+    offset-distance: var(--p);
+    offset-anchor: 50% calc(50% - var(--border-width) / 2);
+  }
+
+  .stat-label {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+  }
+</style>
