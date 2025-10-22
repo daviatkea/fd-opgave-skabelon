@@ -1,0 +1,26 @@
+---
+const Background = Astro.props.Background;
+const Type = Astro.props.Type;
+---
+
+<section class={Background}>
+  <div class="inner" class={Type}>
+    <slot />
+  </div>
+</section>
+<style>
+  section {
+    display: grid;
+    grid-column: edge;
+    grid-template-columns: subgrid;
+  }
+  .inner {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: main;
+    width: 100%;
+  }
+  .breakOut {
+    grid-column: edge;
+  }
+</style>

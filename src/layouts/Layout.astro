@@ -3,6 +3,7 @@ import "@styles/main.css";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Newsletter from "@components/Newsletter.astro";
+import SectionWrapper from "@components/containers/SectionWrapper.astro";
 const Title = Astro.props.Title;
 ---
 
@@ -25,10 +26,25 @@ const Title = Astro.props.Title;
     <Header />
     <main>
       <slot />
+      <SectionWrapper>
+        <Newsletter />
+      </SectionWrapper>
     </main>
 
     <Footer />
   </body>
 </html>
 
-<style></style>
+<style>
+  main {
+    grid-column: edge;
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+  footer {
+    grid-column: edge;
+    display: grid;
+    grid-template-columns: subgrid;
+    height: 219px;
+  }
+</style>

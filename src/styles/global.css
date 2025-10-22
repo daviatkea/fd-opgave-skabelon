@@ -14,6 +14,7 @@
   --primary03Opacity: hsla(0, 0%, 9%, 0.91);
   --primary-font-color: #595566;
   --primary-heading-color: #1c1c1c;
+  --border-radius: 20px;
 }
 body {
   --side-space: clamp(1.2rem, 7vw, 3.5rem);
@@ -27,7 +28,7 @@ body {
     [main-start] var(--main) [main-end]
     var(--highlight) [breakout-end]
     var(--wide) [edge-end];
-  gap: 1.5rem 0;
+  gap: 0 1.5rem;
 }
 
 h1,
@@ -87,3 +88,24 @@ main {
 .yellow {
   background-color: var(--backgroundPrimary01);
 }
+.lightgray {
+  background-color: #f5f5f5;
+}
+.darkgray {
+  background-color: var(--primary03Opacity);
+  * {
+    color: var(--secondary02);
+  }
+}
+.black {
+  background-color: var(--primary03);
+  * {
+    color: var(--secondary02);
+  }
+}
+
+/* section {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: edge;
+} */

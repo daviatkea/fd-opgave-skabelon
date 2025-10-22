@@ -1,22 +1,16 @@
 ---
-
+import SectionWrapper from "./containers/SectionWrapper.astro";
 ---
 
-<footer>
-  <div class="footer-inner">
+<SectionWrapper Background="black">
+  <div class="footerContent">
     <h2>AskExperts</h2>
     <div class="divider"></div>
     <p>©2025 Consultalk. All rights reserved | Terms of Service | Privacy Policy</p>
   </div>
-</footer>
-<style>
-  footer {
-    height: 219px;
-    display: grid;
-    grid-column: edge;
-    background-color: var(--primary03);
-  }
+</SectionWrapper>
 
+<style>
   h2 {
     font-size: 1.875rem;
     text-align: center;
@@ -24,13 +18,12 @@
   p {
     text-align: center;
   }
-  .footer-inner {
-    * {
-      color: var(--secondary02);
-    }
-  }
+
   .divider {
     width: 100%;
     border: 1px solid var(--secondary02);
+  }
+  .footerContent {
+    padding: 40px 0;
   }
 </style>

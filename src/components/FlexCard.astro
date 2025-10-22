@@ -1,14 +1,54 @@
 ---
-const Type = Astro.props.Type;
+const Color = Astro.props.Color;
+import ArrowRight from "@icons/arrow--right.svg";
 ---
 
-<article class={Type}>
+<article class={Color}>
   <slot />
-  <button>Read More</button>
+  <button>Read More <ArrowRight width={13} height={10} /></button>
 </article>
 
 <style>
   article {
     display: grid;
+    padding: 2.25rem;
+    width: 100%;
+    border-radius: var(--border-radius);
+    height: fit-content;
+  }
+  button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: Lato;
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 1.5rem;
+  }
+
+  .offWhite {
+    background-color: #f5f5f5;
+
+    * {
+      color: #181818;
+    }
+    h4 {
+      color: #181818;
+      font-family: Cabin;
+      font-size: 1.25rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 116%; /* 1.45rem */
+    }
+    p {
+      color: #595566;
+      font-family: Lato;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 147.5%; /* 1.475rem */
+    }
   }
 </style>

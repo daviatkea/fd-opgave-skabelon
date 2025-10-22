@@ -21,7 +21,10 @@ import Button from "./Button.astro";
   header {
     background-color: var(--primary03Opacity);
     padding: 2.375rem 0;
+
     grid-column: edge;
+    display: grid;
+    grid-template-columns: subgrid;
   }
 
   header > * {

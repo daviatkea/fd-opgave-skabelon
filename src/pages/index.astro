@@ -5,23 +5,40 @@ import ScrollContainer from "@components/containers/ScrollContainer.astro";
 import ScrollCard from "@components/ScrollCard.astro";
 import FlexCard from "@components/FlexCard.astro";
 import CircleStarts from "@components/CircleStarts.astro";
+import SectionWrapper from "@components/containers/SectionWrapper.astro";
+import DynamicImage from "@components/helpers/DynamicImage.astro";
+import CoreValues from "@components/CoreValues.astro";
 
 // svgs
 import Cal from "@icons/cal.svg";
 import Money from "@icons/money.svg";
 import Law from "@icons/law.svg";
 import Card from "@icons/card.svg";
+
+// images
+import expect from "@assets/images/expect.jpg";
+import { Image } from "astro:assets";
 ---
 
 <Layout Title="Frontpage">
   <Hero />
-  <section>
-    <p class="tagline">we'll work with you</p>
-    <h2>what to expect</h2>
-    <p>Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals.</p>
-  </section>
+  <SectionWrapper>
+    <div class="grid1-1">
+      <Image class="img" src={expect} alt="What to expect illustration" width={634.18} height={395.97} />
 
-  <section>
+      <div>
+        <p class="tagline">we'll work with you</p>
+        <h2>what to expect</h2>
+        <p>Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals.</p>
+        <ul>
+          <li>Collaborate to build actionable strategies that drive sustainable growth and deliver tangible outcomes.</li>
+          <li>Identify opportunities to optimize processes and implement impactful solutions with measurable results.</li>
+        </ul>
+      </div>
+    </div>
+  </SectionWrapper>
+
+  <SectionWrapper Background="gray">
     <h2>Financial Projections</h2>
     <p>Financial projections are essential for planning and monitoring a company’s performance. They provide insights into potential revenue, expenses, and profitability over specific periods.</p>
 
@@ -48,35 +65,75 @@ import Card from "@icons/card.svg";
         <p>Ratios are useful when comparing your company with the competition on financial performance and also when benchmarking the performance of your company.</p>
       </ScrollCard>
     </ScrollContainer>
-  </section>
-  <section class="yellow">
-    <p class="tagline">Experience</p>
-    <h2>More than 25 years of experience</h2>
-    <p>3000+ our clients are insured around the World</p>
-    <div class="statsContainer">
-      <CircleStarts Text="Consistency" Procent={85} />
-      <CircleStarts Text="Improvement" Procent={95} />
-      <CircleStarts Text="Branching" Procent={90} />
+  </SectionWrapper>
+
+  <SectionWrapper Background="yellow">
+    <div class="grid1-1">
+      <div>
+        <p class="tagline">Experience</p>
+        <h2>More than 25 years of experience</h2>
+        <p>3000+ our clients are insured around the World</p>
+      </div>
+      <div class="statsContainer">
+        <CircleStarts Text="Consistency" Procent={85} />
+        <CircleStarts Text="Improvement" Procent={95} />
+        <CircleStarts Text="Branching" Procent={90} />
+      </div>
     </div>
-  </section>
-  <section>
-    <p class="tagline">Growing with our Clients</p>
-    <h2>Our core values & principles</h2>
-    <p>Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps.</p>
-    <FlexCard>
-      <!-- hvordan ikon? -->
-      <img src="" alt="" />
-      <h4>Creative Ideas</h4>
-      <p>Explore innovative strategies tailored to your goals. Unlock unique solutions that inspire growth and creativity. Drive impactful change.</p>
-    </FlexCard>
-  </section>
+  </SectionWrapper>
+
+  <SectionWrapper Background="darkgray">
+    <CoreValues />
+  </SectionWrapper>
+  <SectionWrapper>
+    <p class="tagline">Process</p>
+    <h2>Contact Us. It’s Easy.</h2>
+    <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative.</p>
+    <ul>
+      <li>call me</li>
+      <li>email me</li>
+      <li>visit us</li>
+    </ul>
+  </SectionWrapper>
 </Layout>
 <style>
   .statsContainer {
     display: flex;
     gap: 2rem;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 2rem 0;
+  }
+  ul {
+    display: grid;
+    gap: 1rem;
+    line-height: 1.5;
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    font-size: 1rem;
+    color: #595566;
+  }
+
+  li::before {
+    content: "";
+    width: 1.6rem;
+    height: 1.6rem;
+    mask: url("/src/icons/checkmark.svg") no-repeat;
+    -webkit-mask: url("/src/icons/checkmark.svg") no-repeat;
+    mask-position: 50% 50%;
+    -webkit-mask-position: 50% 50%;
+    mask-size: 100% auto;
+    -webkit-mask-size: 100% auto;
+    background-color: var(--primary02); /* Change this color to whatever you want */
+  }
+  .img {
+    border-radius: var(--border-radius);
+  }
+  .grid1-1 {
+    gap: 80px;
   }
 </style>

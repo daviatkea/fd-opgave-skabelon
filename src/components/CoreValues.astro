@@ -1,0 +1,61 @@
+---
+import FlexCard from "./FlexCard.astro";
+
+// svg
+import Globe from "@icons/globe.svg";
+import Bars from "@icons/bars.svg";
+import Gear from "@icons/gear.svg";
+import Layers from "@icons/layers.svg";
+---
+
+<p class="tagline">Growing with our Clients</p>
+<h2>Our core values & principles</h2>
+<p>Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps.</p>
+<div class="flex">
+  <FlexCard Color="offWhite">
+    <div class="iconContainer">
+      <Layers width={24.918} height={24.918} class="icon" />
+    </div>
+    <h4>Creative Ideas</h4>
+    <p>Explore innovative strategies tailored to your goals. Unlock unique solutions that inspire growth and creativity. Drive impactful change.</p>
+  </FlexCard>
+  <FlexCard Color="offWhite">
+    <Bars width={24.918} height={24.918} class="icon" />
+    <h4>Best Features</h4>
+    <p>Deliver advanced tools designed for seamless integration. Optimize workflows with cutting-edge technology.</p>
+  </FlexCard>
+  <FlexCard Color="offWhite">
+    <Globe width={24.918} height={24.918} class="icon" />
+    <h4>Experience</h4>
+    <p>Leverage years of proven expertise across diverse industries. Empower your business with our skilled professionals. Achieve sustainable success.</p>
+  </FlexCard>
+  <FlexCard Color="offWhite">
+    <Gear width={24.918} height={24.918} class="icon" />
+    <h4>Easy Solutions</h4>
+    <p>Streamline your challenges with simple, effective solutions. Ensure hassle-free implementation for measurable results.</p>
+  </FlexCard>
+</div>
+
+<style>
+  .flex {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .icon {
+    width: 3.29863rem;
+    height: 3.29863rem;
+    border-radius: 100%;
+    * {
+      color: white;
+    }
+  }
+  .iconContainer {
+    background-color: #181818;
+    width: 3.29863rem;
+    height: 3.29863rem;
+    border-radius: 100%;
+    padding: 5px;
+  }
+</style>

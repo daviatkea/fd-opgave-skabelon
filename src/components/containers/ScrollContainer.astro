@@ -3,11 +3,19 @@
 ---
 
 <section>
-  <slot />
+  <ul>
+    <slot />
+  </ul>
 </section>
 <style>
   section {
-    white-space: nowrap;
     overflow-x: auto;
+    display: flex;
+    grid-column: edge;
+  }
+  ul {
+    height: 300px;
+    padding: 10px;
+    columns: 1;
   }
 </style>
