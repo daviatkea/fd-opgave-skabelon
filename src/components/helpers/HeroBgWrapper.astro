@@ -22,21 +22,46 @@ const optimizedBackground = await getImage({
 
 <style>
   section {
+    display: grid;
+    place-items: center start;
     grid-column: edge;
     width: 100%;
     height: 400px;
     background-size: cover;
     background-position: center;
-    display: grid;
-    place-items: center;
-    border-radius: var(--border-radius);
     color: var(--secondary02);
     text-align: center;
+    display: grid;
+    grid-template-columns: subgrid;
   }
   div {
+    grid-column: main;
     background-color: #ffffffd9;
-    border-radius: 1.8125rem;
-    max-width: 100%;
-    margin: 0 auto;
+    width: 788px, fit-content;
+    padding: 48px 60px;
+    border-radius: var(--border-radius);
+    p {
+      color: #181818;
+      font-family: Lato;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 147.5%; /* 23.6px */
+      letter-spacing: 2.32px;
+      text-transform: uppercase;
+      border-radius: 20px;
+      background: #ffcc4a;
+      width: fit-content;
+      padding: 5px 10px;
+      margin: 0 0 10px 0;
+    }
+    h1 {
+      color: #181818;
+      font-family: Cabin;
+      font-size: 50px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 116%; /* 58px */
+    }
   }
 </style>

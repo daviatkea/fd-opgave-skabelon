@@ -2,7 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import CaseStudyArticle from "@components/CaseStudyArticle.astro";
 import HeroBgWrapper from "@components/helpers/HeroBgWrapper.astro";
-import Newsletter from "@components/Newsletter.astro";
+import SectionWrapper from "@components/containers/SectionWrapper.astro";
 ---
 
 <Layout>
@@ -12,8 +12,7 @@ import Newsletter from "@components/Newsletter.astro";
       <h1>Taxes & Efficiency</h1>
     </header>
   </HeroBgWrapper>
-  <main>
+  <SectionWrapper Padding="150px 0 0 0">
     <CaseStudyArticle />
-    <Newsletter />
-  </main>
+  </SectionWrapper>
 </Layout>
