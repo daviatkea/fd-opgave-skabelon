@@ -1,10 +1,14 @@
 ---
 import EmployeeCard from "@components/EmployeeCard.astro";
 import employees from "@data/employees.json";
+
+const { Limit = null } = Astro.props;
+
+const shownEmployees = Limit ? employees.slice(0, Limit) : employees;
 ---
 
 <section>
-  {employees.map((emp) => <EmployeeCard employee={emp} />)}
+  {shownEmployees.map((emp) => <EmployeeCard employee={emp} />)}
 </section>
 
 <style>
