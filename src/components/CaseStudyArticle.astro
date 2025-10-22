@@ -8,7 +8,9 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
 
 <article>
   <header>
-    <DynamicImage imagePath={image} altText={caseName} />
+    <div class="img">
+      <DynamicImage imagePath={image} altText={caseName} />
+    </div>
     <div class="case-details">
       <dl>
         <div>
@@ -76,11 +78,12 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
       flex-direction: column;
     }
   }
-  .test {
-    display: grid;
-    grid-template-columns: minmax(20px, 1fr) auto minmax(20px, 1fr);
-  }
+
   section {
     grid-column: 2;
+  }
+  .img {
+    border-radius: var(--border-radius);
+    overflow: hidden;
   }
 </style>
