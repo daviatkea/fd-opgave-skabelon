@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import Pattern from "@assets/images/pattern.svg";
-import ExpectImage from "@assets/images/expect-image.png";
+import Pattern from "@assets/images/Pattern.svg";
+import expectImage from "@assets/images/expect-image.png";
 import Section from "@layouts/Section.astro";
 import Checkmark from "@icons/checkmark.svg";
 ---
@@ -12,7 +12,7 @@ import Checkmark from "@icons/checkmark.svg";
       <div class="image-stack">
         <img src={Pattern.src} alt="" class="pattern" />
         <div class="green-box"></div>
-        <Image src={ExpectImage} alt="What to expect" class="billede" />
+        <Image src={expectImage} alt="What to expect" class="billede" />
       </div>
 
       <div class="content">
