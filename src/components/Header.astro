@@ -3,7 +3,7 @@ import Button from "./Button.astro";
 ---
 
 <header>
-  <div class="header-inner">
+  <div class="inner">
     <a href="index.html">
       <h1>AskExperts</h1>
     </a>
@@ -20,28 +20,28 @@ import Button from "./Button.astro";
 <style>
   header {
     background-color: var(--primary03Opacity);
-    padding: 2.375rem 0;
-
+    padding: 40px 0;
     grid-column: edge;
     display: grid;
     grid-template-columns: subgrid;
+    height: fit-content;
   }
 
-  header > * {
+  .inner {
     grid-column: main;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 2rem;
+    h1 {
+      color: #fff;
+      margin: 0;
+      font-size: 30px;
+    }
   }
-
-  header h1 {
-    color: #fff;
-    margin: 0;
-  }
-
-  header a {
+  a {
     color: var(--secondary02);
     text-decoration: none;
+    margin: 0px 10px;
   }
 </style>
