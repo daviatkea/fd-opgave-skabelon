@@ -1,6 +1,7 @@
 ---
 //@ts-nocheck
 import Layout from "../../layouts/Layout.astro";
+import SectionWrapper from "../../components/containers/SectionWrapper.astro";
 import DynamicImage from "../../components/helpers/DynamicImage.astro";
 import DynamicIcon from "../../components/helpers/DynamicIcon.astro";
 import employees from "../../data/employees.json";
@@ -9,48 +10,154 @@ const { slug } = Astro.params;
 const employee = employees.find((e) => e.slug === slug);
 
 export async function getStaticPaths() {
-    // Import employees data
-    const employees = (await import("../../data/employees.json")).default;
-
-    // Return paths for each employee slug
-    return employees.map((employee) => ({
-        params: { slug: employee.slug }
-    }));
+  const employees = (await import("../../data/employees.json")).default;
+  return employees.map((employee) => ({
+    params: { slug: employee.slug },
+  }));
 }
-
 ---
 
 <Layout Title={employee.name}>
-  <main class="employee-page">
-    <a href="/team">← Back to team</a>
-    <header>
-      <h1>{employee.name}</h1>
-      <p class="muted">{employee.title}</p>
-    </header>
+  <SectionWrapper Padding="175px 0 0 0">
+    <div class="grid">
+      <div class="employee-image">
+        {employee.img && <DynamicImage imagePath={employee.img} altText={employee.name} width={478} height={504} />}
+      </div>
 
-    {employee.img && (
-      <DynamicImage imagePath={employee.img} altText={employee.name} width={600} height={400} />
-    )}
+      <div class="employee-info">
+          <div class="flex">
+            <div>
 
-    <section class="employee-bio">
-      <p>{employee.description_long ?? employee.description}</p>
-      {employee.past_experience && (
-       
-          <h2>Past experience</h2>
-          <p>{employee.past_experience}</p>
-     
-      )}
-
-      {employee.social_links && (
-        <div class="employee-social">
-          {employee.social_links.map((link) => (
-            <a href={link.url} aria-label={link.platform} class="social-link">
-              <DynamicIcon name={link.icon} class="social-link__icon" />
-            </a>
-          ))}
+              <h1>{employee.name}</h1>
+              <p class="tagline">{employee.title}</p>
+              
+            </div>
+            <div class="verticalDivider"></div>
+            {
+              employee.social_links && (
+                <div class="social-links">
+                  {employee.social_links.map((link) => (
+                    <a href={link.url} aria-label={link.platform} class="social-link">
+                      <DynamicIcon name={link.icon} />
+                    </a>
+                  ))}
+                </div>
+              )
+            }
+          </div>
+        <div class="bio">
+          <p>{employee.description_long ?? employee.description}</p>
         </div>
-      )}
-    </section>
-  </main>
+
+        <div class="horizontalDivider"></div>
+        {
+          employee.past_experience && (
+         
+              <h2>Past experience</h2>
+              <p>{employee.past_experience}</p>
+          
+          )
+        }
+      </div>
+      
+    </div>
+  </SectionWrapper>
 </Layout>
 
+<style>
+  .back-link {
+    margin-bottom: 2rem;
+    a {
+      color: var(--primary03);
+      text-decoration: none;
+      font-weight: 500;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .employee-image {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+
+  .employee-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    h1, h2 {
+      color: var(--primary03);
+      font-size: 35px;
+    }
+
+
+    .tagline {
+      color: var(--primary-font-color);
+      font-size: 1.25rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background-color: var(--primary03);
+        color: var(--secondary02);
+
+
+        :global(svg) {
+          width: 1.25rem;
+          height: 1.25rem;
+          fill: currentColor;
+        }
+      }
+    }
+  }
+
+  .verticalDivider {
+    width: 1px;
+    height: 35px;
+    background-color: #c1c1c1;
+    display: inline-block;
+    align-self: center;
+  }
+
+
+   .horizontalDivider {
+    width: 100%;
+    border: 1px solid #c1c1c1;
+  }
+  .flex {
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>
