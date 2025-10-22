@@ -1,0 +1,26 @@
+---
+
+---
+
+<button class="${className}">
+  <slot />
+</button>
+
+<style>
+  button {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #1a1a1a;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: var(--primary01);
+  }
+</style>
