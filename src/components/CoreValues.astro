@@ -14,23 +14,29 @@ import Layers from "@icons/layers.svg";
 <div class="flex">
   <FlexCard Color="offWhite">
     <div class="iconContainer">
-      <Layers width={24.918} height={24.918} class="icon" />
+      <Layers width={20} height={20} class="icon" />
     </div>
     <h4>Creative Ideas</h4>
     <p>Explore innovative strategies tailored to your goals. Unlock unique solutions that inspire growth and creativity. Drive impactful change.</p>
   </FlexCard>
   <FlexCard Color="offWhite">
-    <Bars width={24.918} height={24.918} class="icon" />
+    <div class="iconContainer">
+      <Bars width={24.918} height={24.918} class="icon" />
+    </div>
     <h4>Best Features</h4>
     <p>Deliver advanced tools designed for seamless integration. Optimize workflows with cutting-edge technology.</p>
   </FlexCard>
   <FlexCard Color="offWhite">
-    <Globe width={24.918} height={24.918} class="icon" />
+    <div class="iconContainer">
+      <Globe width={20} height={20} class="icon" />
+    </div>
     <h4>Experience</h4>
     <p>Leverage years of proven expertise across diverse industries. Empower your business with our skilled professionals. Achieve sustainable success.</p>
   </FlexCard>
   <FlexCard Color="offWhite">
-    <Gear width={24.918} height={24.918} class="icon" />
+    <div class="iconContainer">
+      <Gear width={20} height={20} class="icon" />
+    </div>
     <h4>Easy Solutions</h4>
     <p>Streamline your challenges with simple, effective solutions. Ensure hassle-free implementation for measurable results.</p>
   </FlexCard>
@@ -44,7 +50,6 @@ import Layers from "@icons/layers.svg";
     margin-top: 40px;
   }
   .icon {
-    width: 3.29863rem;
     height: 3.29863rem;
     border-radius: 100%;
     * {
@@ -53,9 +58,12 @@ import Layers from "@icons/layers.svg";
   }
   .iconContainer {
     background-color: #181818;
-    width: 3.29863rem;
-    height: 3.29863rem;
+    width: 40px;
+    height: 40px;
     border-radius: 100%;
-    padding: 5px;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 </style>
