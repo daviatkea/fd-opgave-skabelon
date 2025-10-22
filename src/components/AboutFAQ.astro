@@ -1,0 +1,156 @@
+---
+import Section from "@layouts/Section.astro";
+import faqData from "@data/faq.json";
+---
+
+<Section background="light">
+  <div class="faq-wrapper">
+    <div class="faq">
+      <div class="faq-header">
+        <span class="title">FAQ</span>
+        <h2>Customer Questions</h2>
+      </div>
+
+      <div class="faq-list">
+        {
+          faqData.faq.map((item) => (
+            <details class="faq-item">
+              <summary class="faq-question">
+                {item.question}
+                <svg class="icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path class="horizontal" d="M3 9H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  <path class="vertical" d="M9 3V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </summary>
+              <div class="faq-answer">
+                <p>{item.answer}</p>
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style>
+  @layer components {
+    .faq-wrapper {
+      container-type: inline-size;
+      container-name: faq;
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: var(--gtc-1200);
+
+      .faq {
+        grid-column: 2;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--flow-lg);
+        justify-items: center;
+        padding: var(--flow-xl) var(--flow-md);
+        background: var(--secondary-grey);
+        border-radius: var(--radius-md);
+
+        .faq-header {
+          display: grid;
+          gap: var(--flow-sm);
+          justify-items: center;
+          text-align: center;
+          max-width: 478px;
+
+          .title {
+            color: var(--primary-black);
+            font-family: var(--font-lato);
+            font-size: var(--p);
+            letter-spacing: var(--title-letter-spacing);
+            text-transform: var(--title-text-transform);
+          }
+
+          h2 {
+            font-family: var(--font-cabin);
+            font-size: var(--h2);
+            font-weight: 700;
+            line-height: 1.16;
+            color: var(--primary-black);
+            margin: 0;
+          }
+        }
+
+        .faq-list {
+          display: grid;
+          gap: var(--flow-lg);
+          width: 100%;
+          max-width: 723px;
+
+          .faq-item {
+            border-bottom: 1px solid var(--border-grey);
+            padding-block: var(--flow-sm);
+
+            &:last-child {
+              border-bottom: none;
+            }
+
+            &[open] {
+              .icon .vertical {
+                opacity: 0;
+              }
+            }
+
+            .faq-question {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              gap: var(--flow-md);
+              font-family: var(--font-cabin);
+              font-size: var(--h3);
+              color: var(--primary-black);
+              cursor: pointer;
+              list-style: none;
+
+              &::-webkit-details-marker {
+                display: none;
+              }
+
+              .icon {
+                flex-shrink: 0;
+                width: var(--icon-size-sm);
+                height: var(--icon-size-sm);
+
+                .vertical {
+                  transition: opacity var(--transition-fast);
+                }
+              }
+            }
+
+            .faq-answer {
+              padding-top: var(--flow-sm);
+              padding-right: var(--flow-xl);
+
+              p {
+                font-family: var(--font-lato);
+                font-size: var(--p);
+                line-height: 1.475;
+                color: var(--text-grey);
+                margin: 0;
+                text-wrap: pretty;
+                padding-block: var(--flow-md);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @container faq (width > 1200px) {
+      .faq {
+        padding: var(--flow-xxl) var(--flow-xl);
+        gap: var(--flow-xl);
+
+        .faq-list .faq-item {
+          padding-block: var(--flow-md);
+        }
+      }
+    }
+  }
+</style>

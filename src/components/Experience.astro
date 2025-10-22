@@ -1,5 +1,6 @@
 ---
 import Section from "../layouts/Section.astro";
+import experienceData from "@data/experience.json";
 ---
 
 <Section background="yellow">
@@ -7,22 +8,18 @@ import Section from "../layouts/Section.astro";
     <div class="experience-container">
       <div class="experience-text">
         <span>Experience</span>
-        <h2>More than 25 years of experience</h2>
-        <p>3000+ our clients are insured around the World</p>
+        <h2>{experienceData.heading}</h2>
+        <p>{experienceData.subheading}</p>
       </div>
       <div class="stats">
-        <div class="stat-wrapper">
-          <div class="stat" style="--percent: 85"></div>
-          <p class="stat-label">Consistency</p>
-        </div>
-        <div class="stat-wrapper">
-          <div class="stat" style="--percent: 95"></div>
-          <p class="stat-label">Improvement</p>
-        </div>
-        <div class="stat-wrapper">
-          <div class="stat" style="--percent: 90"></div>
-          <p class="stat-label">Branching</p>
-        </div>
+        {
+          experienceData.stats.map((stat) => (
+            <div class="stat-wrapper">
+              <div class="stat" style={`--percent: ${stat.value}`} />
+              <p class="stat-label">{stat.label}</p>
+            </div>
+          ))
+        }
       </div>
     </div>
   </div>
@@ -120,7 +117,7 @@ import Section from "../layouts/Section.astro";
 
       animation: percentAnimation linear both;
       animation-timeline: view();
-      animation-range: entry 0% cover 40%;
+      animation-range: entry 25% cover 50%;
 
       &::before,
       &::after {

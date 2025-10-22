@@ -1,0 +1,174 @@
+---
+import { Image } from "astro:assets";
+import Pattern from "@assets/images/Pattern.svg";
+import visionImage from "@assets/images/about-imgs/vision.png";
+import Section from "@layouts/Section.astro";
+import Checkmark from "@icons/checkmark.svg";
+---
+
+<Section background="light">
+  <div class="vision-wrapper">
+    <div class="vision">
+      <div class="content">
+        <span class="title">OUR VISION</span>
+        <h2>Turn your ideas into reality.</h2>
+        <p>Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps.</p>
+
+        <ul class="checklist">
+          <li>
+            <Checkmark class="checkmark" />Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day.
+          </li>
+          <li>
+            <Checkmark class="checkmark" />Capitalize on low hanging fruit to identify a ballpark value added activity to beta test override the digital.
+          </li>
+        </ul>
+      </div>
+      <div class="image-stack">
+        <img src={Pattern.src} alt="" class="pattern" />
+        <div class="green-box"></div>
+        <Image src={visionImage} alt="Team collaborating on ideas" class="billede" />
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style>
+  @layer components {
+    .vision-wrapper {
+      container-type: inline-size;
+      container-name: vision;
+      grid-column: 1 / -1;
+      width: 100%;
+    }
+
+    .vision {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding-inline: var(--flow-md);
+      width: 100%;
+      place-items: center;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--flow-md);
+      width: 100%;
+      max-width: 590px;
+      margin: var(--flow-sm) auto 0;
+      text-wrap: pretty;
+    }
+
+    span {
+      color: var(--primary-black);
+      font-size: var(--p);
+      letter-spacing: var(--title-letter-spacing);
+      text-transform: var(--title-text-transform);
+    }
+
+    h2 {
+      font-size: var(--h2);
+      font-weight: 700;
+      color: var(--primary-black);
+      line-height: 1.16;
+      margin: 0;
+    }
+
+    p {
+      font-size: var(--p);
+      line-height: 1.475;
+    }
+
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: var(--flow-sm);
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      li {
+        display: grid;
+        grid-template-columns: 20px 1fr;
+        gap: var(--flow-md);
+        align-items: start;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .checkmark {
+        width: 20px;
+        height: 20px;
+        color: var(--primary-green);
+      }
+    }
+
+    .image-stack {
+      display: grid;
+      position: relative;
+      width: 100%;
+      max-width: fit-content;
+      margin: 0 auto;
+      padding: var(--flow-md);
+
+      > * {
+        grid-area: 1 / 1;
+      }
+    }
+
+    .pattern {
+      max-width: 328px;
+      width: 226.195px;
+      height: 226.197px;
+      margin-top: -2%;
+      margin-right: -12%;
+      justify-self: end;
+    }
+
+    .green-box {
+      height: 113.166px;
+      width: 126.277px;
+      background: var(--primary-green);
+      border-radius: var(--radius-md);
+      margin-top: 5%;
+      margin-right: -4%;
+      justify-self: end;
+      z-index: 1;
+    }
+
+    .billede {
+      max-width: 712px;
+      max-height: 475px;
+      border-radius: 20px;
+      object-fit: cover;
+      justify-self: end;
+      margin-top: 10%;
+      z-index: 2;
+    }
+
+    @container vision (min-width: 1200px) {
+      .vision {
+        grid-template-columns: 1fr minmax(0, 600px) minmax(0, 600px) 1fr;
+        padding-inline: 0;
+        padding-block: var(--flow-lg);
+        align-items: center;
+      }
+
+      .image-stack {
+        grid-column: 3;
+        justify-self: stretch;
+        margin: 0;
+        max-width: 100%;
+        padding: 0;
+      }
+
+      .content {
+        grid-column: 2;
+        justify-self: start;
+        width: 100%;
+        max-width: 481px;
+        margin: 0;
+      }
+    }
+  }
+</style>

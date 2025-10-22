@@ -1,12 +1,20 @@
 ---
 import HeroBgWrapper from "./helpers/HeroBgWrapper.astro";
+
+interface Props {
+  title: string;
+  heading: string;
+  imagePath?: string;
+}
+
+const { title, heading, imagePath = "about-imgs/hero.png" } = Astro.props;
 ---
 
-<HeroBgWrapper imagePath="about-imgs/hero.png" class="about-hero">
+<HeroBgWrapper imagePath={imagePath} class="about-hero">
   <div class="hero-content">
     <div class="text-wrapper">
-      <span class="title">About</span>
-      <h1>Creative Services For Boost Your Business Growth</h1>
+      <span class="title">{title}</span>
+      <h1>{heading}</h1>
     </div>
   </div>
 </HeroBgWrapper>
@@ -16,38 +24,35 @@ import HeroBgWrapper from "./helpers/HeroBgWrapper.astro";
     :global(.about-hero) {
       container-type: inline-size;
       container-name: about-hero;
-      background-color: var(--primary-black);
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       display: grid;
       grid-template-columns: var(--gtc-1200);
-      min-height: 798px;
+      grid-template-rows: 1fr auto;
+      height: 500px;
       padding: var(--flow-lg);
       position: relative;
     }
 
     .hero-content {
       grid-column: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-start;
-      padding-bottom: var(--flow-lg);
+      grid-row: 2;
+      display: grid;
+      grid-template-columns: subgrid;
       z-index: 2;
     }
 
     .text-wrapper {
-      background: rgba(255, 255, 255, 0.85);
+      background: var(--backdrop-overlay-light);
       backdrop-filter: blur(5.5px);
       border-radius: 1.8125rem;
-      padding: 3rem 3.75rem 3.625rem 3.75rem;
-      display: grid;
-      grid-template-columns: max-content;
-      grid-template-rows: max-content;
+      padding: var(--flow-lg) var(--flow-xl) var(--flow-lg) var(--flow-xl);
+      display: inline-grid;
       place-items: start;
-      max-width: 788px;
       overflow: hidden;
+      text-wrap: pretty;
+      max-width: fit-content;
     }
 
     .title {
@@ -56,11 +61,9 @@ import HeroBgWrapper from "./helpers/HeroBgWrapper.astro";
       color: var(--primary-black);
       font-size: var(--p);
       font-family: var(--font-lato);
-      font-weight: 400;
-      line-height: 1.475;
-      letter-spacing: 2.32px;
-      text-transform: uppercase;
-      padding: 0 0.9375rem;
+      letter-spacing: var(--title-letter-spacing);
+      text-transform: var(--title-text-transform);
+      padding: var(--flow-xs) var(--flow-sm);
       border-radius: 1.25rem;
       display: inline-block;
       width: fit-content;
@@ -72,23 +75,19 @@ import HeroBgWrapper from "./helpers/HeroBgWrapper.astro";
       grid-area: 1 / 1;
       color: var(--primary-black);
       font-family: var(--font-cabin);
-      font-size: clamp(1.75rem, 4vw, 3.125rem);
+      font-size: var(--h1);
       font-weight: 700;
       line-height: 1.16;
       margin: 0;
       margin-top: 2.8125rem;
-      max-width: 668px;
       text-shadow: none;
+      max-width: 668px;
     }
 
     @container about-hero (width > 1200px) {
       :global(.about-hero) {
         min-height: 500px;
         padding: 0;
-      }
-
-      .hero-content {
-        padding-bottom: var(--flow-xl);
       }
 
       h1 {

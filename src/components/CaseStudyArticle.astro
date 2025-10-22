@@ -7,7 +7,7 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
 
 <article>
   <header>
-    <DynamicImage imagePath={image} altText={caseName} />
+    <DynamicImage imagePath={image} altText={caseName} class="header-image" />
     <div class="case-details">
       <dl>
         <div>
@@ -53,4 +53,191 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
   }
 </article>
 
-<style></style>
+<style>
+  @layer components {
+    article {
+      container-type: inline-size;
+      container-name: casestudy;
+      display: grid;
+      grid-template-columns: var(--gtc-1200);
+      grid-column: 1 / -1;
+      width: 100%;
+      padding-inline: var(--flow-lg);
+    }
+
+    header {
+      grid-column: 2;
+      display: grid;
+      margin-block: var(--flow-xxl);
+
+      > * {
+        border-radius: var(--radius-lg);
+        min-height: 200px;
+      }
+    }
+    :global(.header-image) {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .case-details {
+      background: var(--primary-black);
+      padding: var(--flow-xl);
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-self: center;
+      gap: var(--flow-lg);
+      margin-top: var(--flow-lg);
+      max-width: fit-content;
+
+      dl {
+        display: grid;
+        gap: var(--flow-lg);
+        margin: 0;
+      }
+
+      div {
+        display: grid;
+        gap: var(--flow-xs);
+        width: fit-content;
+      }
+
+      dt {
+        font-family: var(--font-cabin);
+        font-size: var(--h3);
+        font-weight: 600;
+        line-height: 1.16;
+        color: var(--secondary-white);
+        margin: 0;
+        width: fit-content;
+      }
+
+      dd {
+        font-family: var(--font-cabin);
+        font-size: var(--p);
+        line-height: 1.16;
+        color: var(--text-grey);
+        margin: 0;
+      }
+
+      .button {
+        background: var(--primary-yellow);
+        color: var(--primary-black);
+        font-family: var(--font-lato);
+        font-size: var(--card-a);
+        text-decoration: none;
+        text-align: center;
+        padding: var(--flow-sm) var(--flow-lg);
+        border-radius: 42px;
+        transition: background var(--transition-fast);
+        white-space: nowrap;
+
+        &:hover {
+          background: var(--primary-yellow-hover);
+        }
+      }
+    }
+
+    section {
+      grid-column: 2;
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-self: center;
+      gap: var(--flow-md);
+      margin-block: var(--flow-md);
+      max-width: 793px;
+
+      h2,
+      h3 {
+        font-family: var(--font-cabin);
+        font-size: var(--h2);
+        color: var(--primary-black);
+        margin: 0;
+      }
+
+      h3 {
+        font-size: var(--h3);
+        margin-block: var(--flow-sm);
+      }
+
+      p {
+        font-family: var(--font-lato);
+        font-size: var(--p);
+        color: var(--text-grey);
+        margin: 0;
+        max-width: 793px;
+      }
+
+      ul {
+        display: grid;
+        gap: var(--flow-sm);
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-width: 793px;
+
+        li {
+          font-family: var(--font-cabin);
+          font-size: var(--p);
+          line-height: 1.16;
+          color: var(--text-grey);
+          padding-left: var(--flow-md);
+          position: relative;
+
+          &::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-black);
+          }
+          > :global(.section-image) {
+            width: 100%;
+            max-width: 709px;
+            height: auto;
+            object-fit: cover;
+            justify-self: center;
+          }
+        }
+      }
+    }
+
+    @container casestudy (width > 1200px) {
+      header {
+        > * {
+          grid-area: 1 / 1;
+          min-height: 0;
+        }
+      }
+
+      section {
+        > img {
+          justify-self: center;
+        }
+      }
+
+      .case-details {
+        align-self: end;
+        justify-self: center;
+        margin-bottom: calc(var(--flow-xxl) * -1);
+        margin-top: 0;
+        grid-template-columns: repeat(4, auto);
+        align-items: end;
+        gap: var(--flow-xl);
+        min-width: 1028px;
+        max-width: 1028px;
+
+        dl {
+          grid-column: 1 / 4;
+          grid-template-columns: subgrid;
+          gap: 0;
+        }
+
+        .button {
+          grid-column: 4;
+          justify-self: end;
+        }
+      }
+    }
+  }
+</style>
