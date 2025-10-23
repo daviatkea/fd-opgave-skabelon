@@ -1,0 +1,56 @@
+---
+import DynamicImage from "./DynamicImage.astro";
+---
+
+<section class="hero-2-section">
+  <div class="container">
+     <div class="image-content">
+          <DynamicImage imagePath="/src/assets/images/smilende.png" altText="Team member" />
+        </div>
+      <div class="text-content">
+        <h2>CASE STUDIES</h2>
+        <p>Taxes & Efficiency</p>
+      </div>
+      </div>
+    </div>
+</section>
+
+
+
+<style>
+    .container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .image-content {
+        display: block;
+    }
+
+    .text-content{
+        display: inline-flex;
+        padding: 30px 40px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        border-radius: 29px;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(5.5px);
+        position: absolute;
+        top: 150px;
+        left: 200px;
+        z-index: 10;
+        width: 400px;
+
+        h2{
+            background-color: #FFCC4A;
+            padding: 8px 10px;
+            border-radius: 12px;
+        }
+
+        p{
+            font-size: 24px;
+            font-weight: 600;
+        }
+    }
+</style>

@@ -16,7 +16,7 @@ import DynamicImage from './DynamicImage.astro';
         
         <div class="contact-details">
           <div class="contact-item">
-            <div class="contact-icon">
+            <div class="contact-icon phone-icon">
               <DynamicIcon name="phone" />
             </div>
             <div>
@@ -26,7 +26,7 @@ import DynamicImage from './DynamicImage.astro';
           </div>
           
           <div class="contact-item">
-            <div class="contact-icon">
+            <div class="contact-icon clock-icon">
               <DynamicIcon name="clock" />
             </div>
             <div>
@@ -36,7 +36,7 @@ import DynamicImage from './DynamicImage.astro';
           </div>
           
           <div class="contact-item">
-            <div class="contact-icon">
+            <div class="contact-icon pin-icon">
               <DynamicIcon name="pin" />
             </div>
             <div>
@@ -121,7 +121,6 @@ import DynamicImage from './DynamicImage.astro';
   .contact-icon {
     width: 40px;
     height: 40px;
-    background: #e8f5e8;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -133,7 +132,31 @@ import DynamicImage from './DynamicImage.astro';
   .contact-icon :global(svg) {
     width: 20px;
     height: 20px;
-    fill: #4CAF50;
+  }
+
+  /* Forskellige farver for hver ikon */
+  .phone-icon {
+    background: rgba(255, 236, 187, 1);
+  }
+
+  .phone-icon :global(svg) {
+    fill: rgba(222, 170, 39, 1); /* Blå farve for telefon */
+  }
+
+  .clock-icon {
+    background: rgba(164, 237, 164, 1);
+  }
+
+  .clock-icon :global(svg) {
+    fill: rgba(78, 175, 78, 1); /* Orange farve for ur */
+  }
+
+  .pin-icon {
+    background: rgba(234, 234, 234, 1);
+  }
+
+  .pin-icon :global(svg) {
+    fill: rgba(24, 24, 24, 1); /* Pink/rød farve for lokation */
   }
 
   .contact-item h4 {

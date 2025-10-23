@@ -1,23 +1,37 @@
 ---
-import DynamicImage from "@components/helpers/DynamicImage.astro";
-import DynamicIcon from "@components/helpers/DynamicIcon.astro";
-import employees from "@data/employees.json";
+import DynamicIcon from './DynamicIcon.astro';
+import DynamicImage from './DynamicImage.astro';
+import employees from '@data/employees.json';
 
-const selectedEmployees = employees.slice(0, 3);
+// Use all employees or create a selection if needed
+const selectedEmployees = employees;
+
+// Type definitions for TypeScript
+interface SocialLink {
+  platform: string;
+  url: string;
+  icon: string;
+}
+
+interface Employee {
+  id: number;
+  name: string;
+  title: string;
+  description: string;
+  social_links: SocialLink[];
+  img: string;
+  slug: string;
+}
 ---
 
 <section class="team-section">
   <div class="container">
-    <div class="team-header">
-      <p class="subtitle">OUR TEAM</p>
-      <h2>We champion the bold to achieve the extraordinary</h2>
-      <p class="description">
-        Our success stems from the synergy between dedicated teams and our valued clients. We prioritize a company culture that fosters exceptional productivity, ensures customer satisfaction, and promotes mutual respect among all team members.
-      </p>
+    <div class="header">
+      <h1 class="subtitle">Meet Our Great Team</h1>
+      <p class="description">Welcome to our amazing team! We are a group of passionate individuals dedicated to excellence and innovation. Each member brings unique skills and experiences, working together to achieve our goals. Join us as we embark on exciting projects and create lasting impacts.</p>
     </div>
-    
-    <div class="team-grid">
-      {selectedEmployees.map((employee) => (
+ <div class="team-grid">
+      {selectedEmployees.map((employee: Employee) => (
         <div class="team-member">
           <div class="image-container">
             <DynamicImage
@@ -36,7 +50,7 @@ const selectedEmployees = employees.slice(0, 3);
             <p class="member-description">{employee.description}</p>
             
             <div class="social-links">
-              {employee.social_links.map((link) => (
+              {employee.social_links.map((link: SocialLink) => (
                 <a href={link.url} class="social-link" aria-label={link.platform}>
                   <DynamicIcon name={link.icon} />
                 </a>
@@ -67,25 +81,17 @@ const selectedEmployees = employees.slice(0, 3);
   }
 
   .subtitle {
-    font-size: 14px;
+    font-size: 24px;
     font-weight: 600;
-    color: #6c757d;
     letter-spacing: 2px;
+    color: black;
     text-transform: uppercase;
     margin-bottom: 10px;
   }
 
-  .team-header h2 {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #212529;
-    margin-bottom: 20px;
-    line-height: 1.2;
-  }
-
   .description {
     font-size: 16px;
-    color: #6c757d;
+    color: black;
     line-height: 1.6;
   }
 
