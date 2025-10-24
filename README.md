@@ -110,7 +110,7 @@ details {
 
 ## Scroll Animations
 
-Experience komponentet bruger `@property` og `animation-timeline: view()` til at animere procenterne med scroll:
+Experience komponentet bruger @property og animation-timeline: view() til at animere procenterne med scroll:
 
 ```css
 @property --percentAnimation {
@@ -160,6 +160,44 @@ Der er også flere steder på sitet, hvor jeg bruger grid til at stable billeder
 ```
 
 Her styler jeg alle children til at ligge i samme kolonne og række.
+
+## Props
+
+Både til mit Layout.astro og Section.astro har jeg brugt props til at styre nogle parametre.
+
+I mit layout har jeg brugt props til at styre titlen på siden.
+
+```astro
+---
+interface Props {
+  title?: string;
+}
+const { title = "AskExperts" } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <title>{title}</title>
+  </head>
+```
+
+Her kalder jeg den property som er givet på Layout-tag på hver side `<Layout title="About Us - AskExperts">`
+
+I Section.astro komponentet har jeg brugt props til at styre baggrundsfarverne af hver sektion.
+
+```astro
+---
+interface Props {
+  background?: "dark" | "light" | "grey" | "yellow";
+}
+
+const { background = "dark" } = Astro.props;
+---
+
+<section class:list={["section", background]}>
+  <slot />
+</section>
+```
 
 ## Udfordringer
 
