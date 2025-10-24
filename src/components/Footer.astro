@@ -1,0 +1,55 @@
+---
+import Section from "@layouts/Section.astro";
+---
+
+<Section background="dark">
+  <div class="footer-wrapper">
+    <div class="footer-container">
+      <h2>AskExperts</h2>
+      <span></span>
+      <p>©2025 Consultalk. All rights reserved | Terms of Service | Privacy Policy</p>
+    </div>
+  </div>
+</Section>
+
+<style>
+  @layer components {
+    .footer-wrapper {
+      container-type: inline-size;
+      container-name: footer;
+
+      grid-area: 1 / 1;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: var(--gtc-1200);
+      padding: var(--flow-md);
+      color: var(--secondary-white);
+      text-align: center;
+
+      > * {
+        grid-column: 2;
+      }
+
+      h2 {
+        font-size: var(--h2);
+        margin: 0;
+        padding-bottom : var(--flow-lg);
+      }
+      p {
+        font-size: var(--p);
+        margin: 0;
+        padding-top : var(--flow-lg);
+      }
+
+      span {
+          display: block;
+          width: 100%;
+          height: 1px;
+          background-color: var(--border-grey);
+        }
+      }
+    }
+  }
+</style>

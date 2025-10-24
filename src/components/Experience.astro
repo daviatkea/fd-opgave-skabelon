@@ -1,0 +1,238 @@
+---
+import Section from "../layouts/Section.astro";
+import experienceData from "@data/experience.json";
+---
+
+<Section background="yellow">
+  <div class="experience-wrapper">
+    <div class="experience-container">
+      <div class="experience-text">
+        <span>Experience</span>
+        <h2>{experienceData.heading}</h2>
+        <p>{experienceData.subheading}</p>
+      </div>
+      <div class="stats">
+        {
+          experienceData.stats.map((stat) => (
+            <div class="stat-wrapper">
+              <div class="stat" style={`--percent: ${stat.value}`} />
+              <p class="stat-label">{stat.label}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style>
+  @property --percentAnimation {
+    syntax: "<number>";
+    initial-value: 0;
+    inherits: false;
+  }
+
+  @layer components {
+    .experience-wrapper {
+      container-type: inline-size;
+      container-name: experience;
+
+      grid-area: 1 / 1;
+    }
+
+    .experience-container {
+      display: grid;
+      grid-template-columns: var(--gtc-1200);
+      gap: var(--flow-lg);
+      padding: var(--flow-md);
+
+      > * {
+        grid-column: 2;
+      }
+    }
+    .experience-text {
+      max-width: 372.708px;
+
+      span {
+        color: var(--primary-black);
+        font-size: var(--p);
+        letter-spacing: var(--title-letter-spacing);
+        text-transform: var(--title-text-transform);
+      }
+
+      h2 {
+        font-size: clamp(2rem, 5vw, 2.8125rem);
+        font-weight: 700;
+        color: var(--primary-black);
+        line-height: 1.16;
+        margin: 0;
+      }
+
+      p {
+        font-size: var(--p);
+        line-height: 1.475;
+      }
+    }
+
+    .stats {
+      display: flex;
+      gap: 1rem;
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .stat-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--flow-sm);
+      flex: 0 0 auto;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--primary-black);
+      text-align: center;
+      margin: 0;
+      line-height: 1.4;
+      max-width: 150px;
+    }
+
+    .stat {
+      container: stat / inline-size;
+      --actualPercent: calc(var(--percentAnimation) * 1%);
+      --border-width: 5px;
+      aspect-ratio: 1;
+      width: 150px;
+      border-radius: calc(Infinity * 1px);
+      border: var(--border-width) solid transparent;
+      background:
+        conic-gradient(var(--primary-yellow) 0 0) padding-box,
+        conic-gradient(var(--secondary-white) var(--actualPercent), gainsboro 0) border-box;
+
+      display: grid;
+
+      counter-reset: percent round(var(--percentAnimation));
+
+      animation: percentAnimation linear both;
+      animation-timeline: view();
+      animation-range: entry 25% cover 50%;
+
+      &::before,
+      &::after {
+        grid-area: 1 / 1;
+      }
+
+      &::after {
+        content: counter(percent) "%";
+        place-self: center;
+        font-size: 30cqw;
+      }
+
+      &::before {
+        content: "";
+        aspect-ratio: 1;
+        border-radius: 99px;
+        width: 25px;
+        offset-path: border-box;
+        offset-distance: var(--actualPercent);
+        background: var(--primary-black);
+        border: solid var(--secondary-white) 4px;
+      }
+    }
+
+    @keyframes percentAnimation {
+      from {
+        --percentAnimation: 0;
+      }
+      to {
+        --percentAnimation: var(--percent);
+      }
+    }
+
+    @container experience (width > 1200px) {
+      .experience-container {
+        grid-template-columns: var(--gtc-1200);
+        gap: var(--flow-lg);
+        padding-block: var(--flow-lg);
+
+        > * {
+          grid-column: 2;
+        }
+      }
+
+      .experience-text {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .stats {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: end;
+        align-self: flex-end;
+        width: auto;
+      }
+    }
+  }
+</style>
+
+<!--
+
+  Experience komponent med progress bars, animeret med @property og scroll-timeline.
+
+  
+  1. @PROPERTY - https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties
+     - CSS-variabel kaldet --percentAnimation
+     - Tillader at tallet kan animeres fra 0 til 85, 95, 90
+     - Uden @property kan CSS ikke animere tal-værdier
+
+  2. INLINE STYLES
+     - Hvert cirkel-element får sin egen slutværdi via style="--percent: 85"
+     - Dette tal bruges som mål for animationen
+
+  3. KEYFRAMES
+     - Definerer animationen fra 0 til den specificerede --percent værdi
+     - "from" = start (0%), "to" = slut (85%, 95%, 90%)
+
+  4. ANIMATION TIMELINE
+     - animation-timeline: view() = starter når elementet bliver synligt
+     - animation-range: entry 0% cover 40% = animerer mens du scroller
+     - both = beholder slutværdien efter animationen er færdig
+
+  5. COUNTER
+     - counter-reset: percent round(...) = opretter en tæller med afrundet værdi
+     - content: counter(percent) "%" = viser tælleren med % tegn
+     - round() sikrer at vi kun ser hele tal (85% ikke 85.4567%)
+
+  6. CONIC GRADIENT
+     - Tegner den cirkulære progressbar
+     - --actualPercent beregner hvor meget af cirklen der skal være fyldt
+     - Opdateres automatisk mens --percentAnimation ændres
+
+
+  CIRKEL PSEUDO ELEMENTER
+
+  ::after
+     - Viser procent-tallet i midten af cirklen
+     - font-size: 30cqw = responsiv størrelse baseret på cirklens bredde
+
+  ::before
+     - Tegner den lille sorte prik der bevæger sig rundt om cirklen
+     - offset-path + offset-distance = placerer prikken ved den rigtige procent
+
+
+  RESPONSIVT DESIGN
+
+  Responsivt design ved brug af container queries
+  
+  Mobil:
+    - Cirkler vises under teksten
+    - Mindre gap mellem elementer
+  
+  Desktop (over 1200px):
+    - Cirkler vises til højre for teksten
+    - Tekst og cirkler på samme række
+
+-->

@@ -1,0 +1,49 @@
+---
+interface Props {
+  background?: "dark" | "light" | "grey" | "yellow";
+}
+
+const { background = "dark" } = Astro.props;
+---
+
+<section class:list={["section", background]}>
+  <slot />
+</section>
+
+<style>
+  @layer components {
+    section {
+      container-type: inline-size;
+      container-name: section;
+      display: grid;
+      grid-template-columns: subgrid;
+      padding-block: var(--flow-md);
+
+      &.dark {
+        background-color: var(--primary-black);
+      }
+
+      &.light {
+        background-color: var(--secondary-white);
+      }
+
+      &.grey {
+        background-color: var(--secondary-grey);
+      }
+
+      &.yellow {
+        background-color: var(--primary-yellow);
+      }
+
+      > * {
+        grid-column: content;
+      }
+    }
+
+    @container section (width > 1200px) {
+      section {
+        padding-block: var(--flow-xl);
+      }
+    }
+  }
+</style>

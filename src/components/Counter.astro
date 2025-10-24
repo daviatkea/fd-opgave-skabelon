@@ -1,0 +1,106 @@
+---
+
+---
+
+<div class="counter-wrapper">
+  <div class="counter">
+    <div class="stat">
+      <p class="number" style="--target: 1128">+</p>
+      <p class="label">Successful Work</p>
+    </div>
+    <div class="stat">
+      <p class="number" style="--target: 908">+</p>
+      <p class="label">Team member</p>
+    </div>
+    <div class="stat">
+      <p class="number" style="--target: 258">+</p>
+      <p class="label">Happy Customers</p>
+    </div>
+    <div class="stat">
+      <p class="number" style="--target: 564">+</p>
+      <p class="label">Creative Idea</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  @property --counter {
+    syntax: "<number>";
+    initial-value: 0;
+    inherits: false;
+  }
+
+  @layer components {
+    .counter-wrapper {
+      container-type: inline-size;
+      container-name: counter;
+      grid-column: 1 / -1;
+      width: 100%;
+    }
+
+    .counter {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--flow-lg);
+      padding-inline: var(--flow-md);
+      padding-block: var(--flow-lg);
+      width: 100%;
+      text-align: center;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .number {
+      font-family: var(--font-cabin);
+      font-size: clamp(2.5rem, 6vw, 3.125rem);
+      font-weight: 700;
+      line-height: 1.16;
+      color: var(--primary-black);
+      margin: 0;
+      white-space: nowrap;
+
+      counter-reset: num round(var(--counter));
+      animation: countUp 2s ease-out forwards;
+      animation-timeline: view();
+      animation-range: entry 15% cover 35%;
+
+      &::before {
+        content: counter(num);
+      }
+    }
+
+    @keyframes countUp {
+      from {
+        --counter: 0;
+      }
+      to {
+        --counter: var(--target);
+      }
+    }
+
+    .label {
+      font-family: var(--font-cabin);
+      font-size: var(--card-a);
+      font-weight: 500;
+      line-height: 1.16;
+      color: var(--primary-black);
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    @container counter (width > 1200px) {
+      .counter {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 135px;
+        padding-inline: 0;
+        max-width: 895px;
+        margin: 0 auto;
+      }
+    }
+  }
+</style>

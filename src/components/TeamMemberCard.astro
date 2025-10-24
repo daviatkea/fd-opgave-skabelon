@@ -1,0 +1,159 @@
+---
+import DynamicImage from "./helpers/DynamicImage.astro";
+import DynamicIcon from "./helpers/DynamicIcon.astro";
+
+interface Props {
+  employee: {
+    id: number;
+    name: string;
+    title: string;
+    description: string;
+    social_links: Array<{
+      platform: string;
+      url: string;
+      icon: string;
+    }>;
+    slug: string;
+    img: string;
+  };
+}
+
+const { employee } = Astro.props;
+const isCEO = employee.title.includes("CEO");
+---
+
+<article class="team-card">
+  <a href={`/team/${employee.slug}`} class="card-link">
+    <div class="image-stack">
+      <DynamicImage imagePath={employee.img} altText={employee.name} class="team-image" />
+      <span class="team-badge" data-ceo={isCEO}>{employee.title}</span>
+    </div>
+
+    <div class="card-text">
+      <h3>{employee.name}</h3>
+      <p class="description">{employee.description}</p>
+    </div>
+
+    <div class="social-links">
+      {
+        employee.social_links.map((link) => (
+          <a href={link.url} class="social-icon" aria-label={link.platform} onclick="event.stopPropagation()">
+            <DynamicIcon name={link.icon} class="icon" />
+          </a>
+        ))
+      }
+    </div>
+  </a>
+</article>
+
+<style>
+  @layer components {
+    .team-card {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      align-items: center;
+      text-align: center;
+      transition: transform var(--transition-fast);
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+
+    .card-link {
+      display: contents;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .image-stack {
+      display: grid;
+      place-items: start;
+      width: 100%;
+      max-width: 366px;
+
+      > * {
+        grid-area: 1/1;
+      }
+
+      .team-badge {
+        background: var(--primary-black);
+        color: var(--secondary-white);
+        font-family: var(--font-lato);
+        font-size: var(--p);
+        padding: var(--flow-xs) var(--flow-md);
+        border-radius: var(--radius-md);
+        white-space: nowrap;
+        z-index: 1;
+        justify-self: end;
+        align-self: flex-end;
+        margin: var(--flow-md);
+
+        &[data-ceo="true"] {
+          background: var(--primary-yellow);
+          color: var(--primary-black);
+        }
+      }
+    }
+
+    :global(.team-image) {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: transform var(--transition-fast);
+      grid-row: 1;
+      grid-column: 1;
+    }
+
+    .card-text {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      align-items: center;
+
+      h3 {
+        font-family: var(--font-cabin);
+        font-size: clamp(1.5rem, 4vw, 1.875rem);
+        font-weight: 700;
+        line-height: 1.16;
+        color: var(--primary-black);
+        margin: 0;
+        white-space: nowrap;
+      }
+
+      .description {
+        font-family: var(--font-lato);
+        font-size: var(--p);
+        line-height: 1.475;
+        color: var(--text-grey);
+        margin: 0;
+        max-width: 328px;
+      }
+    }
+
+    .social-links {
+      display: flex;
+      gap: 29px;
+      align-items: center;
+
+      .social-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-black);
+        transition: var(--transition-fast);
+
+        :global(.icon) {
+          width: 24px;
+          height: 24px;
+        }
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+</style>

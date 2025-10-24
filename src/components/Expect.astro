@@ -1,0 +1,174 @@
+---
+import { Image } from "astro:assets";
+import Pattern from "@assets/images/Pattern.svg";
+import expectImage from "@assets/images/expect-image.png";
+import Section from "@layouts/Section.astro";
+import Checkmark from "@icons/checkmark.svg";
+---
+
+<Section background="light">
+  <div class="expect-wrapper">
+    <div class="expect">
+      <div class="image-stack">
+        <img src={Pattern.src} alt="" class="pattern" />
+        <div class="green-box"></div>
+        <Image src={expectImage} alt="What to expect" class="billede" />
+      </div>
+
+      <div class="content">
+        <span class="title">WE'LL WORK WITH YOU</span>
+        <h2>What To Expect</h2>
+        <p>Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals.</p>
+
+        <ul class="checklist">
+          <li><Checkmark class="checkmark" />Collaborate to build actionable strategies that drive sustainable growth and deliver tangible outcomes.</li>
+          <li><Checkmark class="checkmark" />Identify opportunities to optimize processes and implement impactful solutions with measurable results.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style>
+  @layer components {
+    .expect-wrapper {
+      container-type: inline-size;
+      container-name: expect;
+      grid-column: 1 / -1;
+      width: 100%;
+    }
+
+    .expect {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding-inline: var(--flow-md);
+      width: 100%;
+    }
+
+    .image-stack {
+      display: grid;
+      position: relative;
+      width: 100%;
+      max-width: 729px;
+      margin: 0 auto;
+      padding: var(--flow-md);
+
+      > * {
+        grid-area: 1 / 1;
+      }
+    }
+
+    .pattern {
+      width: 100%;
+      max-width: 328px;
+      height: auto;
+      aspect-ratio: 1;
+      margin-top: -2%;
+      margin-left: -12%;
+    }
+
+    .green-box {
+      width: 183px;
+      height: 164px;
+      background: var(--primary-green);
+      border-radius: var(--radius-md);
+      justify-self: start;
+      align-self: start;
+      margin-top: 5%;
+      margin-left: -4%;
+      z-index: 1;
+    }
+
+    .billede {
+      width: 100%;
+      max-width: 634px;
+      height: auto;
+      aspect-ratio: 634 / 396;
+      border-radius: 20px;
+      object-fit: cover;
+      justify-self: start;
+      align-self: start;
+      margin-top: 10%;
+      z-index: 2;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--flow-md);
+      width: 100%;
+      margin-left: 0;
+      margin-top: var(--flow-sm);
+    }
+
+    span {
+      color: var(--primary-black);
+      font-size: var(--p);
+      letter-spacing: var(--title-letter-spacing);
+      text-transform: var(--title-text-transform);
+    }
+
+    h2 {
+      font-size: var(--h2);
+      font-weight: 700;
+      color: var(--primary-black);
+      line-height: 1.16;
+      margin: 0;
+    }
+
+    p {
+      font-size: var(--p);
+      line-height: 1.475;
+    }
+
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: var(--flow-sm);
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      li {
+        display: grid;
+        grid-template-columns: 20px 1fr;
+        gap: var(--flow-md);
+        align-items: start;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .checkmark {
+        width: 20px;
+        height: 20px;
+        color: var(--primary-green);
+      }
+    }
+
+    @container expect (min-width: 1200px) {
+      .expect {
+        grid-template-columns: 1fr minmax(0, 600px) minmax(0, 600px) 1fr;
+        padding-inline: 0;
+        padding-block: var(--flow-lg);
+        align-items: center;
+      }
+
+      .image-stack {
+        grid-column: 2;
+        justify-self: stretch;
+        margin: 0;
+        max-width: 100%;
+        padding: 0;
+      }
+
+      .content {
+        grid-column: 3;
+        justify-self: start;
+        width: 100%;
+        max-width: 481px;
+        margin-left: 82px;
+        margin-top: 0;
+      }
+    }
+  }
+</style>

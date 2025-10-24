@@ -1,0 +1,207 @@
+---
+//@ts-nocheck
+import Section from "../layouts/Section.astro";
+import PatternSvg from "@assets/images/Pattern.svg?raw";
+---
+
+<Section background="white">
+  <div class="newsletter">
+    <div class="newsletter-card">
+      <div class="pattern-bg" set:html={PatternSvg} />
+      <div class="green-accent"></div>
+
+      <div class="newsletter-content">
+        <div class="text-section">
+          <h2>Subscribe Our Newsletter</h2>
+          <p>Build stronger Customer Relationships with <strong>Consultalk</strong></p>
+        </div>
+
+        <form class="subscribe-form">
+          <input type="email" placeholder="your mail address" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style>
+  @layer components {
+    .newsletter {
+      container-type: inline-size;
+      container-name: newsletter;
+      grid-area: 1 / 1;
+      display: grid;
+      grid-template-columns: var(--gtc-1200);
+      padding: var(--flow-lg) var(--flow-md);
+    }
+
+    .newsletter-card {
+      grid-column: 2;
+      background-color: var(--primary-black);
+      border-radius: var(--radius-md);
+      padding: var(--flow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pattern-bg {
+      position: absolute;
+      top: -200px;
+      right: -100px;
+      width: 360px;
+      height: 360px;
+      opacity: 0.15;
+      transform: rotate(43.687deg);
+      z-index: 1;
+      pointer-events: none;
+
+      :global(svg) {
+        width: 100%;
+        height: 100%;
+        fill: white;
+      }
+    }
+
+    .green-accent {
+      position: absolute;
+      bottom: -210px;
+      right: -120px;
+      width: 285px;
+      height: 227px;
+      background-color: var(--primary-green);
+      border-radius: var(--radius-md);
+      transform: rotate(45deg);
+      z-index: 1;
+    }
+
+    .newsletter-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--flow-md);
+      position: relative;
+      z-index: 2;
+    }
+
+    .text-section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+
+      h2 {
+        font-size: clamp(1.75rem, 4vw, 2.1875rem);
+        font-weight: 700;
+        line-height: 1.16;
+        color: var(--secondary-white);
+        margin: 0;
+      }
+
+      p {
+        font-size: var(--p);
+        line-height: 1.475;
+        color: var(--secondary-white);
+        margin: 0;
+
+        strong {
+          font-weight: 700;
+        }
+      }
+    }
+
+    .subscribe-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--flow-md);
+    }
+
+    input[type="email"] {
+      width: 100%;
+      padding: 1.375rem 2.0625rem;
+      border: 1px solid var(--border-grey);
+      border-radius: 4px;
+      font-size: var(--p);
+      line-height: 1.475;
+      color: var(--primary-black);
+      background-color: var(--secondary-white);
+
+      &::placeholder {
+        color: var(--text-grey);
+      }
+
+      &:focus {
+        outline: 2px solid var(--primary-yellow);
+        outline-offset: 2px;
+      }
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 0.9375rem 2.8125rem;
+      background-color: var(--primary-yellow);
+      color: var(--primary-black);
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.6;
+      border: none;
+      border-radius: 42px;
+      cursor: pointer;
+      transition:
+        background-color 0.3s ease,
+        transform 0.2s ease;
+
+      &:hover {
+        background-color: var(--primary-yellow-hover);
+        transform: scale(1.02);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+
+    @container newsletter (width > 1200px) {
+      .newsletter {
+        padding: var(--flow-xl) 0;
+      }
+
+      .newsletter-card {
+        padding: var(--flow-xl);
+      }
+
+      .newsletter-content {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8.8125rem;
+      }
+
+      .text-section {
+        flex-shrink: 0;
+
+        h2 {
+          font-size: 2.1875rem;
+          white-space: nowrap;
+        }
+
+        p {
+          /* max-width: 387px; */
+        }
+      }
+
+      .subscribe-form {
+        flex-direction: row;
+        flex-shrink: 0;
+        gap: 1rem;
+      }
+
+      input[type="email"] {
+        width: 332px;
+      }
+
+      button[type="submit"] {
+        width: auto;
+        padding: 0.9375rem 2.8125rem;
+      }
+    }
+  }
+</style>

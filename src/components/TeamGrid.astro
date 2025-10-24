@@ -1,0 +1,153 @@
+---
+import Section from "@layouts/Section.astro";
+import TeamMemberCard from "./TeamMemberCard.astro";
+import employeesData from "@data/employees.json";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  showButton?: boolean;
+  limit?: number;
+  background?: "dark" | "light" | "grey" | "yellow";
+}
+
+const { title = "OUR TEAM", subtitle = "Meet Our Great Team", description, showButton = false, limit, background = "light" } = Astro.props;
+
+const employees = limit ? employeesData.slice(0, limit) : employeesData;
+---
+
+<Section background={background}>
+  <div class="team-wrapper">
+    <div class="team-container">
+      <div class="team-header">
+        <div class="team-text">
+          <span class="title">{title}</span>
+          <h2>{subtitle}</h2>
+          {description && <p class="description">{description}</p>}
+        </div>
+        {
+          showButton && (
+            <a href="/team" class="button">
+              Join our team
+            </a>
+          )
+        }
+      </div>
+
+      <div class="team-grid">
+        {employees.map((employee) => <TeamMemberCard employee={employee} />)}
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style>
+  @layer components {
+    .team-wrapper {
+      container-type: inline-size;
+      container-name: team;
+      grid-column: 1 / -1;
+      width: 100%;
+      padding-block: var(--flow-lg);
+    }
+
+    .team-container {
+      display: grid;
+      grid-template-columns: var(--gtc-1200);
+      gap: var(--flow-lg);
+      padding: var(--flow-md);
+
+      > * {
+        grid-column: 2;
+      }
+    }
+
+    .team-header {
+      display: flex;
+      flex-direction: column;
+      gap: var(--flow-md);
+      align-items: flex-start;
+    }
+
+    .team-text {
+      display: flex;
+      flex-direction: column;
+      gap: var(--flow-md);
+      max-width: 643px;
+
+      .title {
+        color: var(--primary-black);
+        font-family: var(--font-lato);
+        font-size: var(--p);
+        font-weight: 400;
+        line-height: 1.475;
+        letter-spacing: 2.32px;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        font-family: var(--font-cabin);
+        font-size: var(--h2);
+        font-weight: 700;
+        line-height: 1.16;
+        color: var(--primary-black);
+        margin: 0;
+      }
+
+      .description {
+        font-family: var(--font-lato);
+        font-size: var(--p);
+        line-height: 1.475;
+        color: var(--text-grey);
+        margin: 0;
+      }
+    }
+
+    .button {
+      background-color: var(--primary-black);
+      color: var(--secondary-white);
+      font-family: var(--font-lato);
+      font-size: var(--card-a);
+      font-weight: 600;
+      line-height: 1.6;
+      padding: 15px 34px;
+      border-radius: 42px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background-color var(--transition-fast);
+      display: none;
+
+      &:hover {
+        background-color: #252525;
+      }
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--flow-lg);
+    }
+
+    @container team (width > 1200px) {
+      .team-container {
+        padding: 0;
+      }
+
+      .team-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .button {
+        display: block;
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 51px;
+      }
+    }
+  }
+</style>

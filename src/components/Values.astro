@@ -1,0 +1,168 @@
+---
+import Section from "../layouts/Section.astro";
+import ValuesCards from "./ValuesCards.astro";
+
+interface Props {
+  background?: "dark" | "light" | "grey" | "yellow";
+  textColor?: "light" | "dark";
+}
+
+const { background = "dark", textColor } = Astro.props;
+
+const finalTextColor = textColor || (background === "light" || background === "grey" || background === "yellow" ? "dark" : "light");
+---
+
+<Section background={background}>
+  <div class="values-wrapper" data-text-color={finalTextColor}>
+    <div class="values-container">
+      <div class="values-text">
+        <span>Growing with our Clients</span>
+        <div class="values-description">
+          <h2>Our core values & principles</h2>
+          <p>Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps.</p>
+        </div>
+        <button>Get in touch</button>
+      </div>
+
+      <div class="values-cards">
+        <ValuesCards />
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style>
+  @layer components {
+    .values-wrapper {
+      container-type: inline-size;
+      container-name: values;
+
+      grid-area: 1 / 1;
+    }
+
+    .values-container {
+      display: grid;
+      grid-template-columns: var(--gtc-1200);
+      gap: var(--flow-lg);
+      padding: var(--flow-md);
+
+      > * {
+        grid-column: 2;
+      }
+    }
+
+    .values-text {
+      color: var(--secondary-white);
+      display: flex;
+      flex-direction: column;
+      gap: var(--flow-md);
+
+      & span {
+        color: var(--secondary-white);
+        font-size: var(--p);
+        letter-spacing: var(--title-letter-spacing);
+        text-transform: var(--title-text-transform);
+      }
+
+      h2 {
+        font-size: clamp(2rem, 5vw, 2.8125rem);
+        font-weight: 700;
+        line-height: 1.16;
+        margin: 0;
+        color: var(--secondary-white);
+      }
+
+      p {
+        font-size: var(--p);
+        line-height: 1.475;
+        max-width: 588px;
+        color: var(--secondary-white);
+      }
+
+      button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        padding: 15px 34px;
+        gap: 10px;
+        flex-shrink: 0;
+        border-radius: 42px;
+        border: none;
+        color: var(--primary-black);
+        background: var(--secondary-white);
+        white-space: nowrap;
+        cursor: pointer;
+        transition: background-color transform var(--transition-fast);
+
+        &:hover {
+          background-color: var(--primary-yellow-hover);
+          transform: scale(1.05);
+          transition: transform var(--transition-fast);
+        }
+      }
+    }
+
+    .values-wrapper[data-text-color="dark"] .values-text {
+      color: var(--primary-black);
+
+      & span,
+      h2,
+      p {
+        color: var(--primary-black);
+      }
+
+      button {
+        color: var(--secondary-white);
+        background: var(--primary-black);
+
+        &:hover {
+          background-color: var(--primary-black);
+          opacity: 0.9;
+        }
+      }
+    }
+
+    @container values (width > 1200px) {
+      .values-container {
+        grid-template-columns: var(--gtc-1200);
+        gap: var(--flow-lg);
+        padding-block: var(--flow-lg);
+
+        > * {
+          grid-column: 2;
+        }
+      }
+
+      .values-text {
+        grid-column: 2;
+        grid-row: 1;
+        display: grid;
+        grid-template-columns: 588px 1fr;
+        grid-template-rows: auto auto;
+        gap: var(--flow-md);
+        align-items: end;
+
+        & span {
+          grid-column: 1;
+          grid-row: 1;
+        }
+
+        .values-description {
+          grid-column: 1;
+          grid-row: 2;
+          display: flex;
+          flex-direction: column;
+          gap: 11px;
+        }
+
+        button {
+          grid-column: 2;
+          grid-row: 2;
+          justify-self: end;
+          align-self: end;
+        }
+      }
+    }
+  }
+</style>

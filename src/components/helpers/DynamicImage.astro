@@ -13,22 +13,12 @@ interface Props {
 const { imagePath, altText, class: className, width, height } = Astro.props;
 
 // Use import.meta.glob to dynamically import images from the data/images folder
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/data/images/*.{jpeg,jpg,png,gif,webp}"
-);
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/data/images/*.{jpeg,jpg,png,gif,webp}");
 
 // Check if the image path exists in our glob
 if (!images[imagePath]) {
-  throw new Error(
-    `"${imagePath}" does not exist in glob: "/src/data/images/*.{jpeg,jpg,png,gif,webp}"`
-  );
+  throw new Error(`"${imagePath}" does not exist in glob: "/src/data/images/*.{jpeg,jpg,png,gif,webp}"`);
 }
 ---
 
-<Image
-  src={images[imagePath]()}
-  alt={altText}
-  class={className}
-  width={width}
-  height={height}
-/>
+<Image src={images[imagePath]()} alt={altText} class={className} width={width} height={height} />

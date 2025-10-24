@@ -1,0 +1,98 @@
+---
+import HeroBgWrapper from "./helpers/HeroBgWrapper.astro";
+
+interface Props {
+  title: string;
+  heading: string;
+  imagePath?: string;
+}
+
+const { title, heading, imagePath = "about-imgs/hero.png" } = Astro.props;
+---
+
+<HeroBgWrapper imagePath={imagePath} class="about-hero">
+  <div class="hero-content">
+    <div class="text-wrapper">
+      <span class="title">{title}</span>
+      <h1>{heading}</h1>
+    </div>
+  </div>
+</HeroBgWrapper>
+
+<style>
+  @layer components {
+    :global(.about-hero) {
+      container-type: inline-size;
+      container-name: about-hero;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: grid;
+      grid-template-columns: var(--gtc-1200);
+      grid-template-rows: 1fr auto;
+      height: 500px;
+      padding: var(--flow-lg);
+      position: relative;
+    }
+
+    .hero-content {
+      grid-column: 2;
+      grid-row: 2;
+      display: grid;
+      grid-template-columns: subgrid;
+      z-index: 2;
+    }
+
+    .text-wrapper {
+      background: var(--backdrop-overlay-light);
+      backdrop-filter: blur(5.5px);
+      border-radius: 1.8125rem;
+      padding: var(--flow-lg) var(--flow-xl) var(--flow-lg) var(--flow-xl);
+      display: inline-grid;
+      place-items: start;
+      overflow: hidden;
+      text-wrap: pretty;
+      max-width: fit-content;
+    }
+
+    .title {
+      grid-area: 1 / 1;
+      background: var(--primary-yellow);
+      color: var(--primary-black);
+      font-size: var(--p);
+      font-family: var(--font-lato);
+      letter-spacing: var(--title-letter-spacing);
+      text-transform: var(--title-text-transform);
+      padding: var(--flow-xs) var(--flow-sm);
+      border-radius: 1.25rem;
+      display: inline-block;
+      width: fit-content;
+      margin: 0;
+      z-index: 1;
+    }
+
+    h1 {
+      grid-area: 1 / 1;
+      color: var(--primary-black);
+      font-family: var(--font-cabin);
+      font-size: var(--h1);
+      font-weight: 700;
+      line-height: 1.16;
+      margin: 0;
+      margin-top: 2.8125rem;
+      text-shadow: none;
+      max-width: 668px;
+    }
+
+    @container about-hero (width > 1200px) {
+      :global(.about-hero) {
+        min-height: 500px;
+        padding: 0;
+      }
+
+      h1 {
+        font-size: 3.125rem;
+      }
+    }
+  }
+</style>

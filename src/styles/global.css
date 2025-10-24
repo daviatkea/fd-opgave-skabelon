@@ -1,1 +1,91 @@
-/* Globale styles her */
+/* globale styles her */
+
+:root {
+  /* farver */
+  --primary-yellow: #ffcc4a;
+  --primary-green: #4eaf4e;
+  --primary-black: #181818;
+
+  --secondary-grey: #f5f5f5;
+  --secondary-white: #ffffff;
+  --secondary-light-grey: #ebebeb;
+  --text-grey: #595566;
+  --border-grey: #eaeaea;
+  --overlay-dark: rgba(38, 38, 38, 0.9);
+
+  --primary-yellow-hover: #ffd04e;
+  --border: #444;
+  --backdrop-overlay: rgba(0, 0, 0, 0.5);
+  --backdrop-overlay-light: rgba(255, 255, 255, 0.85);
+
+  --contact-icon1-bg: #ffecbb;
+  --contact-icon1-fill: #deaa27;
+  --contact-icon2-bg: #a4eda4;
+  --contact-icon2-fill: #4eaf4e;
+  --contact-icon3-bg: #eaeaea;
+  --contact-icon3-fill: #181818;
+
+  /* layout og spacing */
+  --content-width: 75rem;
+  --border-radius: 42px;
+  --gtc-1200: 1fr minmax(0, 1200px) 1fr;
+  --header-max-width: 1200px;
+
+  /* flow space system */
+  --flow-xs: 0.25rem;
+  --flow-sm: 0.625rem;
+  --flow-md: 1.25rem;
+  --flow-lg: 2.875rem;
+  --flow-xl: 3.125rem;
+  --flow-xxl: 5rem;
+
+  /* Fonte */
+  --font-lato: "Lato", system-ui, sans-serif;
+  --font-cabin: "Cabin", sans-serif;
+
+  /* responsiv typografi størrelser */
+  --h1: clamp(2rem, 1.5rem + 2vw, 3.125rem);
+  --h2: clamp(1.75rem, 1.375rem + 1.5vw, 2.8125rem);
+  --h3: clamp(1.25rem, 1rem + 1vw, 1.5625rem);
+  --h4: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
+  --p: clamp(0.875rem, 0.813rem + 0.25vw, 1rem);
+  --card-h2: clamp(1.25rem, 1rem + 1vw, 1.563rem);
+  --card-h3: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
+  --card-a: clamp(1rem, 0.938rem + 0.25vw, 1.125rem);
+  --title-letter-spacing: 0.145rem;
+  --title-text-transform: uppercase;
+
+  /* gamle text sizes */
+  --text-xs: 0.875rem;
+  --text-sm: 1rem;
+  --text-md: 1.106rem;
+  --text-lg: 1.875rem;
+  --text-xl: 2.813rem;
+
+  /* border radius skala */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 1.25rem;
+  --radius-lg: 1.875rem;
+
+  /* transitions */
+  --transition-fast: 0.3s ease;
+  --transition-normal: 0.6s;
+  --transition-props-popup: opacity, display, overlay, translate;
+  --transition-props-backdrop: opacity, backdrop-filter;
+
+  /* skygger */
+  --focus-ring: 0 0 0 2px rgba(255, 204, 74, 0.2);
+  --shadow-card: 0 12px 24px rgba(0, 0, 0, 0.2);
+
+  /* card dimensioner */
+  --card-width: 300px;
+  --card-height: 330px;
+  --card-height-active: 350px;
+
+  /* ikoner */
+  --icon-size-sm: 24px;
+  --icon-size-md: 38px;
+  --icon-size-lg: 48px;
+  --icon-size-xl: 52.778px;
+}
