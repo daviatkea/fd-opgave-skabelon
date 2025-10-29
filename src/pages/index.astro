@@ -1,8 +1,27 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Hero from "@components/Hero.astro";
+import ServiceBox from "@components/helpers/ServiceBox.astro";
+import CoreValues from "@components/helpers/CoreValues.astro";
+import employees from "@data/employees.json";
+import Expert from "@components/helpers/Expert.astro";
+import FinancialBox from "@components/helpers/FinancialBox.astro";
+import Experience from "@components/helpers/Experience.astro";
+import ContactUs from "@components/helpers/ContactUs.astro";
+import Footer from "@components/helpers/Footer.astro";
+import Newsletter from "@components/helpers/Newsletter.astro";
+
+console.log(employees);
 ---
 
 <Layout>
   <Hero />
+  <ServiceBox />
+  <Expert />
+  <FinancialBox />
+  <Experience />
+  <CoreValues />
+  <ContactUs />
+  <Newsletter />
+  <Footer />
 </Layout>

@@ -1,5 +1,6 @@
 ---
 import "@styles/main.css";
+import Header from "@components/helpers/Header.astro";
 ---
 
 <html lang="en">
@@ -9,13 +10,25 @@ import "@styles/main.css";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>DIN TITEL HER. MÅSKE SOM PROP?</title>
-    <style is:inline>
+    <style is:inline> 
       @layer reset, global, components, overrides;
-    </style>
+    </style> 
   </head>
   <body>
-    <slot />
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <footer>
+
+    </footer>
   </body>
 </html>
+
+<style>
+  main {
+    margin-top: 70px; /* Kompenserer for fixed header */
+  }
+</style>
 
 <style></style>

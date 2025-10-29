@@ -1,0 +1,212 @@
+---
+
+---
+
+<header>
+  <nav>
+    <div class="logo">
+      <p>AskExperts</p>
+    </div>
+    
+    <ul role="list"> 
+      <li><a href="/">Home</a></li>
+      <li><a href="/case">Case Study</a></li>
+      <li><a href="/team">Team</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+        <button class="login-btn" popovertarget="login-popup">Login</button>
+  </nav>
+</header>
+
+<!-- Login Popup -->
+<aside id="login-popup" popover class="login-modal">
+  <div class="modal-content">
+    <button class="close-btn" popovertarget="login-popup">×</button>
+    <h2>Login</h2>
+    <form class="login-form">
+      <div class="input-group">
+        <input type="email" placeholder="Email" required>
+      </div>
+      <div class="input-group">
+        <input type="password" placeholder="Password" required>
+      </div>
+      <button type="submit" class="submit-btn">Login</button>
+    </form>
+    <p class="register-link">Don't have an account? <a href="#">Register</a></p>
+  </div>
+</aside>
+
+<style>
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 38px;
+    background: rgba(27, 27, 27, 0.91);
+    backdrop-filter: blur(10.5px);
+    height: 70px;
+  }
+
+  .logo p {
+    color: #FFFFFF;
+    font-family: Lato, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul li a {
+    color: #FFFFFF;
+    font-family: Lato, sans-serif;
+    font-size: 17.728px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.6;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  ul li a:hover {
+    color: #FFA500;
+  }
+
+  .login-btn {
+    background: #FFA500;
+    color: #000000;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .login-btn:hover {
+    background: #FF8C00;
+  }
+
+  /* Popup Styles */
+  .login-modal {
+    max-width: 400px;
+    margin: auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: none;
+    padding: 0;
+  }
+
+  .login-modal::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+  }
+
+  .modal-content {
+    padding: 32px;
+    position: relative;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+  }
+
+  .close-btn:hover {
+    background: #f0f0f0;
+  }
+
+  .login-modal h2 {
+    margin: 0 0 24px 0;
+    color: #333;
+    font-family: Lato, sans-serif;
+    text-align: center;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: Lato, sans-serif;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  .input-group input:focus {
+    outline: none;
+    border-color: #FFA500;
+  }
+
+  .submit-btn {
+    background: #FFA500;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 8px;
+  }
+
+  .submit-btn:hover {
+    background: #FF8C00;
+  }
+
+  .register-link {
+    text-align: center;
+    margin: 16px 0 0 0;
+    color: #666;
+    font-size: 14px;
+  }
+
+  .register-link a {
+    color: #FFA500;
+    text-decoration: none;
+  }
+
+  .register-link a:hover {
+    text-decoration: underline;
+  }
+</style>

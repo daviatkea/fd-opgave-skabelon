@@ -1,0 +1,115 @@
+---
+const { exclusive, ...props } = Astro.props;
+const { id, question, answer, linkBlock } = props;
+---
+
+<details {id} {...exclusive ? { name: "faq" } : {}}>
+  <summary>
+    <span>
+      {question}
+      <svg class="plus-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </summary>
+  <div class="answer">
+    {Array.isArray(answer) ? answer.map((a) => <p set:html={a} />) : <p set:html={answer} />}
+    {
+      linkBlock && (
+        <a class="link-block" href={linkBlock.url} target="_blank">
+          {linkBlock.label}
+        </a>
+      )
+    }
+  </div>
+</details>
+
+<style>
+  details {
+    color: hsl(190 30% 12%);
+    border-bottom: 1px solid #dadada;
+    transition: all 0.3s ease;
+  }
+
+  details[open] {
+    --r: 90deg;
+  }
+
+  details:last-child {
+    border-bottom: none;
+  }
+
+  summary {
+    font-weight: 700;
+    color: #181818;
+    text-wrap: revert;
+    user-select: none;
+    cursor: pointer;
+    padding: 24px;
+    transition: background-color 0.2s ease;
+  }
+
+  summary:hover {
+    background-color: #f8f9fa;
+  }
+
+  summary::marker,
+  summary::-webkit-details-marker {
+    content: "";
+    display: none;
+  }
+
+  summary span {
+    border: none;
+    text-align: start;
+    padding: 0;
+    inline-size: 100%;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+  }
+
+  .plus-icon {
+    inline-size: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    transform: rotate(var(--r, 0deg));
+  }
+
+  details[open] .plus-icon {
+    transform: rotate(45deg);
+  }
+
+  .answer {
+    color: #595566;
+    padding: 0 24px 24px 24px;
+    line-height: 1.6;
+  }
+
+  .answer > * + * {
+    margin-top: 1em;
+  }
+
+  .answer p {
+    margin: 0 0 16px 0;
+  }
+
+  .answer p:last-child {
+    margin-bottom: 0;
+  }
+
+  .link-block {
+    display: inline-block;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 16px;
+  }
+
+  .link-block:hover {
+    text-decoration: underline;
+  }
+</style>
