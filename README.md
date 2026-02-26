@@ -1,4 +1,4 @@
-# Opgaveskabelon til Frontend Design tema på Frontend-valgfaget
+# Opgaveskabelon til "Figma til kode"
 
 Se opgavebeskrivelsen på Fronter.
 
@@ -6,7 +6,9 @@ Se opgavebeskrivelsen på Fronter.
 
 Der medfølger indholdsdata i form af lokale JSON-filer, som du kan bruge til din opgave. Det er ikke et krav til opgaven, men det kan gøre det nemmere og hurtigere at få tekst og billeder ind i dit projekt.
 
-Bemærk, at CaseStudy-siden allerede inkluderer data fra en lokal JSON-fil.
+> [!NOTE]
+> Bemærk, at CaseStudy-siden allerede inkluderer data fra en lokal JSON-fil.
+> Bemærk også, at ikke alle billeder fra Figma-filen er i det lokale indholdsdata.
 
 Dokumentationen til anvendelsen af dataene finder du på: [https://frontend-design-theme.netlify.app/](https://frontend-design-theme.netlify.app/).
 
@@ -20,7 +22,7 @@ console.log(employees);
 
 ## Brug af hjælpekomponenter
 
-### DynamicImage.astro
+### DynamicImage.astro (`@helpers/DynamicImage.astro`)
 
 Brug denne komponent til at vise billeder dynamisk fra lokale datafiler. Du skal blot sende stien fra datasættet direkte til komponenten.
 
@@ -37,7 +39,7 @@ Eksempel med data:
 ))}
 ```
 
-### DynamicIcon.astro
+### DynamicIcon.astro (`@helpers/DynamicIcon.astro`)
 
 `DynamicIcon` bruges til at vise SVG-ikoner dynamisk baseret på et navn fra dine data.
 
@@ -51,27 +53,11 @@ Eksempel med data:
 
 Her vises et ikon for hvert socialt medie, hvor `icon`-feltet matcher filnavnet på SVG-ikonet i `src/icons/`.
 
-### HeroBgWrapper.astro
-
-HeroBgWrapper bruges til Hero-sektioner på diverse undersider. Brug `imagePath` til at angive baggrundsbilledet. Du skal selv hente billederne fra Figma og lægge dem i mappen `src/assets/images`. Henvis derefter kun til filnavnet (f.eks. 'case.webp').
-
-Alt markup du placerer mellem <HeroBgWrapper> og </HeroBgWrapper> bliver vist ovenpå baggrunden.
-
-Eksempel:
-
-```astro
-<HeroBgWrapper imagePath="case.webp" class="hero-bg">
-  <h1>Din overskrift</h1>
-</HeroBgWrapper>
-```
-
-Du kan tilføje ekstra styling via `class` eller `style`-props, og alt indhold mellem tags bliver vist ovenpå baggrunden.
-
 ---
 
 ## Import af SVG-ikoner direkte
 
-Du kan også importere SVG-ikoner direkte i dine komponenter, hvis du ønsker mere kontrol eller styling:
+Du kan importere SVG-ikoner direkte i dine komponenter ved at importere dem:
 
 ```astro
 import Checkmark from "@icons/checkmark.svg";

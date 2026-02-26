@@ -1,23 +1,18 @@
 ---
-//@ts-nocheck
+import ServiceCard from "@components/ServiceCard.astro";
 import servicesData from "@data/services.json";
+import DynamicImage from "@helpers/DynamicImage.astro";
 ---
 
-<ul>
-  {
-    servicesData.services.map((service) => (
-      <li>
-        <h2>{service.title}</h2>
-        <p>{service.description}</p>
-        <a href="#0">{service.buttonText}</a>
-      </li>
-    ))
-  }
-</ul>
+<div class="services">
+  {servicesData.services.map((service) => <ServiceCard service={service} />)}
+</div>
 
 <style>
   @layer components {
-    li {
+    .services {
+      display: grid;
+      gap: 1rem;
     }
   }
 </style>
