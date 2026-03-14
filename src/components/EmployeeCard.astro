@@ -1,0 +1,29 @@
+---
+import DynamicImage from "./helpers/DynamicImage.astro";
+
+const { employee } = Astro.props;
+---
+
+<article>
+  <h3>
+    <a
+      href={`employees/${employee.slug}`}
+      style={`view-transition-name: name-${employee.slug}`}>{employee.name}</a
+    >
+  </h3>
+  <DynamicImage
+    style={`view-transition-name: img-${employee.slug}`}
+    imagePath={employee.img}
+    altText=""
+    class="employee-img"
+  />
+</article>
+
+<style>
+  .employee-img {
+    max-width: 300px;
+  }
+  a {
+    width: fit-content;
+  }
+</style>
