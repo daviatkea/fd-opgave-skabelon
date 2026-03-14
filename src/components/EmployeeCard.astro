@@ -1,5 +1,6 @@
 ---
 import DynamicImage from "./helpers/DynamicImage.astro";
+import DynamicIcon from "./helpers/DynamicIcon.astro";
 
 const { employee } = Astro.props;
 ---
@@ -17,11 +18,24 @@ const { employee } = Astro.props;
     altText=""
     class="employee-img"
   />
+  <div>
+    {
+      employee.social_links.map((social) => (
+        <a href={social.url}>
+          {social.platform}
+          <DynamicIcon name={social.icon} />
+        </a>
+      ))
+    }
+  </div>
 </article>
 
 <style>
   .employee-img {
     max-width: 300px;
+  }
+  svg {
+    opacity: 0.3;
   }
   a {
     width: fit-content;
