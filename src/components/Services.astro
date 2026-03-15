@@ -12,7 +12,11 @@ import DynamicImage from "@helpers/DynamicImage.astro";
   @layer components {
     .services {
       display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 1rem;
+      position: relative;
+      margin-top: -3rem;
+      z-index: 2;
     }
   }
 </style>

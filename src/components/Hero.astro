@@ -5,27 +5,183 @@ import CEOImage from "@assets/images/ceo.webp";
 ---
 
 <section class="hero">
-  <div class="hero-content">
-    <h1>Empowering Your Business Growth</h1>
-    <p>
-      Discover tailored strategies and expert insights to take your business to
-      the next level. Let us help you navigate challenges and achieve
-      sustainable success.
-    </p>
-    <a href="#0">Book a Meeting</a>
-    <a href="#0">Learn More</a>
+  <div class="hero-wrapper">
+    <div class="hero-content">
+      <div class="hero-content-inner">
+        <h1>
+          <span class="hero-highlight">Empowering</span> Your Business Growth
+        </h1>
+        <p>
+          Discover tailored strategies and expert insights to take your business
+          to the next level. Let us help you navigate challenges and achieve
+          sustainable success.
+        </p>
+        <div class="hero-actions">
+          <a href="#0">Book a Meeting</a>
+          <a href="#0">Learn More</a>
+        </div>
+      </div>
+      <span class="background-grid"></span>
+    </div>
+    <div class="CEO-image">
+      <Image src={CEOImage} alt="CEO" />
+    </div>
   </div>
-  <Image src={CEOImage} alt="CEO" />
-
-  <Services />
 </section>
+<Services class="services" />
 
 <style>
-  /* Styles her */
   @layer components {
+    /* Hero layout */
     .hero {
-      background-color: #f3f4f6;
-      padding: 2rem;
+      position: relative;
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: full;
+    }
+
+    .hero-wrapper {
+      grid-column: full;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: clamp(32rem, 70vh, 48rem);
+    }
+
+    /* Hero content */
+    .hero-content {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background-color: black;
+      color: white;
+    }
+
+    .hero-content-inner {
+      width: min(100%, 42rem);
+      margin-left: auto;
+      padding: clamp(2rem, 4vw, 4rem);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content-inner h1 {
+      font-size: 50px;
+      line-height: 1.05;
+      max-width: 14ch;
+      font-weight: 700;
+      text-wrap: balance;
+    }
+
+    .hero-content-inner p {
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 52ch;
+      color: var(--color-on-ui-primary-muted);
+    }
+
+    .hero-highlight {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 0.15em;
+    }
+
+    .hero-highlight::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: calc(-100vw + 100%);
+      width: 100vw;
+      height: 0.18em;
+      background: var(--color-surface-highlight);
+      border-radius: 999px;
+      z-index: -1;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-content-inner a {
+      display: inline-flex;
+      align-items: center;
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      text-decoration: none;
+      width: fit-content;
+    }
+
+    .hero-content-inner a:first-of-type {
+      background-color: var(--color-surface-highlight);
+      color: black;
+    }
+
+    .hero-content-inner a:last-of-type {
+      border: 1px solid white;
+      background-color: black;
+      color: white;
+    }
+
+    /* Hero image */
+    .CEO-image {
+      min-height: 100%;
+    }
+
+    .CEO-image :global(picture),
+    .CEO-image :global(img) {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Background pattern */
+    .background-grid {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .background-grid::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 75%;
+      height: 85%;
+      background:
+        conic-gradient(
+            from 180deg at 1px 1px,
+            var(--color-surface-highlight) 75%,
+            var(--color-blue-700-transparent) 0
+          ) -1px -1px /
+          60px 60px,
+        transparent;
+      opacity: 0.35;
+      mask-image: radial-gradient(
+        circle at bottom right,
+        black 0%,
+        black 40%,
+        transparent 100%
+      );
+      -webkit-mask-image: radial-gradient(
+        circle at bottom right,
+        black 0%,
+        black 40%,
+        transparent 100%
+      );
+    }
+
+    /* Services overlap */
+    .services {
+      position: relative;
+      margin-top: -10rem;
+      z-index: 2;
     }
   }
 </style>

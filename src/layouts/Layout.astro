@@ -1,5 +1,6 @@
 ---
 import "@styles/main.css";
+import Header from "../components/Header.astro";
 ---
 
 <html lang="en">
@@ -14,8 +15,39 @@ import "@styles/main.css";
     </style>
   </head>
   <body>
-    <slot />
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <footer>footer</footer>
   </body>
 </html>
 
-<style></style>
+<style>
+  @view-transition {
+    navigation: auto;
+  }
+  @layer global {
+    body {
+      display: grid;
+      grid-template-columns:
+        [full-start] 1fr [content] minmax(0, 1200px)
+        1fr [full-end];
+    }
+
+    header,
+    footer,
+    main,
+    section {
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: full;
+      > * + * {
+        margin-top: 2rem;
+      }
+      > :not(&) {
+        grid-column: content;
+      }
+    }
+  }
+</style>
