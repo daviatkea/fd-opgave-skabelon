@@ -4,7 +4,7 @@ import "../styles/tokens.css";
 ---
 
 <header>
-  <div class="header">
+  <div>
     <Logo />
     <nav>
       <a href="/">Home</a>
@@ -17,11 +17,14 @@ import "../styles/tokens.css";
 </header>
 
 <style>
-  .header {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-
+  header {
     background-color: var(--color-neutrals-700);
+    padding-block: 2rem;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   nav a {
