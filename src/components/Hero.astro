@@ -15,16 +15,19 @@ import CEOImage from "@assets/images/ceo.webp";
     <a href="#0">Book a Meeting</a>
     <a href="#0">Learn More</a>
   </div>
-  <Image src={CEOImage} alt="CEO" />
-
-  <Services />
+  <div>
+    <Image src={CEOImage} alt="CEO" />
+  </div>
 </section>
+<Services />
 
 <style>
   /* Styles her */
   @layer components {
     .hero {
       background-color: #f3f4f6;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       padding: 2rem;
     }
   }
