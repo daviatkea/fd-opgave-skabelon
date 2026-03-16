@@ -18,14 +18,20 @@ import CEOImage from "@assets/images/ceo.webp";
     </div>
     <Image src={CEOImage} alt="CEO" />
   </div>
+  <div>
+    <Image src={CEOImage} alt="CEO" />
+  </div>
   <Services />
 </section>
+<Services />
 
 <style>
   /* Styles her */
   @layer components {
     .hero {
       background-color: #f3f4f6;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       padding: 2rem;
     }
     .hero-content {
