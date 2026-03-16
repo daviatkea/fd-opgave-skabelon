@@ -1,6 +1,7 @@
 ---
 import Logo from "@data/images/Logo.gul.svg";
 import "../styles/tokens.css";
+import DropdownLogin from "./DropdownLogin.astro";
 ---
 
 <header>
@@ -12,18 +13,21 @@ import "../styles/tokens.css";
       <a href="/planer">Team</a>
       <a href="/planside">About</a>
     </nav>
-    <button>Login</button>
+    <button popovertarget="pop" anchor-name="--nav-btn">Login</button>
+    <DropdownLogin />
   </div>
 </header>
 
 <style>
   header {
-    background-color: var(--color-neutrals-700);
+    background-color: var(--color-neutrals-900);
     padding-block: 2rem;
 
     div {
-      display: flex;
-      justify-content: space-between;
+      /* display: flex;
+      justify-content: space-between; */
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
     }
   }
 
@@ -54,5 +58,15 @@ import "../styles/tokens.css";
 
   a:hover {
     text-decoration: underline;
+  }
+
+  button {
+    margin-right: 200px;
+    background: #b1b1b1;
+    color: #000000;
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+    cursor: pointer;
   }
 </style>
