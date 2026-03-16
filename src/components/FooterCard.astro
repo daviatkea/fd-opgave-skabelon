@@ -1,16 +1,69 @@
 ---
 import FooterContact from "@data/images/footercontact.svg";
+import "../styles/tokens.css";
 ---
 
-<section>
-  <h2>Stay Updated</h2>
-  <h1>Subscribe Our Newsletter</h1>
-  <p>Build stronger Customer Relationships with Consultalk</p>
-  <input type="text" />
-  <button>Subscribe </button>
+<section class="full-bleed">
+  <article>
+    <h2>STAY UPDATED</h2>
+    <h3>Subscribe Our Newsletter</h3>
+    <p>Build stronger Customer Relationships with <a href="">Consultalk</a></p>
+    <div>
+      <input type="text" />
+      <button>Subscribe </button>
+    </div>
+  </article>
   <div>
     <FooterContact />
   </div>
 </section>
 
-<style></style>
+<style>
+  section {
+    background-color: var(--color-neutrals-900);
+    padding-block: 2rem;
+
+    > * {
+      text-align: center;
+    }
+
+    h2 {
+      color: var(--color-yellow-600);
+      font-size: 16px;
+    }
+
+    h3 {
+      color: var(--color-neutrals-50);
+      font-size: 35px;
+    }
+
+    p {
+      font-size: 16px;
+      color: var(--color-text-weak);
+      a {
+        color: var(--color-yellow-600);
+        text-decoration: none;
+      }
+    }
+
+    article > div {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      padding-block: 2rem;
+
+      input {
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        border-color: var(--color-text-weak);
+        border-width: 1px;
+      }
+
+      button {
+        border-radius: 25px;
+        background-color: var(--color-yellow-600);
+        padding: 10px 30px 10px 30px;
+      }
+    }
+  }
+</style>
