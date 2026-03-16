@@ -5,19 +5,23 @@ import CEOImage from "@assets/images/ceo.webp";
 ---
 
 <section class="hero">
-  <div class="hero-content">
-    <h1>Empowering Your Business Growth</h1>
-    <p>
-      Discover tailored strategies and expert insights to take your business to
-      the next level. Let us help you navigate challenges and achieve
-      sustainable success.
-    </p>
-    <a href="#0">Book a Meeting</a>
-    <a href="#0">Learn More</a>
+  <div class="hero-top">
+    <div class="hero-content">
+      <h1>Empowering Your Business Growth</h1>
+      <p>
+        Discover tailored strategies and expert insights to take your business
+        to the next level. Let us help you navigate challenges and achieve
+        sustainable success.
+      </p>
+      <a href="#0">Book a Meeting</a>
+      <a href="#0">Learn More</a>
+    </div>
+    <Image src={CEOImage} alt="CEO" />
   </div>
   <div>
     <Image src={CEOImage} alt="CEO" />
   </div>
+  <Services />
 </section>
 <Services />
 
@@ -29,6 +33,40 @@ import CEOImage from "@assets/images/ceo.webp";
       display: grid;
       grid-template-columns: 1fr 1fr;
       padding: 2rem;
+    }
+    .hero-content {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      padding: 2rem;
+      /***HERO BACCKGROUND ***/
+      --grid-color: hsl(from #ffcc4a h s l / 0.5);
+      --grid-size: 60px;
+      background:
+        radial-gradient(circle at 75% 50%, #0000, #000),
+        conic-gradient(
+            from 180deg at 1px 1px,
+            var(---grid-color) 75%,
+            #0000 0
+          ) -1px -1px /
+          var(--grid-size) var(--grid-size),
+        #000;
+
+      background-color: 000;
+      background-position: -1px -1px;
+      background-repeat: repeat;
+      background-image: conic-gradient(
+        from 180deg at 1px 1px,
+        rgb(47, 30, 30) 75%,
+        #000 0
+      );
+      background-size: 60px 60px;
+      color: #fff;
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      grid-template-rows: auto;
     }
   }
 </style>
