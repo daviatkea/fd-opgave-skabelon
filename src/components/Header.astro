@@ -1,0 +1,58 @@
+---
+import Logo from "@data/images/Logo.gul.svg";
+import "../styles/tokens.css";
+---
+
+<header>
+  <div>
+    <Logo />
+    <nav>
+      <a href="/">Home</a>
+      <a href="/fakta">Case study</a>
+      <a href="/planer">Team</a>
+      <a href="/planside">About</a>
+    </nav>
+    <button>Login</button>
+  </div>
+</header>
+
+<style>
+  header {
+    background-color: var(--color-neutrals-700);
+    padding-block: 2rem;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  nav a {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-size: x-large;
+    font-style: normal;
+  }
+
+  nav {
+    display: flex;
+    gap: 20px;
+    justify-content: center; /* centrer horisontalt */
+    align-items: center;
+  }
+
+  img {
+    width: 20%;
+    height: auto;
+    padding-left: 3rem;
+  }
+
+  a {
+    color: rgba(197, 212, 220, 1);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
