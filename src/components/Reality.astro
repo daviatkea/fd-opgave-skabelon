@@ -1,0 +1,97 @@
+---
+import ExpectCard from "./ExpectCard.astro";
+import { Image } from "astro:assets";
+import img1 from "@assets/images/Image.png";
+import checkmark from "@icons/checkmark.svg";
+import RealityCard from "./RealityCard.astro";
+---
+
+<section>
+  <div class="grid">
+    <div class="together">
+      <ExpectCard
+        FirstTitle="OUR VISION"
+        HovedTitle="Turn your ideas into reality."
+        Information="Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps."
+      />
+      <p class="check">
+        <Image src={checkmark} alt="check" />
+        Bring to the table win-win survival strategies to ensure proactive domination.
+        At the end of the day.
+      </p>
+
+      <p class="check">
+        <Image src={checkmark} alt="check" />
+        Capitalize on low hanging fruit to identify a ballpark value added activity
+        to beta test override the digital.
+      </p>
+    </div>
+    <Image class="img" src={img1} alt="CEO" />
+  </div>
+  <div class="grid2">
+    <div>
+      <RealityCard RealityNum="1128+" RealityTiny="Successful Work" />
+    </div>
+    <div>
+      <RealityCard RealityNum="908+" RealityTiny="Team member" />
+    </div>
+    <div>
+      <RealityCard RealityNum="258+" RealityTiny="Happy Customers" />
+    </div>
+    <div>
+      <RealityCard RealityNum="564+" RealityTiny="Creative Idea" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid2 {
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+   justify-content: center;
+   margin-top: 5%;
+    
+  }
+  section {
+    margin-top: 8rlh;
+    margin-bottom: 8rlh;
+    position: relative;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .grid::before {
+    content: "";
+    position: absolute;
+    width: 160px;
+    height: 140px;
+    background: #9be29b;
+    border-radius: 20px;
+    top: -38px;
+    right: 15%;
+    z-index: 0;
+  }
+  .check {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .together p {
+    margin-top: 20px;
+    max-width: 500px;
+  }
+  .together {
+    margin-left: 20%;
+  }
+
+  .img {
+    border-radius: 20px;
+    border-radius: 20px;
+    position: relative;
+    z-index: 1;
+  }
+</style>

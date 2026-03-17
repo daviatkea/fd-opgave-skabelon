@@ -1,0 +1,189 @@
+---
+import Section from "./Section.astro";
+import Phone from "@icons/phone.svg";
+import Clock from "@icons/clock.svg";
+import Pin from "@icons/pin.svg";
+---
+
+<section class="full-bleed">
+  <div class="content">
+    <div>
+      <Section
+        sectionTitle="Process"
+        sectionHeading="Contact Us. It’s Easy."
+        sectionParagraph="Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative."
+      />
+
+      <div class="contacts">
+        <div>
+          <span> <Phone /></span>
+          <div>
+            <p>Call Today</p>
+            <h6>+1 800 100 900</h6>
+          </div>
+        </div>
+
+        <div>
+          <span><Clock /></span>
+          <div>
+            <p>Monday To Friday</p>
+            <h6>9AM - 5PM</h6>
+          </div>
+        </div>
+
+        <div>
+          <span><Pin /></span>
+          <div>
+            <p>USA Office</p>
+            <h6>195 Devonshire St Boston, MA 02110</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <img src="/src/assets/images/Photo.png" alt="" width="316px" />
+      <img src="/src/assets/images/Photo2.png" alt="" />
+      <img src="/src/assets/images/Photo3.png" alt="" />
+    </div>
+  </div>
+
+  <style>
+    section > section p:last-of-type {
+      width: 5ch;
+    }
+
+    .full-bleed {
+      display: grid;
+      grid-template-columns:
+        [full-start] minmax(1rem, 1fr)
+        [content-start] minmax(0, 1200px)
+        [content-end] minmax(1rem, 1fr)
+        [full-end];
+      position: relative;
+    }
+
+    .full-bleed > .content {
+      grid-column: content-start / content-end;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 69px;
+
+      /* ændre muligvis til 100vh */
+      min-height: 899px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .content > div:first-of-type {
+      display: flex;
+      flex-direction: column;
+      gap: 38px;
+      min-width: 420.67px;
+    }
+
+    .contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+
+    .contacts > div:nth-of-type(1) span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--color-action);
+
+      background: #ffecbb;
+      width: 52.33px;
+      height: 52.33px;
+      border-radius: 100%;
+    }
+
+    .contacts > div:nth-of-type(2) span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--color-ui-secondary-alternative);
+
+      background: var(--color-ui-secondary);
+      width: 52.33px;
+      height: 52.33px;
+      border-radius: 100%;
+    }
+
+    .contacts > div:nth-of-type(3) span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--color-text);
+
+      background: #eaeaea;
+      width: 52.33px;
+      height: 52.33px;
+      border-radius: 100%;
+    }
+
+    p {
+      font-size: var(--step--1);
+      color: var(--color-on-ui-primary-muted);
+      margin-bottom: 3px;
+    }
+
+    h6 {
+      font-size: var(--step--4);
+      color: var(--color-text);
+      margin: 0;
+      padding: 0;
+    }
+
+    .contacts > div {
+      display: flex;
+      gap: 16px;
+    }
+
+    /* BILLEDE GRID */
+
+    .full-bleed .content > div:last-child::before {
+      content: "";
+      position: absolute;
+      width: 307px;
+      height: 164px;
+      background-color: var(--color-ui-secondary);
+      border-radius: 20px;
+      top: 560px;
+      right: 38%;
+      z-index: -1;
+    }
+
+    .full-bleed .content > div:first-child > div:last-child {
+      display: flex;
+      flex-direction: column;
+      max-width: 330.87px;
+    }
+
+    .full-bleed .content > div:last-child {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 700px;
+      max-height: 506px;
+    }
+    img:first-child {
+      grid-column: 1/2;
+      grid-row: span 3;
+    }
+    img:nth-child(2) {
+      grid-column: 2/3;
+      grid-row: 1/2;
+    }
+    img:last-child {
+      grid-column: 2/3;
+      grid-row: 2/3;
+    }
+    img {
+      border-radius: 45px;
+    }
+  </style>
+</section>

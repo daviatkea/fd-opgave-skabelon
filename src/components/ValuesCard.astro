@@ -1,0 +1,42 @@
+---
+const { ScrollingTitle, ScrollingBeskrivelse, Read } = Astro.props;
+import ArrowRight from "@icons/arrow--right.svg";
+---
+
+<div>
+  <li>
+    <slot />
+    <h3>{ScrollingTitle}</h3>
+    <p>{ScrollingBeskrivelse}</p>
+    <a href="#0">{Read}Read More <ArrowRight stroke-width={2.5} /></a>
+  </li>
+</div>
+
+<style>
+  li {
+    list-style: none;
+  }
+  div {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 15%;
+    width: 90%;
+  }
+  h3 {
+    font-size: large;
+    font-weight: 800;
+    margin-bottom: 2%;
+  }
+  p {
+    
+    text-align: justify;
+  }
+  a {
+    margin-top: 5%;
+    color: black;
+    text-decoration: none;
+    display: inline-flex; 
+    align-items: center; 
+    gap: 0.5rem; 
+  }
+</style>
