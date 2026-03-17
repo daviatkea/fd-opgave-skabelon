@@ -4,7 +4,7 @@ import "../styles/tokens.css";
 import DropdownLogin from "./DropdownLogin.astro";
 ---
 
-<header>
+<header class="full-bleed">
   <div>
     <Logo />
     <nav>
@@ -13,14 +13,14 @@ import DropdownLogin from "./DropdownLogin.astro";
       <a href="/planer">Team</a>
       <a href="/planside">About</a>
     </nav>
-    <button popovertarget="pop" anchor-name="--nav-btn">Login</button>
+    <button popovertarget="pop">Login</button>
     <DropdownLogin />
   </div>
 </header>
 
 <style>
   header {
-    background-color: var(--color-neutrals-900);
+    background-color: var(--color-blue-700-transparent);
     padding-block: 2rem;
 
     div {
