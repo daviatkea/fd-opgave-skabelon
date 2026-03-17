@@ -1,0 +1,117 @@
+---
+import ExpectCard from "./ExpectCard.astro";
+import ValuesCard from "./ValuesCard.astro";
+import { Image } from "astro:assets";
+import bar from "@icons/bars.svg";
+import layers from "@icons/layers.svg";
+import globe from "@icons/globe.svg";
+import gear from "@icons/gear.svg";
+import ArrowRight from "@icons/arrow--right.svg";
+---
+
+<div>
+  <header>
+    <ExpectCard
+      FirstTitle="EXPERIENCE"
+      HovedTitle="More than 25 years of experience"
+      Information="3000+ our clients are insured around the World."
+    />
+  </header>
+  <main>
+    <div class="button">
+      <button> Get in Touch </button>
+    </div>
+    <section>
+      <ValuesCard
+        ScrollingTitle="Creative Ideas"
+        ScrollingBeskrivelse="Explore innovative strategies tailored to your goals. Unlock unique solutions that inspire growth and creativity. Drive impactful change."
+      >
+        <div class="icon-bg">
+          <Image src={layers} alt="Balance Sheet" />
+        </div>
+      </ValuesCard>
+
+      <ValuesCard
+        ScrollingTitle="Best Features"
+        ScrollingBeskrivelse="Deliver advanced tools designed for seamless integration. Optimize workflows with cutting-edge technology."
+      >
+        <div class="icon-bg">
+          <Image src={bar} alt="Income Statement" />
+        </div>
+      </ValuesCard>
+
+      <ValuesCard
+        ScrollingTitle="Experience"
+        ScrollingBeskrivelse="Leverage years of proven expertise across diverse industries. Empower your business with our skilled professionals. Achieve sustainable success."
+      >
+        <div class="icon-bg">
+          <Image src={globe} alt="Financial Plan" />
+        </div>
+      </ValuesCard>
+
+      <ValuesCard
+        ScrollingTitle="Easy Solutions"
+        ScrollingBeskrivelse="Streamline your challenges with simple, effective solutions. Ensure hassle-free implementation for measurable results."
+      >
+        <div class="icon-bg">
+          <Image src={gear} alt="Financial Ratios" />
+        </div>
+      </ValuesCard>
+    </section>
+  </main>
+</div>
+
+<style>
+  .button {
+    display: flex;
+    gap: 2%;
+    justify-content: end;
+    margin-right: 8%;
+  }
+
+  button {
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+    padding: 0.8rem 2rem;
+  }
+
+  header {
+    margin-left: 15%;
+    padding-top: 5%;
+    color: white;
+  }
+  section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 3%;
+    width: 80%;
+    margin-left: 15%;
+    padding-bottom: 5%;
+  }
+
+  .icon-bg {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: -15px;
+    margin-bottom: 5%;
+  }
+
+  .icon-bg img {
+    margin-top: -2px;
+    filter: invert(1);
+    background-color: transparent;
+    display: block;
+    width: 20px;
+    height: auto;
+  }
+
+  div {
+    background-color: black;
+  }
+</style>

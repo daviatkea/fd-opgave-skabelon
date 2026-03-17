@@ -1,0 +1,73 @@
+---
+import ExpectCard from "./ExpectCard.astro";
+import { Image } from "astro:assets";
+import img1 from "@assets/images/man.jpg";
+import checkmark from "@icons/checkmark.svg";
+---
+
+<section>
+  <div class="grid">
+    <Image class="img" src={img1} alt="CEO" />
+    <div class="together">
+      <ExpectCard
+        FirstTitle="WE'LL WORK WITH YOU"
+        HovedTitle="What To Expect"
+        Information="Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals."
+      />
+      <p class="check">
+        <Image src={checkmark} alt="check" />
+        Collaborate to build actionable strategies that drive sustainable growth and
+        deliver tangible outcomes.
+      </p>
+
+      <p class="check">
+        <Image src={checkmark} alt="check" />
+        Identify opportunities to optimize processes and implement impactful solutions
+        with measurable results.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    margin-top: 8rlh;
+    margin-bottom: 8rlh;
+    position: relative;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 18%;
+    gap: 5%;
+  }
+  .grid::before {
+    content: "";
+    position: absolute;
+    width: 190px;
+    height: 180px;
+    background: #9be29b;
+    border-radius: 20px;
+    top: -38px;
+    right: 73%;
+    z-index: 0;
+  }
+  .check {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .together p {
+    margin-top: 20px;
+    width: 390px;
+  }
+
+  .img {
+    border-radius: 20px;
+    border-radius: 20px;
+    position: relative;
+    z-index: 1;
+  }
+</style>

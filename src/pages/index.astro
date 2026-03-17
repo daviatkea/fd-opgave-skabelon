@@ -1,8 +1,18 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Hero from "@components/Hero.astro";
+import Newsletter from "@components/sections/Newsletter.astro";
+import Expect from "@components/Expect.astro";
+import Scrolling from "@components/Scrolling.astro";
+import Values from "@components/Values.astro";
+import Contact from "@components/sections/Contact.astro";
 ---
 
-<Layout>
+<Layout title="Home">
   <Hero />
+  <Expect />
+  <Scrolling />
+  <Values />
+  <Contact />
+  <Newsletter />
 </Layout>

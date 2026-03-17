@@ -1,0 +1,31 @@
+---
+const { ScrollingTitle, ScrollingBeskrivelse } = Astro.props;
+---
+
+<div>
+  <li>
+    <slot />
+    <h3>{ScrollingTitle}</h3>
+    <p>{ScrollingBeskrivelse}</p>
+  </li>
+</div>
+
+<style>
+  li {
+    list-style: none;
+  }
+  div {
+    background-color: #eaedf1;
+    border-radius: 15px;
+    padding: 5%;
+  }
+  h3 {
+    font-size: large;
+    font-weight: 800;
+    margin-bottom: 2%;
+  }
+  p {
+    text-align: justify;
+    
+  }
+</style>

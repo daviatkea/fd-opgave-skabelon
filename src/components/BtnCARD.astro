@@ -1,0 +1,30 @@
+---
+const { buttonClass, buttonClass1, buttonBeskrivelse, buttonBeskrivelse1 } =
+  Astro.props;
+---
+
+<a href="#0" class={buttonClass}>{buttonBeskrivelse}</a>
+<a href="#0" class={buttonClass1}>
+  {buttonBeskrivelse1}
+</a>
+
+<style>
+  .button-yellow {
+    background-color: #ffcc4a;
+    color: black;
+    text-decoration: none;
+  }
+  .button-yellow,
+  .button-black {
+    padding: 0.8rem 2rem;
+    font-size: small;
+    border-radius: 30px;
+  }
+
+  .button-black {
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+    text-decoration: none;
+  }
+</style>

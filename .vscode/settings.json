@@ -1,6 +1,9 @@
 {
   "github.copilot.enable": {
-    "*": false
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
   },
   "git.branchProtection": ["main", "master"],
   "[astro]": {
@@ -10,6 +13,6 @@
   "chat.disableAIFeatures": false,
   "chat.agent.enabled": false,
   "editor.inlineSuggest.enabled": false,
-  "github.copilot.nextEditSuggestions.enabled": false,
+  "github.copilot.nextEditSuggestions.enabled": true,
   "prettier.printWidth": 80
 }
