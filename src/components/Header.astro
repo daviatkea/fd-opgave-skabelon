@@ -8,10 +8,10 @@ import DropdownLogin from "./DropdownLogin.astro";
   <div>
     <Logo />
     <nav>
-      <a href="/">Home</a>
-      <a href="/fakta">Case study</a>
-      <a href="/planer">Team</a>
-      <a href="/planside">About</a>
+      <a class="--lato-16-reg-white" href="/">Home</a>
+      <a class="--lato-16-reg-white" href="/fakta">Case study</a>
+      <a class="--lato-16-reg-white" href="/planer">Team</a>
+      <a class="--lato-16-reg-white" href="/planside">About</a>
     </nav>
     <button popovertarget="pop">Login</button>
     <DropdownLogin />
@@ -20,44 +20,37 @@ import DropdownLogin from "./DropdownLogin.astro";
 
 <style>
   header {
-    background-color: var(--color-blue-700-transparent);
+    background-color: var(--color-text);
     padding-block: 2rem;
 
     div {
-      /* display: flex;
-      justify-content: space-between; */
       display: grid;
       grid-template-columns: 1fr 2fr 1fr;
     }
-  }
 
-  nav a {
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-size: x-large;
-    font-style: normal;
-  }
+    nav a {
+      font-family: "Inter", sans-serif;
+      font-optical-sizing: auto;
+      font-size: x-large;
+      font-style: normal;
+    }
 
-  nav {
-    display: flex;
-    gap: 20px;
-    justify-content: center; /* centrer horisontalt */
-    align-items: center;
-  }
+    nav {
+      display: flex;
+      gap: 20px;
+      justify-content: center; /* centrer horisontalt */
+      align-items: center;
+    }
 
-  img {
-    width: 20%;
-    height: auto;
-    padding-left: 3rem;
-  }
+    img {
+      width: 20%;
+      height: auto;
+      padding-left: 3rem;
+    }
 
-  a {
-    color: rgba(197, 212, 220, 1);
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
+    a:hover {
+      text-decoration: underline;
+    }
   }
 
   button {
