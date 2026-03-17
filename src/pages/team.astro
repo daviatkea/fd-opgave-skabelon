@@ -1,0 +1,17 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Banner from "@components/Banner.astro";
+import TeamCard from "@components/TeamCard.astro";
+import Employees from "../data/employees.json";
+---
+
+<Layout>
+  <Banner
+    subtitle="TEAM"
+    title="The Consultors"
+    description="Our success stems from the synergy between dedicated teams and our valued clients. We prioritize a company culture that fosters exceptional productivity, ensures customer satisfaction."
+    linePosition="left2"
+  />
+
+  <TeamCard Employees={Employees} />
+</Layout>

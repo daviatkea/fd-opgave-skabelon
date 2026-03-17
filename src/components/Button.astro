@@ -1,0 +1,31 @@
+---
+const { variant = "primary", target } = Astro.props;
+---
+
+<button class={variant} popovertarget={target}>
+  {(<slot />)}
+</button>
+
+<style>
+  @layer components {
+    .yellow {
+      background: var(--color-action);
+      color: var(--color-text);
+      border: none;
+      padding: 12px 25px;
+      border-radius: var(--border-radius-btn);
+      font-weight: var(--weight-regular);
+      cursor: pointer;
+    }
+
+    .white {
+      background: var(--color-on-ui-primary);
+      color: var(--color-text);
+      border: none;
+      padding: 4px 16px;
+      border-radius: var(--border-radius-btn);
+      font-weight: var(--weight-regular);
+      cursor: pointer;
+    }
+  }
+</style>

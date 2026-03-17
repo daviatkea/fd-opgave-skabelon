@@ -1,0 +1,64 @@
+---
+import Button from "./Button.astro";
+---
+
+<Button variant="white" class="login-trigger" target="login-popover"
+  >Login</Button
+>
+
+<div id="login-popover" popover>
+  <form>
+    <div class="card">
+      <h2>Dashboard Login</h2>
+
+      <label>Email address</label>
+      <input type="email" />
+
+      <label>Password</label>
+      <input type="password" />
+
+      <Button variant="yellow">Go to dashboard</Button>
+    </div>
+  </form>
+</div>
+<style>
+  @layer components {
+    [popover] {
+      position-area: bottom span-left;
+
+      button {
+        margin-top: 1.5rem;
+      }
+    }
+
+    #login-popover {
+      border-radius: var(--border-radius-1);
+    }
+
+    .card {
+      display: grid;
+      background: var(--color-neutrals-50);
+      padding: 20px;
+    }
+
+    label {
+      padding: 10px 5px;
+      font-family: var(--font-text);
+    }
+
+    input {
+      border-radius: var(--border-radius-2);
+      padding: 10px 10px;
+
+      /* &:nth-last-child {
+        margin-bottom: 20px;
+      } */
+    }
+
+    h2 {
+      font-family: var(--font-header);
+      font-size: var(--h5-size);
+      margin-bottom: 20px;
+    }
+  }
+</style>

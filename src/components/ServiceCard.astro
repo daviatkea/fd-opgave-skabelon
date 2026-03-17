@@ -1,13 +1,18 @@
 ---
 const { service } = Astro.props;
 import ArrowRight from "@icons/arrow--right.svg";
+import ButtonLink from "./ButtonLink.astro";
 ---
 
 <article>
   <h2>{service.title}</h2>
   <p>{service.description}</p>
-  <a href="#0">{service.buttonText} <ArrowRight stroke-width={2.5} /></a>
-  <!-- <a> burde måske være en variant af en component -->
+  <!-- <a href="#0">{service.buttonText} <ArrowRight stroke-width={2.5} /></a> -->
+  <a class="ghost_link" href="#0">
+    {service.buttonText}
+    <ArrowRight stroke-width={2.5} />
+    <!-- <a> burde måske være en variant af en component -->
+  </a>
 </article>
 
 <style>
@@ -17,9 +22,15 @@ import ArrowRight from "@icons/arrow--right.svg";
       color: var(--color-on-surface-elevated);
       padding: 2rem; /* Dette burde være en token */
       border-radius: 20px; /* Dette burde være en token */
+      display: flex;
+      flex-direction: column;
+    }
+    .ghost_link {
+      margin-top: auto;
+      padding-top: var(--space-text);
     }
     a {
-      display: inline flex;
+      display: inline-flex;
       gap: 1ch;
       color: var(--color-action);
       font-weight: bold;
@@ -27,6 +38,11 @@ import ArrowRight from "@icons/arrow--right.svg";
       svg {
         inline-size: 16px;
       }
+    }
+    h2 {
+      font-family: var(--font-header);
+      font-size: var(--p-size);
+      padding-bottom: 10px;
     }
   }
 </style>

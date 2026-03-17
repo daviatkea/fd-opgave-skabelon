@@ -4,3 +4,17 @@
 @import url("./global.css") layer(global);
 @import url("./tokens.css") layer(tokens);
 @import url("./overrides.css") layer(overrides);
+
+.core_values {
+  background: var(--color-neutrals-900);
+  color: var(--color-on-ui-primary);
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: full;
+}
+
+.core_values_content {
+  grid-column: content-start;
+  max-width: 60ch;
+  padding: 4rem 2rem;
+}

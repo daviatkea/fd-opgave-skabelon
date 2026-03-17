@@ -1,0 +1,60 @@
+---
+import LoginPopover from "./LoginPopover.astro";
+---
+
+<header>
+  <div class="header-content">
+    <div class="logo">
+      <h3>Ask<span>Experts</span></h3>
+    </div>
+
+    <nav class="menu_text">
+      <a href="/">Home</a>
+      <a href="/case">Case Study</a>
+      <a href="/team">Team</a>
+      <a href="/about">About</a>
+    </nav>
+
+    <LoginPopover />
+  </div>
+
+  <style>
+    @layer components {
+      header {
+        display: grid;
+        grid-template-columns: subgrid;
+        grid-column: full;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        background-color: var(--color-ui-primary);
+      }
+
+      .header-content {
+        grid-column: content-start / content-end;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .header-content h3 {
+        color: var(--color-on-ui-primary);
+        margin: 0;
+      }
+
+      .header-content a {
+        color: var(--color-on-ui-primary);
+        margin: 0;
+        text-decoration: none;
+      }
+
+      .menu_text a {
+        padding: 20px;
+      }
+
+      .header-content h3 span {
+        color: var(--color-action);
+      }
+    }
+  </style>
+</header>
