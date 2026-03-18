@@ -1,0 +1,26 @@
+---
+import Logo from "@data/images/Logo.gul.svg";
+import "../styles/tokens.css";
+import coreValues from "@data/coreValues.json";
+const { title, subtitle, eyebrow } = coreValues;
+---
+
+<section>
+  <div>
+    <h2>{eyebrow}</h2>
+    <h1>{title}</h1>
+    <p>{subtitle}</p>
+    <a href={coreValues.button.link}>{coreValues.button.text}</a>
+  </div>
+  <div class="card_values">
+    {coreValues.values.map(({ icon, title, description }) => <h1>{title}</h1>)}
+  </div>
+</section>
+
+<style>
+  .card_values {
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+</style>
