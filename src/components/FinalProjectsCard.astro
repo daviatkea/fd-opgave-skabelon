@@ -1,0 +1,68 @@
+---
+import json from "@data/financialProjections.json";
+---
+
+<article>
+  <div class="top">
+    <div class="header-content">
+      <h3>FINANCIAL TOOLS</h3>
+      <h2>Financial Projects</h2>
+      <p>
+        Financial projections are essential for planning and monitoring a
+        company’s performance.
+      </p>
+    </div>
+
+    <div class="arrow-content">
+      <img src="/src/icons/arrow--left.svg" alt="" />
+      <img src="/src/icons/arrow--right.svg" alt="" />
+    </div>
+  </div>
+
+  <div class="cards-container">
+    {
+      json.values.map(({ icon, title, description }) => (
+        <div class="card">
+          <img class="icon-img" src={`/src/icons/${icon}.svg`} alt="" />
+          <div class="card-text">
+            <h1>{title}</h1>
+            <p>{description}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</article>
+
+<style>
+  article {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 40px;
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 40px;
+
+      .header-content {
+        max-width: 500px;
+      }
+    }
+
+    .arrow-content {
+      display: flex;
+      gap: 15px;
+
+      .arrowBtn {
+        background-color: var(--color-text);
+      }
+    }
+  }
+
+  .card {
+    background-color: var(--color-surface-tertiary);
+  }
+</style>
