@@ -47,6 +47,44 @@ body {
   }
 }
 
+/* CAR STYLING */
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+
+    border-radius: 20px;
+    padding: 30px;
+    width: 280px;
+    min-height: 250px;
+  }
+
+  .icon-img {
+    width: 32px;
+    height: auto;
+  }
+
+  .card-text h1 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: var(--color-text-primary);
+  }
+
+  .card-text p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+}
+
 /* FONT */
 
 .lato-regular {
