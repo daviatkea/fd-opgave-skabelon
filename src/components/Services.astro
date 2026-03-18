@@ -13,6 +13,25 @@ import DynamicImage from "@helpers/DynamicImage.astro";
     .services {
       display: grid;
       gap: 1rem;
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: content-start / content-end;
+      grid-template-columns: repeat(3, 1fr);
+
+      margin-top: -7rem;
+    }
+  }
+  /* Tablet */
+  @media (max-width: 900px) {
+    .services {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Mobil */
+  @media (max-width: 600px) {
+    .services {
+      grid-template-columns: 1fr;
     }
   }
 </style>

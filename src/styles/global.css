@@ -1,1 +1,122 @@
 /* Globale styles her */
+
+.numbers {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: full;
+
+  > * {
+    grid-column: content;
+  }
+
+  h3 {
+    font-family: var(--font-header);
+    font-weight: var(--weight-header-regular);
+    font-size: var(--h3-size);
+  }
+
+  p {
+    font-family: var(--font-text);
+    font-weight: var(--weight-text-regular);
+    font-size: var(--p-size);
+    color: var(--color-neutrals-400);
+  }
+}
+
+.number_child {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: var(--space-sections);
+}
+
+.accordion {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column: content;
+  background-color: var(--color-surface-secondary);
+
+  margin-top: var(--space-sections);
+  margin-bottom: var(--space-sections);
+
+  h3 {
+    display: flex;
+    justify-content: center;
+    font-family: var(--font-header);
+    font-weight: var(--weight-header-regular);
+    font-size: var(--h3-size);
+  }
+
+  .eyebrow {
+    margin-top: var(--space-sections);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+  }
+  .list {
+    border-bottom: 2px solid #dadada;
+  }
+  .accordion-inner {
+    width: 600px;
+    margin-inline: auto;
+
+    margin-bottom: var(--space-sections);
+  }
+
+  summary {
+    list-style: none;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1.5rem 0;
+
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary::after {
+    content: "+";
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: transform 0.2s ease;
+  }
+
+  /* skift til - når åben */
+  details[open] summary::after {
+    content: "−";
+  }
+
+  details div {
+    padding-bottom: 1.5rem;
+    max-width: 60ch;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  ::details-content {
+    height: 0;
+    overflow: clip;
+    transition: height 0.3s ease;
+  }
+
+  details[open]::details-content {
+    height: auto;
+  }
+  @media (max-width: 768px) {
+    summary {
+      padding: 1.25rem 0;
+    }
+    .accordion-inner {
+      width: 400px;
+    }
+  }
+}

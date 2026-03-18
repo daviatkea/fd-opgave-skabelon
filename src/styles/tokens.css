@@ -31,10 +31,31 @@
   --color-text-weak: var(--color-neutrals-400);
   --color-surface-highlight: var(--color-yellow-600);
   --color-on-ui-primary-muted: var(--color-neutrals-400);
+
+  --grid-size: 50px;
+  --grid-color: rgba(255, 204, 74, 0.1);
+
+  /* ==== Spacing ==== */
+  --space-heading: 1.3rlh;
+  --space-text: 1.48rlh;
+  --space-ordered-list: 1.48rlh;
+  --space-sections: 4rlh;
+
+  /* ==== Typography ==== */
+  --font-header: "Cabin", sans-serif;
+  --font-text: "Lato", sans-serif;
+  --weight-header-regular: 600;
+  --weight-text-regular: 400;
+
+  --h1-size: clamp(1.75rem, 1.0625rem + 2.75vw, 3.125rem);
+  --h2-size: clamp(1.5rem, 0.8438rem + 2.625vw, 2.8125rem);
+  --h3-size: clamp(1.5rem, -1.0625rem + 4.75vw, 2.5rem);
+  --h4-size: clamp(1.25rem, 0.7813rem + 1.875vw, 2.1875rem);
+  --h5-size: clamp(1.125rem, 0.75rem + 1.5vw, 1.875rem);
+  --p-size: clamp(0.875rem, 0.75rem + 0.5vw, 1.125rem);
+
+  /* ==== Border Radii ==== */
+  --border-radius-1: 20px;
+  --border-radius-2: 30px;
+  --border-radius-btn: 42px;
 }
-
-/* ==== Spacing ==== */
-
-/* ==== Typography ==== */
-
-/* ==== Border Radii ==== */

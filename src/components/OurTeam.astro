@@ -1,0 +1,128 @@
+---
+import ButtonLink from "./ButtonLink.astro";
+import employee from "@data/employees.json";
+const { Employees, title, subtitle, description, ImageId1, ImageId2 } =
+  Astro.props;
+---
+
+<section>
+  <div class="card_content">
+    <!-- VENSTRE -->
+    <div class="left">
+      <span class="eyebrow">{subtitle}</span>
+      <h2>{title}</h2>
+      <p>{description}</p>
+
+      <ButtonLink variant="black_link">Meet the Team</ButtonLink>
+    </div>
+
+    <!-- HØJRE -->
+    <div class="card">
+      {
+        Employees?.slice(0, 2).map((employee: any) => (
+          <article>
+            <div>
+              <a href={`/singlepage/${employee.slug}`} class="team_card_link">
+                <img src={employee.img} alt={employee.name} />
+              </a>
+
+              <div class="info">
+                <h5>{employee.name}</h5>
+                <span class="role">{employee.title}</span>
+                <p>{employee.description}</p>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  @layer components {
+    section {
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: content;
+      margin-top: var(--space-sections);
+      padding-bottom: var(--space-heading);
+    }
+
+    .card_content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    /* BUTTON */
+
+    /* HØJRE SIDE (CARDS) */
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .left {
+      min-width: 300px;
+    }
+
+    /* INDIVIDUELT CARD */
+    .card article > div {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      min-width: 500px;
+    }
+
+    /* BILLEDE */
+    .card img {
+      width: 350px;
+      object-fit: cover;
+      border-radius: var(--border-radius-1);
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.8rem;
+    }
+
+    h2 {
+      font-family: var(--font-header);
+      font-size: var(--h2-size);
+      font-weight: var(--weight-header-regular);
+    }
+
+    h5 {
+      font-family: var(--font-header);
+      font-size: var(--h5-size);
+      font-weight: var(--weight-header-regular);
+      margin: 0;
+    }
+
+    p {
+      font-family: var(--text-header);
+      font-size: var(--p-size);
+      font-weight: var(--weight-text-regular);
+      color: var(--color-neutrals-700);
+      margin: 0;
+      margin-bottom: 12px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .card_content {
+        grid-template-columns: 1fr;
+      }
+
+      .card article > div {
+        align-items: flex-start;
+      }
+    }
+  }
+</style>

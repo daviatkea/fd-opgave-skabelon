@@ -2,30 +2,106 @@
 import { Image } from "astro:assets";
 import Services from "./Services.astro";
 import CEOImage from "@assets/images/ceo.webp";
+import ButtonLink from "./ButtonLink.astro";
 ---
 
 <section class="hero">
-  <div class="hero-content">
-    <h1>Empowering Your Business Growth</h1>
-    <p>
-      Discover tailored strategies and expert insights to take your business to
-      the next level. Let us help you navigate challenges and achieve
-      sustainable success.
-    </p>
-    <a href="#0">Book a Meeting</a>
-    <a href="#0">Learn More</a>
+  <div class="hero-left">
+    <div class="hero-content">
+      <h1>Empowering Your Business Growth</h1>
+      <p>
+        Discover tailored strategies and expert insights to take your business
+        to the next level. Let us help you navigate challenges and achieve
+        sustainable success.
+      </p>
+
+      <div class="hero-buttons">
+        <ButtonLink href="/team" variant="yellow_link"
+          >Book a Meeting</ButtonLink
+        >
+        <ButtonLink href="/about" variant="border_link">Learn More →</ButtonLink
+        >
+      </div>
+    </div>
   </div>
-  <Image src={CEOImage} alt="CEO" />
+
+  <div class="hero-right">
+    <Image src={CEOImage} alt="CEO" />
+  </div>
 
   <Services />
 </section>
 
 <style>
-  /* Styles her */
+  h1 {
+    font-size: var(--h1-size);
+    font-weight: 700;
+    font-family: var(--font-header);
+  }
+
   @layer components {
     .hero {
-      background-color: #f3f4f6;
-      padding: 2rem;
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: full;
+    }
+    .hero-left {
+      grid-column: full-start / content-mid;
+      background:
+        conic-gradient(
+            from 180deg at 1px 1px,
+            var(--grid-color) 75%,
+            #0000 0
+          ) -1px -1px /
+          var(--grid-size) var(--grid-size),
+        var(--color-neutrals-900);
+      color: white;
+      display: grid;
+      grid-template-columns: subgrid;
+    }
+
+    .hero-content {
+      grid-column: content-start;
+      padding-top: 4rem;
+      padding-right: 2rem;
+      padding-bottom: 10rem; /* mere sort område */
+      h1 {
+        margin-bottom: var(--space-heading);
+      }
+      p {
+        margin-bottom: var(--space-heading);
+        color: var(--color-on-ui-primary-muted);
+      }
+    }
+
+    .hero-right {
+      grid-column: content-mid / full-end;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-buttons {
+      display: flex;
+      > * + * {
+        margin-left: 1rem;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    .hero-right {
+      display: none;
+    }
+    .hero-left {
+      grid-column: full; /* fylder hele bredden */
+    }
+
+    .hero-content {
+      grid-column: content; /* holder din content-width */
+      padding-right: 0;
     }
   }
 </style>

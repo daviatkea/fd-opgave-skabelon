@@ -1,0 +1,149 @@
+---
+import financialProjections from "@data/financialProjections.json";
+import DynamicIcon from "./helpers/DynamicIcon.astro";
+import ArrowLeft from "../icons/arrow-left.svg";
+import ArrowRight from "../icons/arrow--right.svg";
+---
+
+<section class="financial-section">
+  <div class="financial-div">
+    <div>
+      <p class="eyebrow">{financialProjections.eyebrow}</p>
+      <h2>{financialProjections.title}</h2>
+      <p>{financialProjections.subtitle}</p>
+    </div>
+    <div class="arrows">
+      <div>
+        <ArrowLeft class="arrow_left" />
+      </div>
+      <div>
+        <ArrowRight class="arrow_right" />
+      </div>
+    </div>
+  </div>
+
+  <ul class="cards_grid">
+    {
+      financialProjections.values.map((item) => (
+        <li class="card">
+          <a href={item.link.url} class="card_link">
+            <div class="icon">
+              <DynamicIcon name={item.icon} />
+            </div>
+
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  @layer components {
+    p {
+      font-family: var(--font-text);
+      font-size: var(--p-size);
+      padding-top: 10px;
+    }
+
+    h2 {
+      font-family: var(--font-header);
+      font-size: var(--h2-size);
+      font-weight: var(--weight-header-regular);
+      padding-top: 10px;
+    }
+
+    h3 {
+      font-family: var(--font-header);
+      font-weight: var(--weight-header-regular);
+      font-size: 20px;
+      padding-top: 10px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .financial-section {
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: full;
+      padding-block: 4rem;
+      background-color: var(--color-neutrals-100);
+      > * {
+        grid-column: content;
+      }
+      > ul {
+        li {
+          scroll-snap-align: center;
+        }
+      }
+    }
+
+    .financial-div {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+    }
+
+    .cards_grid {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 350px;
+      gap: 30px;
+
+      scroll-snap-type: x mandatory;
+      grid-column: full;
+      padding-inline: max(1rem, 50% - 980px / 2);
+      padding-block-end: 1rem;
+      overflow-inline: auto;
+      scroll-padding-inline: max(1rem, 50% - 980px / 2);
+    }
+
+    .card {
+      background: #eaeaea;
+      border-radius: 20px;
+      padding: var(--border-radius-1);
+      align-self: start;
+      margin-top: 2rem;
+    }
+
+    .arrows {
+      display: flex;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin-top: 100px;
+      justify-content: right;
+    }
+
+    .arrow_left {
+      background-color: var(--color-neutrals-900);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-surface-primary);
+    }
+
+    .arrow_right {
+      background-color: var(--color-neutrals-900);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-surface-primary);
+    }
+  }
+</style>

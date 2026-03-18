@@ -1,0 +1,77 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Banner from "@components/Banner.astro";
+import Card from "@components/Card.astro";
+import GroupImage from "@assets/images/group.webp";
+import CoreValuesCard from "@components/CoreValuesCard.astro";
+import OurTeam from "@components/OurTeam.astro";
+import faq from "@data/faq.json";
+import Employees from "../data/employees.json";
+
+const onlyTwo = Employees.slice(0, 2);
+---
+
+<Layout>
+  <Banner
+    subtitle="ABOUT"
+    title="Igniting Innovation"
+    description="Our strength lies in the collaboration between our talented teams and esteemed clients. We cultivate a workplace that champions innovation, promotes peak performance, and guarantees client satisfaction."
+    linePosition="right"
+  />
+
+  <Card
+    image={GroupImage}
+    subtitle="OUR VISION"
+    title="What To Turn your ideas into reality."
+    description="Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps."
+    point1="Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day."
+    point2="Capitalize on low hanging fruit to identify a ballpark value added activity to beta test override the digital."
+    reverse={true}
+  />
+
+  <div class="numbers">
+    <div class="number_child">
+      <div>
+        <h3>1128+</h3>
+        <p>Successful Work</p>
+      </div>
+      <div>
+        <h3>908+</h3>
+        <p>Team member</p>
+      </div>
+      <div>
+        <h3>258+</h3>
+        <p>Happy Customers</p>
+      </div>
+      <div>
+        <h3>564+</h3>
+        <p>Creative Idea</p>
+      </div>
+    </div>
+  </div>
+
+  <CoreValuesCard title="Dark Section" theme="default" />
+
+  <OurTeam
+    subtitle="OUR TEAM"
+    title="We champion the bold"
+    description="Our success stems from the synergy between dedicated teams and our valued clients. We prioritize a company culture that fosters exceptional productivity, ensures customer satisfaction."
+    Employees={onlyTwo}
+  />
+  <br />
+
+  <section class="accordion">
+    <p class="eyebrow">faq</p>
+    <h3>Customer Questions</h3>
+    <div class="accordion-inner">
+      {
+        faq.faq.map((item) => (
+          <details name="something" class="list">
+            <summary>{item.question}</summary>
+            <div>{item.answer}</div>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

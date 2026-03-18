@@ -1,0 +1,145 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Employees from "../../data/employees.json";
+
+export async function getStaticPaths() {
+  return Employees.map((employee) => ({
+    params: { slug: employee.slug },
+    props: { employee },
+  }));
+}
+
+const { employee } = Astro.props;
+---
+
+<Layout>
+  <section class="employee_section">
+    <div class="employee_grid">
+      <div class="card_image">
+        <img src={employee.img} alt={employee.name} />
+        <div class="socials">
+          {
+            employee.social_links.map((link) => (
+              <a href={link.url} target="_blank" rel="noopener noreferrer">
+                <img
+                  src={`/src/icons/${link.platform}.svg`}
+                  alt={link.platform}
+                  width="24"
+                  height="24"
+                />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="employee_content">
+        <h2>{employee.name}</h2>
+        <span class="title">{employee.title}</span>
+
+        <p>{employee.description_long}</p>
+
+        <hr />
+
+        <h3>Past experience</h3>
+
+        <p>{employee.past_experience}</p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  @layer components {
+    .employee_section {
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: full;
+      padding: 6rem 0;
+    }
+
+    .employee_grid {
+      grid-column: content;
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 4rem;
+    }
+
+    @media (max-width: 700px) {
+      .employee_grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .card_image {
+        max-width: 420px;
+      }
+    }
+
+    .card_image {
+      position: relative;
+      isolation: isolate;
+      max-width: 420px;
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -2rem;
+        left: -2rem;
+        width: 183px;
+        height: 164px;
+        border-radius: var(--border-radius-1);
+        background: var(--color-ui-secondary);
+        z-index: -1;
+      }
+    }
+
+    .employee_content {
+      max-width: 1000px;
+    }
+
+    .title {
+      display: block;
+      color: var(--color-text-muted);
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: var(--font-header);
+      font-size: 35px;
+      font-weight: var(--weight-header-regular);
+    }
+
+    h3 {
+      font-family: var(--font-header);
+      font-size: 35px;
+      font-weight: var(--weight-header-regular);
+    }
+
+    p {
+      font-family: var(--font-text);
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    hr {
+      margin: 2rem 0;
+      border: none;
+      border-top: 1px solid #c1c1c1;
+    }
+
+    .socials {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+  }
+</style>

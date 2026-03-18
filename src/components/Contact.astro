@@ -1,0 +1,173 @@
+---
+import Phone from "../icons/phone.svg";
+import Clock from "../icons/clock.svg";
+import Pin from "../icons/pin.svg";
+import { Image } from "astro:assets";
+import Woman from "@assets/images/woman.webp";
+import Talking from "@assets/images/talking.webp";
+import Hands from "@assets/images/hands.webp";
+---
+
+<section class="grid_1-2">
+  <div class="tekst">
+    <p class="eyebrow">Process</p>
+    <h3>Contact Us. It’s Easy.</h3>
+    <p>
+      Leverage agile frameworks to provide a robust synopsis for high level
+      overviews. Iterative approaches to corporate strategy foster
+      collaborative.
+    </p>
+    <div class="list">
+      <li>
+        <Phone class="icon" />
+        <div>
+          <p>Call Today</p>
+          <p class="fed">+1 800 100 900</p>
+        </div>
+      </li>
+      <li>
+        <Clock class="icon" />
+        <div>
+          <p>Monday To Friday</p>
+          <p class="fed">9AM - 5PM</p>
+        </div>
+      </li>
+      <li>
+        <Pin class="icon" />
+        <div>
+          <p>USA Office</p>
+          <p class="fed">195 Devonshire St Boston, MA 02110</p>
+        </div>
+      </li>
+    </div>
+  </div>
+  <div class="bento_grid">
+    <Image src={Woman} alt="Woman" />
+    <Image src={Talking} alt="meeting" />
+    <Image src={Hands} alt="meeting" />
+  </div>
+</section>
+
+<style>
+  section {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: full;
+    margin: var(--space-sections);
+    > * {
+      grid-column: content;
+    }
+  }
+  .grid_1-2 {
+    grid-column: content;
+    display: grid;
+    grid-template-columns: minmax(400px, 1fr) 1fr;
+
+    .bento_grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+
+      gap: 20px;
+      margin-left: 0;
+    }
+    .bento_grid img {
+      width: 100%;
+      height: 100%;
+      border-radius: 1.5rem;
+      display: block;
+    }
+
+    /* Kun brug object-fit hvis browser understøtter det */
+    @supports (object-fit: cover) {
+      .bento_grid img {
+        object-fit: cover;
+      }
+    }
+
+    .bento_grid :nth-child(1) {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+    }
+
+    .bento_grid :nth-child(2) {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .bento_grid :nth-child(3) {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    .tekst {
+      grid-column: 1;
+    }
+
+    li {
+      margin-top: var(--space-ordered-list);
+    }
+
+    .list li {
+      display: flex;
+      align-items: flex-start; /* i stedet for center */
+      gap: 1rem;
+      list-style: none;
+    }
+
+    .icon {
+      width: 10px;
+      height: 10px;
+    }
+
+    .list li > .icon {
+      width: 30px; /* eller 48px */
+      height: 30px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      padding: 0;
+    }
+
+    /* farver pr item */
+    .list li:nth-child(1) .icon {
+      background: #fdecc8;
+      color: #d97706;
+    }
+
+    .list li:nth-child(2) .icon {
+      background: #d1fae5;
+      color: #059669;
+    }
+
+    .list li:nth-child(3) .icon {
+      background: #e5e7eb;
+      color: #374151;
+    }
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+  h3 {
+    font-size: var(--h3-size);
+    font-family: var(--font-header);
+    font-weight: var(--weight-header-regular);
+  }
+  p {
+    font-size: var(--p-size);
+    font-family: var(--font-text);
+    color: var(--color-text-muted);
+  }
+  .fed {
+    font-weight: 600;
+    color: black;
+  }
+
+  @media (max-width: 768px) {
+    section {
+      margin-left: 0;
+    }
+  }
+</style>

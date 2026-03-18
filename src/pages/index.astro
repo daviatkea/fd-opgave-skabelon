@@ -1,8 +1,28 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Hero from "@components/Hero.astro";
+import CoreValuesCard from "@components/CoreValuesCard.astro";
+import Card from "@components/Card.astro";
+import MeetingImage from "@assets/images/meeting.webp";
+import StatsSection from "@components/StatsSection.astro";
+import FinancialProjections from "@components/FinancialProjections.astro";
+import Contact from "@components/Contact.astro";
 ---
 
 <Layout>
   <Hero />
+
+  <Card
+    image={MeetingImage}
+    subtitle="WE'LL WORK WITH YOU"
+    title="What To Expect"
+    description="Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals."
+    point1="Collaborate to build actionable strategies that drive sustainable growth and deliver tangible outcomes."
+    point2="Identify opportunities to optimize processes and implement impactful solutions with measurable results."
+  />
+  <FinancialProjections />
+
+  <StatsSection />
+  <CoreValuesCard title="Dark Section" theme="dark" />
+  <Contact />
 </Layout>
