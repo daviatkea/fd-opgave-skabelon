@@ -2,11 +2,11 @@ Ida og Rosas opgave.
 
 # Ida og Rosas projekt: Fra Figma til Kode
 
-I denne opgave har vi arbejdet med transformationen fra en færdigdesignet Figma-løsning til en fuldt funktionel hjemmeside, med særligt fokus på avanceret CSS og Astro-frameworket. Efter 14 dages intens undervisning i teknikker som `@container`, Defensiv CSS og kodeorganisering, har vi brugt denne opgave til at teste og konsolidere vores nye evner.
+I denne opgave har vi arbejdet med transformationen, fra en færdig-designet Figma-løsning til en fuldt funktionel hjemmeside, med særligt fokus på avanceret CSS og Astro-framework. Efter 14 dages intens undervisning i teknikker som `@container`, Defensiv CSS og kodeorganisering, har vi brugt denne opgave til at teste og konsolidere vores nye evner.
 
 ## Refleksion over løsningen
 
-Der har været mange udfordringer undervejs. Vi har løbende refaktoreret vores kode, efterhånden som vi fik en dybere forståelse for struktur. Eksempelvis i sektionerne **Hero** og **WhatToExpect**, hvor vi i de tidlige stadier havde et komplekst og gentagende grid-hierarki, har vi nu implementeret **Subgrid** for at skabe en mere ren og overskuelig kodebase.
+Der har været mange udfordringer undervejs. Vi har løbende refaktoreret vores kode efterhånden som vi fik en dybere forståelse for struktur. Eksempelvis i sektionerne **Hero** og **WhatToExpect**, hvor vi i de tidlige stadier havde et komplekst og gentagende grid-hierarki, har vi nu implementeret **Subgrid** for at skabe en mere ren og overskuelig kodebase.
 
 En stor succes har været overgangen fra faste værdier til et professionelt system af **Design Tokens**, hvilket har gjort flowet i vores arbejde markant bedre.
 
@@ -86,7 +86,7 @@ I denne opgave har vi arbejdet med hvordan man går fra en færdig designet figm
 # Reflekter kort men fagligt over jeres løsning med henblik på udfordringerne og successerne ved opgaven.
 
 Der har været mange udfordriner i gennem denne opgave. Nogen vi har måtte give afkald på i slutspurten og andre vi har løst med stolthed.
-Et par punkter, vi fælles har rykket os på, er stæder som at forstå CSS og læse kode bedere, på generelt plan. Vores forståelse af kodeopsætningen og strukturen er noget som vi, bare på denne uge, har lavet om i flere gange, fordi vi indervejs i processen, har fundet en berede sturktur, som gjore koden mere overkuelig at arbejde med og flowet bedere.
+Et par punkter, vi fælles har rykket os på, er steder som at forstå CSS på et mere avanceret niveau og læse kode bedere, på generelt plan. Vores forståelse af kodeopsætningen og strukturen er noget som vi, bare på denne uge, har lavet om i flere gange, fordi vi undervejs i processen, har fundet en berede sturktur, som gjorde koden mere overkuelig at arbejde med og flowet bedere.
 
 Eksempelvis i hero-sectionen og WhatToExpect, kan man i tidligere brances se en masse uoverskuelig hieraki og grid, som i virkeligheden gentager sig selv mere end nødvendig. Her har vi været inde og restrukturere nogle punkter, for at udnytte subgrid og generelle hieraki principper.
 
@@ -97,3 +97,5 @@ Eksempelvis i hero-sectionen og WhatToExpect, kan man i tidligere brances se en 
 # Reflekter over, hvor i løsningen, der er brugt progressive enhancement og gennemgå kort, hvordan det er løst.
 
 # Forklar, hvordan du har organiseret din CSS; hvornår er det globalt, og hvornår er det komponent-specifikt.
+
+Når det er CSS der skal gå igen på flere sider, har vi lagt det globalt eller lavet astro sider, der kunne bruges flere steder. I globalt har vi også vores generelle grid og alle vores fonte liggende.
