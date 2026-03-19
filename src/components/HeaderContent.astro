@@ -1,0 +1,27 @@
+---
+import CoreValues from "@data/caseStudy.json";
+import ExperienceData from "@data/experience.json";
+import FinancialProjections from "@data/financialProjections.json";
+---
+
+{
+  CoreValues.map(({ title, subtitle, eyebrow }) => (
+    <div class="card">
+      <div class="card-text">
+        <h3>{eyebrow}</h3>
+        <h1>{title}</h1>
+        <p>{subtitle}</p>
+      </div>
+    </div>
+  ))
+}
+<article>
+  <div class="header-content">
+    <h3>FINANCIAL TOOLS</h3>
+    <h2>Financial Projects</h2>
+    <p>
+      Financial projections are essential for planning and monitoring a
+      company’s performance.
+    </p>
+  </div>
+</article>
