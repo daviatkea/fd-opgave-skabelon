@@ -24,8 +24,25 @@ import CEOImage from "@assets/images/ceo.webp";
   /* Styles her */
   @layer components {
     .hero {
-      background-color: #f3f4f6;
-      padding: 2rem;
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: full;
+      min-height: 100vh;
+      align-items: center;
+    }
+
+    .hero-content {
+      grid-column: content-start / content-mid;
+    }
+
+    .hero img {
+      grid-column: content-mid / full-end;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero :global(.services) {
+      grid-column: content-start / content-end;
     }
   }
 </style>
