@@ -2,6 +2,7 @@
 import "@styles/main.css";
 
 import Header from "@components/Header.astro";
+import FooterCard from "@components/FooterCard.astro";
 ---
 
 <html lang="en">
@@ -16,9 +17,11 @@ import Header from "@components/Header.astro";
     </style>
   </head>
   <body>
+    <Header />
     <main>
       <slot />
     </main>
+    <FooterCard />
   </body>
 </html>
 
