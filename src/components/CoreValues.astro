@@ -3,9 +3,10 @@ import Logo from "@data/images/Logo.gul.svg";
 import "../styles/tokens.css";
 import coreValues from "@data/coreValues.json";
 const { title, subtitle, eyebrow } = coreValues;
+const { theme } = Astro.props;
 ---
 
-<section>
+<section data-theme={theme}>
   <div>
     <h2>{eyebrow}</h2>
     <h1>{title}</h1>
@@ -32,7 +33,6 @@ const { title, subtitle, eyebrow } = coreValues;
 </section>
 
 <style>
-  .card {
-    background-color: var(--color-neutrals-400);
+  [data-theme="dark"] {
   }
 </style>
