@@ -2,6 +2,7 @@
 import Logo from "@data/images/Logo.gul.svg";
 import "../styles/tokens.css";
 import coreValues from "@data/coreValues.json";
+
 const { title, subtitle, eyebrow } = coreValues;
 ---
 
@@ -13,8 +14,8 @@ const { title, subtitle, eyebrow } = coreValues;
       <p class="--lato-18-reg-white">{subtitle}</p>
     </div>
     <a class="--lato-18-minibold-black" href={coreValues.button.link}
-      >{coreValues.button.text}</a
-    >
+      >{coreValues.button.text}
+    </a>
   </div>
   <div class="cards-container">
     {
@@ -102,6 +103,10 @@ const { title, subtitle, eyebrow } = coreValues;
 
     a {
       text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   }
 </style>
