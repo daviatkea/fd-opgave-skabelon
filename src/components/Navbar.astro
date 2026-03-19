@@ -1,0 +1,125 @@
+---
+import { Image } from "astro:assets";
+import logo from "@assets/images/logo.svg";
+---
+
+<section class="navbar">
+  <a href="/">
+    <Image src={logo} alt="Logo" />
+  </a>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/case">Case Study</a></li>
+    <li><a href="/team">Team</a></li>
+    <li><a href="/about">About</a></li>
+  </ul>
+  <button popovertarget="login_popover" class="login">Login</button>
+  <div popover id="login_popover">
+    <h2>Dashboard Login</h2>
+
+    <form>
+      <label for="email">Email address</label>
+      <input id="email" type="email" required />
+
+      <label for="password">Password</label>
+      <input id="password" type="password" required />
+
+      <button type="submit" id="btn_dashboard"> Go to dashboard </button>
+    </form>
+  </div>
+</section>
+
+<style>
+  @layer components {
+    /* CSS TIL MENU-LINJEN */
+    .navbar {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: var(--color-neutrals-900);
+      padding: 20px;
+    }
+
+    ul {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      font-size: 18px;
+    }
+
+    ul a {
+      text-decoration: none;
+      color: var(--color-neutrals-50);
+    }
+
+    button {
+      background-color: var(--color-neutrals-50);
+      color: #0b0f19;
+
+      border: none;
+      border-radius: 20px;
+      padding: 4.5px 25px;
+
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    /* CSS TIL POPOVER */
+    [popover] form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 1rem;
+    }
+
+    [popover] input {
+      padding: 8px 10px;
+      border-radius: 30px;
+      border: 1px solid #ccc;
+    }
+
+    #btn_dashboard {
+      background-color: var(--color-yellow-500);
+    }
+
+    [popover] {
+      width: 300px;
+      border-radius: 10px;
+      border: none;
+      background-color: var(--color-neutrals-200);
+
+      h2 {
+        font-size: 30px;
+      }
+
+      /* popover animation */
+      &,
+      &::backdrop {
+        transition:
+          display 0.5s allow-discrete,
+          overlay 0.5s allow-discrete,
+          opacity 0.5s;
+        opacity: 0;
+      }
+
+      &::backdrop {
+        background: black;
+      }
+
+      &:popover-open {
+        opacity: 1;
+
+        &::backdrop {
+          opacity: 0.5;
+        }
+      }
+
+      @starting-style {
+        &:popover-open,
+        &:popover-open::backdrop {
+          opacity: 0;
+        }
+      }
+    }
+  }
+</style>
