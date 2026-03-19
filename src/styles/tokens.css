@@ -31,10 +31,44 @@
   --color-text-weak: var(--color-neutrals-400);
   --color-surface-highlight: var(--color-yellow-600);
   --color-on-ui-primary-muted: var(--color-neutrals-400);
-}
 
-/* ==== Spacing ==== */
+  /* ==== Spacing ==== */
+  --space-s: clamp(1.125rem, 1.125rem + 0vw, 1.125rem);
+  --space-m: clamp(1.6875rem, 1.6875rem + 0vw, 1.6875rem);
+  --space-l: clamp(2.25rem, 2.25rem + 0vw, 2.25rem);
+  --space-xl: clamp(3.375rem, 3.375rem + 0vw, 3.375rem);
 
 /* ==== Typography ==== */
+  --step--1: clamp(0.9rem, 0.9536rem + -0.0714vw, 0.9375rem);
+  --step-0: clamp(1.125rem, 1.125rem + 0vw, 1.125rem);
+  --step-1: clamp(1.35rem, 1.3259rem + 0.1071vw, 1.4063rem);
+  --step-2: clamp(1.62rem, 1.5609rem + 0.2625vw, 1.7578rem);
+  --step-3: clamp(1.944rem, 1.8355rem + 0.4824vw, 2.1973rem);
+  --step-4: clamp(2.3328rem, 2.1555rem + 0.7882vw, 2.7466rem);
+  --step-5: clamp(2.7994rem, 2.5277rem + 1.2074vw, 3.4332rem);
 
 /* ==== Border Radii ==== */
+--border-20: 20px;
+--border-42: 42px;
+}
+
+  @font-face {
+    font-family: cabin-bold;
+    src: url(../assets/fonts/Cabin-Bold.tff);
+  }
+   @font-face {
+    font-family: cabin-semibold;
+    src: url(../assets/fonts/Cabin-SemiBold.tff);
+  }
+   @font-face {
+    font-family: cabin-regular;
+    src: url(../assets/fonts/Cabin-Regular.tff);
+  }
+   @font-face {
+    font-family: lato-regular;
+    src: url(../assets/fonts/Lato-Regular.tff);
+  }
+  @font-face {
+    font-family: lato-regular;
+    src: url(../assets/fonts/Lato-Blod.tff);
+  }
