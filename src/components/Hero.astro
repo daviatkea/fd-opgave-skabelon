@@ -2,6 +2,9 @@
 import { Image } from "astro:assets";
 import Services from "./Services.astro";
 import CEOImage from "@assets/images/ceo.webp";
+import Button from "./Button.astro";
+import ButtonLink from "./ButtonLink.astro";
+import ArrowRight from "../icons/arrow--right.svg";
 ---
 
 <section class="hero">
@@ -12,8 +15,8 @@ import CEOImage from "@assets/images/ceo.webp";
       the next level. Let us help you navigate challenges and achieve
       sustainable success.
     </p>
-    <a href="#0">Book a Meeting</a>
-    <a href="#0">Learn More</a>
+    <Button text="Book a Meeting" variant="yellow" />
+    <ButtonLink text="Learn more" href="/services" icon={ArrowRight} />
   </div>
   <Image src={CEOImage} alt="CEO" />
 
@@ -24,8 +27,23 @@ import CEOImage from "@assets/images/ceo.webp";
   /* Styles her */
   @layer components {
     .hero {
-      background-color: #f3f4f6;
-      padding: 2rem;
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: full;
+    }
+
+    .hero-content {
+      grid-column: content-start / content-mid;
+    }
+
+    .hero img {
+      grid-column: content-mid / full-end;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero :global(.services) {
+      grid-column: content-start / content-end;
     }
   }
 </style>

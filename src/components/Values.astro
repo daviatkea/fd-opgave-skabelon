@@ -1,0 +1,59 @@
+---
+import Button from "./Button.astro";
+import ValuesCards from "./ValuesCards.astro";
+import Gear from "../icons/Gear.svg";
+import Layers from "../icons/layers.svg";
+import Globe from "../icons/globe.svg";
+import Bars from "../icons/Bars.svg";
+import ArrowRight from "../icons/arrow--right.svg";
+---
+
+<section class="values">
+  <div>
+    <p class="eyebrow">Growing with our clients</p>
+    <h2>Our core values & principles</h2>
+    <p class="subtext">
+      Capitalize on low hanging fruit to identify a ballpark value added
+      activity beta test. Override the digital divide with additional from
+      DevOps.
+    </p>
+
+    <Button text="Get in touch" />
+
+    <div class="ValuesCards_Grid">
+      <ValuesCards
+        icon={Layers}
+        title="Creative Ideas"
+        description="Explore innovative strategies tailored to your goals. Unlock unique solutions that inspire growth and creativity. Drive impactful change."
+        arrowIcon={ArrowRight}
+      />
+
+      <ValuesCards
+        icon={Bars}
+        title="Best Features"
+        description="Deliver advanced tools designed for seamless integration. Optimize workflows with cutting-edge technology."
+        arrowIcon={ArrowRight}
+      />
+
+      <ValuesCards
+        icon={Globe}
+        title="Experience"
+        description="Deliver advanced tools designed for Leverage years of proven expertise across diverse industries. Empower your business with our skilled professionals. Achieve sustainable success."
+        arrowIcon={ArrowRight}
+      />
+
+      <ValuesCards
+        icon={Gear}
+        title="Easy Solutions"
+        description="Streamline your challenges with simple, effective solutions. Ensure hassle-free implementation for measurable results."
+        arrowIcon={ArrowRight}
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .values > * {
+    grid-column: content;
+  }
+</style>

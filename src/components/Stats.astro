@@ -1,0 +1,126 @@
+<div class="yellow-stats">
+  <div class="grid_1-1">
+    <div class="text">
+      <p class="eyebrow">Experience</p>
+      <h2>More than 25 years of experience</h2>
+      <p class="subtext">3000+ our clients are insured around the World</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat-wrapper">
+        <div class="stat" style="--percent:85"></div>
+        <div class="label">Consistency</div>
+      </div>
+
+      <div class="stat-wrapper">
+        <div class="stat" style="--percent:95"></div>
+        <div class="label">Improvement</div>
+      </div>
+
+      <div class="stat-wrapper">
+        <div class="stat" style="--percent:90"></div>
+        <div class="label">Branching</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .yellow-stats {
+    background: var(--color-surface-highlight);
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: full;
+    padding-block: 4rem;
+  }
+
+  .yellow-stats > * {
+    grid-column: content;
+  }
+
+  .grid_1-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    > * + * {
+      margin-left: 64px;
+    }
+  }
+  .text {
+    max-width: 420px;
+    p {
+      font-family: var(--font-text);
+      font-size: var(--p-size);
+    }
+    h2 {
+      font-family: var(--font-text);
+      font-size: var(--h2-size);
+    }
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtext {
+    margin-top: 0.5rem;
+  }
+
+  .stats {
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  .stat-wrapper {
+    display: grid;
+    justify-items: center;
+    gap: 0.8rem;
+  }
+
+  /* .label {
+    font-family: var(--font-text);
+    font-size: var(--p-size);
+  } */
+
+  /* CIRCLE */
+
+  .stat {
+    container: stat / inline-size;
+    --border-width: 5px;
+
+    aspect-ratio: 1;
+    width: 150px;
+    border-radius: 50%;
+    border: var(--border-width) solid var(--color-surface-primary);
+
+    display: grid;
+    position: relative;
+  }
+
+  .stat::before,
+  .stat::after {
+    grid-area: 1 / 1;
+  }
+
+  .stat::after {
+    counter-reset: stat var(--percent);
+    content: counter(stat) "%";
+    place-self: center;
+    font-size: 30cqw;
+    /* font-family: var(--font-header); */
+  }
+
+  .stat::before {
+    content: "";
+    width: 18px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--color-neutrals-900);
+
+    offset-path: border-box;
+    offset-distance: calc(var(--percent) * 1%);
+    offset-anchor: 50% calc(50% - calc(var(--border-width) / 2));
+  }
+</style>

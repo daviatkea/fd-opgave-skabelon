@@ -1,0 +1,32 @@
+---
+import employees from "../data/employees.json";
+---
+
+<section class="team">
+  {
+    employees.map((employee) => (
+      <article class="card">
+        <img class="card-img" src={employee.img} alt={employee.name} />
+
+        <div class="card-content">
+          <h3>{employee.name}</h3>
+          <h4 class="title">{employee.title}</h4>
+          <p>{employee.description}</p>
+
+          <div class="socials">
+            {employee.social_links.map((social) => (
+              <a href={social.url} aria-label={social.platform}>
+                {social.icon}
+              </a>
+            ))}
+          </div>
+        </div>
+      </article>
+    ))
+  }
+</section>
+
+<style>
+  @layer component {
+  }
+</style>

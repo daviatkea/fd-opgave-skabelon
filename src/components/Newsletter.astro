@@ -1,0 +1,77 @@
+---
+import "../styles/tokens.css";
+---
+
+<section class="newsletter">
+  <div class="newsletter_container">
+    <p class="small_text">STAY UPDATED</p>
+
+    <h2>Subscribe Our Newsletter</h2>
+
+    <p class="description">
+      Build stronger Customer Relationships with <span>Consultalk</span>
+    </p>
+
+    <div class="form">
+      <input type="email" placeholder="your mail address" />
+      <button>Subscribe</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  @layer components {
+    .newsletter {
+      background-color: var(--color-neutrals-900);
+      text-align: center;
+      padding: 50px 10px;
+      color: var(--color-on-surface-elevated);
+
+      .newsletter_container {
+        max-width: 700px;
+        margin: auto;
+      }
+
+      .small_text {
+        color: var(--color-action);
+        letter-spacing: 2px;
+        font-size: var(--step--1);
+      }
+
+      h2 {
+        font-size: var(--step-2);
+        font-weight: 600;
+      }
+
+      .description {
+        color: var(--color-on-ui-primary-muted);
+        margin-bottom: 30px;
+        font-size: var(--step--1);
+
+        span {
+          color: var(--color-action);
+        }
+      }
+
+      .form {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+
+        input {
+          padding: 12px 20px;
+          border-radius: var(--border-radius-btn);
+          border: 1px solid var(--color-on-ui-primary-muted);
+          border-bottom: 2px solid var(--color-text-weak);
+          background: transparent;
+          color: var(--color-on-surface-elevated);
+          width: 370px;
+
+          &::placeholder {
+            color: var(--color-on-ui-primary-muted);
+          }
+        }
+      }
+    }
+  }
+</style>
