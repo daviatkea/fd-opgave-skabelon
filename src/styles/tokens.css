@@ -13,6 +13,7 @@
   --color-neutrals-100: #f9fafb;
   --color-neutrals-400: #99a1af;
   --color-yellow-600: #fbc336;
+  --color-black-600: #000000;
 
   /* TOKENS */
   --color-action: var(--color-yellow-500);
@@ -34,7 +35,15 @@
 }
 
 /* ==== Spacing ==== */
-
+:root {
+  --space-s: clamp(0.75rem, 0.7rem + 0.2vw, 0.9rem);
+  --space-m: clamp(1rem, 0.9rem + 0.4vw, 1.25rem);
+  --space-l: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);
+}
 /* ==== Typography ==== */
+
+:root {
+  --font-cabin: 'Cabin', sans-serif;
+}
 
 /* ==== Border Radii ==== */
