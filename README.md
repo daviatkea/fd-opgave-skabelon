@@ -85,17 +85,10 @@ I denne opgave har vi arbejdet med hvordan man går fra en færdig designet figm
 
 # Reflekter kort men fagligt over jeres løsning med henblik på udfordringerne og successerne ved opgaven.
 
-Der har været mange udfordriner i gennem denne opgave. Nogen vi har måtte give afkald på i slutspurten og andre vi har løst med stolthed.
-Et par punkter, vi fælles har rykket os på, er steder som at forstå CSS på et mere avanceret niveau og læse kode bedere, på generelt plan. Vores forståelse af kodeopsætningen og strukturen er noget som vi, bare på denne uge, har lavet om i flere gange, fordi vi undervejs i processen, har fundet en berede sturktur, som gjorde koden mere overkuelig at arbejde med og flowet bedere.
-
-Eksempelvis i hero-sectionen og WhatToExpect, kan man i tidligere brances se en masse uoverskuelig hieraki og grid, som i virkeligheden gentager sig selv mere end nødvendig. Her har vi været inde og restrukturere nogle punkter, for at udnytte subgrid og generelle hieraki principper.
-
-# Fremhæv specifikke kodestumper, der illustrerer brugen af forskellige teknikker og principper fra undervisningen, samt hvorfor de er brugbare.
-
-# Fremhæv steder, hvor Defensive CSS er tænkt ind.
-
-# Reflekter over, hvor i løsningen, der er brugt progressive enhancement og gennemgå kort, hvordan det er løst.
-
-# Forklar, hvordan du har organiseret din CSS; hvornår er det globalt, og hvornår er det komponent-specifikt.
+Eksempelvis i hero-sectionen og WhatToExpect, kan man i tidligere brances se en masse uoverskuelig hieraki og grid, som i virkeligheden gentager sig selv mere end nødvendig. Her har vi været inde og restrukturere nogle punkter, for at udnytte subgrid og generelle hieraki principper. Det er eksempelvis en af de steder vi her revurderet vores arbejdsproces og optimeret vores kode.
 
 Når det er CSS der skal gå igen på flere sider, har vi lagt det globalt eller lavet astro sider, der kunne bruges flere steder. I globalt har vi også vores generelle grid og alle vores fonte liggende.
+
+Der har været mange udfordriner i gennem denne opgave. Nogen vi har måtte give afkald på i slutspurten og andre vi har løst med stolthed.
+Et par punkter, vi fælles har rykket os på, er steder som at forstå CSS på et mere avanceret niveau og læse kode bedere, på generelt plan. Vores forståelse af kodeopsætningen og strukturen er noget som vi, bare på denne uge, har lavet om i flere gange, fordi vi undervejs i processen, har fundet en berede sturktur, som gjorde koden mere overkuelig at arbejde med og flowet bedere.
+Vi har lært rigitg meget igennem hele UI forløbet og fået det ekstra godt ind under hunden i denne opgave.
