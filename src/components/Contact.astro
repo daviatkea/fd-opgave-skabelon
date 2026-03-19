@@ -1,16 +1,114 @@
 ---
 import { Image } from "astro:assets";
+import "../styles/tokens.css";
+import indeximg1 from "@assets/images/indeximg1.svg";
+import indeximg2 from "@assets/images/indeximg2.svg";
+import indeximg3 from "@assets/images/indeximg3.svg";
+import greenboximage from "@assets/images/greenbox.png";
 ---
 
-<section>
-  <h2>proces</h2>
-  <h3>Contact us. It's Easy</h3>
-  <p>
-    Leverage agile frameworks to provide a robust synopsis for high level
-    overviews. Iterative approaches to corporate strategy foster collaborative.
-  </p>
+<section class="grid-contact">
+  <div class="grid-text">
+    <h2 class="--lato-16-reg-black">proces</h2>
+    <h3 class="--cabin-45-bold-black">Contact us. It's Easy</h3>
+    <p class="--lato-18-reg-muted">
+      Leverage agile frameworks to provide a robust synopsis for high level
+      overviews. Iterative approaches to corporate strategy foster
+      collaborative.
+    </p>
+  </div>
 
-  <img src="../data/images/image" alt="" />
-
-  <div></div>
+  <div>
+    <div class="grid">
+      <div class="card large">
+        <div class="overlap">
+          <Image src={indeximg1} alt="" />
+        </div>
+      </div>
+      <div class="card top-right">
+        <Image src={indeximg2} alt="" />
+      </div>
+      <div class="card bottom-right">
+        <Image src={indeximg3} alt="" />
+      </div>
+    </div>
+  </div>
 </section>
+
+<style>
+  .grid-contact {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+  }
+  .grid-text {
+    /* display: grid; */
+    place-items: center;
+    display: block;
+    unicode-bidi: isolate;
+  }
+  .overlap {
+    margin-inline: auto;
+    max-width: 400px;
+    margin: 2rem;
+    display: block;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: -3rem;
+      bottom: -2rem;
+      background: var(--color-green-400);
+      width: 300px;
+      height: 160px;
+      z-index: -1;
+      border-radius: 25px;
+    }
+  }
+
+  img {
+    inline-size: 100%;
+    display: block;
+  }
+
+  /*IMAGES*/
+  .grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .card {
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Layout placement */
+  .large {
+    grid-row: 1 / span 2;
+    grid-column: 1 / 2;
+  }
+
+  .top-right {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+  }
+
+  .bottom-right {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+  }
+  section {
+    padding-bottom: 2rem;
+  }
+</style>
