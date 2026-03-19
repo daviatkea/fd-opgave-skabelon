@@ -2,66 +2,141 @@
 //@ts-nocheck
 import DynamicImage from "@components/helpers/DynamicImage.astro";
 import caseStudy from "@data/caseStudy.json";
+import Banner from "@components/Banner.astro";
+import "../styles/tokens.css";
 const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
 ---
 
+<section class="case-top">
+  <Banner
+    title="Case Studies"
+    boldtitle="Taxes & Effeciency"
+    bannertext="Our achievements reflect the close collaboration between our expert teams and our esteemed clientele. We cultivate a workplace that champions peak performance and guarantees client satisfaction."
+  />
+</section>
 <article>
-  <header>
-    <DynamicImage src={image} alt={caseName} />
-    <div class="case-details">
-      <dl>
-        <div>
-          <dt>Case Name</dt>
-          <dd>{caseName}</dd>
+  <header class="case-hero">
+    <DynamicImage class="caseimg" src={image} alt={caseName} />
+    <section class="case-hero">
+      <div class="case-details">
+        <dl>
+          <div>
+            <dt class="--cabin-20-semibold-white">Case Name</dt>
+            <dd class="--cabin-16-reg-white">{caseName}</dd>
+          </div>
+          <div>
+            <dt class="--cabin-20-semibold-white">Category</dt>
+            <dd class="category --cabin-16-reg-white">{category}</dd>
+          </div>
+          <div>
+            <dt class="--cabin-20-semibold-white">Date</dt>
+            <dd class="date --cabin-16-reg-white">{date}</dd>
+          </div>
+        </dl>
+        <div class="colorbutton">
+          <a href="#0" class="button --lato-16-reg-black">{buttonLabel}</a>
         </div>
-        <div>
-          <dt>Category</dt>
-          <dd class="category">{category}</dd>
-        </div>
-        <div>
-          <dt>Date</dt>
-          <dd class="date">{date}</dd>
-        </div>
-      </dl>
-      <a href="#0" class="button">{buttonLabel}</a>
-    </div>
+      </div>
+    </section>
   </header>
   {
     caseStudy.sections.map((section) => (
-      <section>
-        {caseStudy.sections[0] === section ? (
-          <h2>{section.title}</h2>
-        ) : (
-          <h3>{section.title}</h3>
-        )}
+      <section class="main-case">
+        <article>
+          {caseStudy.sections[0] === section ? (
+            <h2 class="--cabin-45-bold-black">{section.title}</h2>
+          ) : (
+            <h3 class="--cabin-25-semibold-black">{section.title}</h3>
+          )}
 
-        {Array.isArray(section.content) ? (
-          <>
-            {section.content.map((item) => (
-              <p>{item}</p>
-            ))}
-          </>
-        ) : (
-          <p>{section.content}</p>
-        )}
-        {section.highlights && (
-          <ul>
-            {section.highlights.map((highlight) => (
-              <li>{highlight}</li>
-            ))}
-          </ul>
-        )}
-        {section.image && (
-          <DynamicImage
-            src={section.image}
-            alt={section.title}
-            width={600}
-            height={400}
-          />
-        )}
+          {Array.isArray(section.content) ? (
+            <>
+              {section.content.map((item) => (
+                <p class="--lato-18-reg-muted">{item}</p>
+              ))}
+            </>
+          ) : (
+            <p class="--lato-18-reg-muted">{section.content}</p>
+          )}
+          {section.highlights && (
+            <ul class="--lato-18-reg-muted">
+              {section.highlights.map((highlight) => (
+                <li>{highlight}</li>
+              ))}
+            </ul>
+          )}
+          {section.image && (
+            <DynamicImage
+              class="caseimg2"
+              src={section.image}
+              alt={section.title}
+              width={600}
+              height={400}
+            />
+          )}
+        </article>
       </section>
     ))
   }
 </article>
 
-<style></style>
+<style>
+  .case-top {
+    margin-top: 4rem;
+  }
+  article {
+    margin-top: 4rem;
+  }
+  .case-hero {
+    margin-top: -3rem;
+  }
+  header {
+    place-items: center;
+  }
+  .caseimg {
+    display: grid;
+    max-width: 90%;
+    grid-column: 2/4;
+    grid-row: 2/4;
+    border-radius: 25px;
+    position: relative;
+    z-index: -1;
+  }
+  .caseimg2 {
+    padding: 15px;
+  }
+  .case-details {
+    display: grid;
+    grid-template-columns: auto 2fr 1fr auto;
+    background-color: var(--color-blue-700);
+    /* max-width: 55rem; */
+    padding: 3rem;
+    border-radius: 20px;
+  }
+  dl {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  dt {
+    color: var(--color-neutrals-100);
+  }
+  dd {
+    color: var(--color-neutrals-100);
+  }
+
+  .colorbutton {
+    background-color: var(--color-yellow-500);
+    border-radius: 25px;
+    padding-inline: 15px;
+    padding-top: 11px;
+  }
+  .main-case {
+    place-items: center;
+  }
+
+  .main-case ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+</style>

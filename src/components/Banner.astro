@@ -1,27 +1,57 @@
 ---
 import "../styles/tokens.css";
 
-const { title } = Astro.props;
+const { title, boldtitle, bannertext } = Astro.props;
 ---
 
 <section>
   <div>
-    <h2>{title}</h2>
-    <h3>Igniting innovation</h3>
+    <h2 class="--lato-16-reg-black">{title}</h2>
+    <div class="anchor"><h3 class="--cabin-60-bold-black">{boldtitle}</h3></div>
 
-    <p>
-      Our strength lies in the collaboration between our talented teams and
-      esteemed clients. We cultivate a workplace that champions innovation,
-      promotes peak performance, and guarantees client satisfaction.
+    <div class="yellow-line"></div>
+
+    <p class="--lato-18-reg-muted">
+      {bannertext}
     </p>
   </div>
 </section>
 
 <style>
+  .anchor {
+    anchor-name: --anchor;
+  }
+  .yellow-line {
+    display: grid;
+    grid-template-columns: auto;
+    position: relative;
+    position-anchor: --anchor;
+    position-area: left;
+
+    &::before {
+      content: "";
+      text-decoration: underline;
+      text-decoration-thickness: 3px;
+      text-decoration-color: var(--color-yellow-500);
+      padding-right: 3rem;
+      position: absolute;
+      top: 2rem;
+      left: 0;
+      right: 0;
+    }
+  }
+
   section {
     place-items: center;
+    text-align: center;
   }
   h2 {
     text-transform: uppercase;
+  }
+
+  h3 {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: var(--color-yellow-500);
   }
 </style>
