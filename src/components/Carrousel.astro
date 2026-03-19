@@ -1,0 +1,121 @@
+---
+import financialProjections from "../data/financialProjections.json";
+import DynamicImage from "../components/helpers/DynamicIcon.astro";
+---
+
+<section class="carousel-section reveal">
+  <div class="carousel-div">
+    <div class="carousel-header">
+      <p class="eyebrow">{financialProjections.eyebrow}</p>
+      <h2>{financialProjections.title}</h2>
+      <p class="subtitle">{financialProjections.subtitle}</p>
+    </div>
+
+    <div class="carousel-window">
+      <div class="carousel-track">
+        {
+          financialProjections.values.map((item) => (
+            <article class="card">
+              <DynamicImage name={item.icon} />
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              {/* <a href={item.link.url}>{item.link.text}</a> */}
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @layer components {
+    .carousel-section {
+      /* padding: 5rem 1.5rem; */
+      background: #f3f4f6;
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: full;
+      > * {
+        grid-column: content;
+      }
+    }
+
+    .carousel-header {
+      margin: 0 auto 2.5rem;
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #374151;
+    }
+
+    .carousel-header h2 {
+      margin: 0 0 1rem;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1;
+      color: #111827;
+    }
+
+    .subtitle {
+      max-width: 700px;
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #4b5563;
+    }
+
+    .carousel-window {
+      /* max-width: 1200px; */
+      margin: 0 auto;
+      overflow: visible;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .card {
+      flex: 0 0 calc((100% - 4.5rem) / 4);
+      background: #e5e7eb;
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:last-child {
+      flex-basis: calc(((100% - 4.5rem) / 4) + ((100vw - 1200px) / 2));
+    }
+
+    .icon {
+      width: 3rem;
+      height: 3rem;
+      display: grid;
+      place-items: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .card h3 {
+      margin: 0 0 0.75rem;
+      font-size: 1.4rem;
+      line-height: 1.2;
+      color: #111827;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: #4b5563;
+    }
+  }
+</style>

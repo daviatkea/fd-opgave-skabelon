@@ -31,10 +31,16 @@
   --color-text-weak: var(--color-neutrals-400);
   --color-surface-highlight: var(--color-yellow-600);
   --color-on-ui-primary-muted: var(--color-neutrals-400);
+
+  /* ==== Spacing ==== */
+  --card-margin-top: 34px;
+  --card-gap: 36px;
+  --btn-padding: 15px 34px;
+
+  /* ==== Typography ==== */
+  --p-lineheight: 1.6;
+
+  /* ==== Border Radii ==== */
+  --card-border: 20px;
+  --btn-border: 42px;
 }
-
-/* ==== Spacing ==== */
-
-/* ==== Typography ==== */
-
-/* ==== Border Radii ==== */

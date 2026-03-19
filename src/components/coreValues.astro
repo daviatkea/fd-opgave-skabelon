@@ -1,0 +1,96 @@
+---
+const { backgroundColor, textColor } = Astro.props;
+import coreValues from "../data/coreValues.json";
+import "../styles/tokens.css";
+import DynamicImage from "./helpers/DynamicImage.astro";
+---
+
+<section style={`background-color: ${backgroundColor}; color: ${textColor};`}>
+  <div class="header">
+    <div class="text">
+      <p>{coreValues.eyebrow}</p>
+      <h1>{coreValues.title}</h1>
+      <p>{coreValues.subtitle}</p>
+    </div>
+    <a
+      class="get-in-touch"
+      href={coreValues.button.link}
+      style={`background-color: ${textColor}; color: ${backgroundColor};`}
+    >
+      {coreValues.button.text}
+    </a>
+  </div>
+  <aside>
+    {
+      coreValues.values.map((value) => (
+        <div class="card">
+          <h3>{value.title}</h3>
+          <p>{value.description}</p>
+          <a class="read-more-btn" href={value.link.url}>
+            {value.link.text}
+          </a>
+        </div>
+      ))
+    }
+  </aside>
+</section>
+
+<style>
+  @layer components {
+    section {
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: full;
+      > * {
+        grid-column: content;
+      }
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header .text {
+      flex: 1 / 1;
+    }
+    section {
+      background-color: var(--color-neutrals-50);
+      padding: 100px;
+    }
+    aside {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--card-gap);
+    }
+
+    .card {
+      background-color: white;
+      line-height: var(--p-lineheight);
+      padding: 24px;
+      border-radius: var(--card-border);
+      margin-top: var(--card-margin-top);
+      display: flex;
+      flex-direction: column;
+      color: var(--color-neutrals-900);
+    }
+    .get-in-touch {
+      text-decoration: none;
+      color: var(--color-neutrals-50);
+      background-color: var(--color-neutrals-900);
+      padding: var(--btn-padding);
+      border-radius: var(--btn-border);
+    }
+    .read-more-btn {
+      color: var(--color-neutrals-900);
+      background-color: transparent;
+      text-decoration: none;
+      margin-top: auto;
+    }
+    .read-more-btn::after {
+      content: "→";
+      display: inline-block;
+      margin-left: 6px;
+    }
+  }
+</style>
