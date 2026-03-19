@@ -2,25 +2,123 @@
 import HeaderContent from "./HeaderContent.astro";
 ---
 
-<article class="full-bleed">
-  <HeaderContent />
-  <h2>EXPERIENCE</h2>
-  <h3>More than 25 years of experience</h3>
-  <p>3000+ our clients are insured around the World</p>
-
-  <div></div>
-</article>
+<section class="full-bleed">
+  <div class="experienceGrid">
+    <div class="experienceheader">
+      <h2 class="--lato-16-reg-black">EXPERIENCE</h2>
+      <h3 class="--cabin-45-bold-black">More than 25 years of experience</h3>
+      <p class="--lato-18-reg-black">
+        3000+ our clients are insured around the World
+      </p>
+    </div>
+    <article class="stats-container">
+      <div class="stat-circle" style="--value: 85;">
+        <span class="--cabin-20-semibold-black">Consistency</span>
+      </div>
+      <div class="stat-circle" style="--value: 95;">
+        <span class="--cabin-20-semibold-black">Improvement</span>
+      </div>
+      <div class="stat-circle" style="--value: 90;">
+        <span class="--cabin-20-semibold-black">Branching</span>
+      </div>
+    </article>
+  </div>
+</section>
 
 <style>
-  article {
+  section {
     background-color: var(--color-surface-highlight);
+    padding-block: 50px;
   }
 
-  div {
-    border: 10px solid #000000;
+  .experienceGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .experienceheader {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .stats-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 60px;
+    padding: 50px;
+  }
+
+  @property --animatedNumber {
+    syntax: "<number>";
+    initial-value: 0;
+    inherits: true;
+  }
+
+  .stat-circle {
+    --animatedNumber: 0;
+    --percentage: calc(var(--animatedNumber) * 1%);
+    --bd: 4px;
+
+    position: relative;
+    width: 150px;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+
+    border: var(--bd) solid transparent;
     background:
-      conic-gradient (#fff 0 100%) padding-box,
-      conic-gradient (red 25%, blue 0) border-box;
-    border-radius: 999px;
+      conic-gradient(#fbc336 0 100%) padding-box,
+      conic-gradient(white var(--percentage), rgba(255, 255, 255, 0.2) 0)
+        border-box;
+    border-radius: 50%;
+
+    animation: countUp 2.5s ease-out forwards;
+  }
+
+  .stat-circle span {
+    position: absolute;
+    top: 110%;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  @keyframes countUp {
+    to {
+      --animatedNumber: var(--value);
+    }
+  }
+
+  .stat-circle::after {
+    counter-reset: val round(var(--animatedNumber));
+    content: counter(val) "%";
+
+    /* Match billedet */
+    font-family:
+      "Cabin", sans-serif; /* Sørg for det er Cabin ligesom overskriften */
+    font-size: 48px; /* Justeret op fra 40px/2.5rem for at fylde cirklen */
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .stat-circle::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    width: 18px;
+    height: 18px;
+    background: #1a1a1a;
+    border: 2px solid white;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+    offset-path: border-box;
+    offset-rotate: 0deg;
+    offset-path: circle(50%);
+
+    offset-path: border-box;
+    offset-distance: calc(var(--percentage) - 0%);
   }
 </style>
