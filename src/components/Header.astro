@@ -8,10 +8,10 @@ import DropdownLogin from "./DropdownLogin.astro";
   <div>
     <Logo />
     <nav>
-      <a class="--lato-16-reg-white" href="/">Home</a>
-      <a class="--lato-16-reg-white" href="/case">Case study</a>
-      <a class="--lato-16-reg-white" href="/team">Team</a>
-      <a class="--lato-16-reg-white" href="/about">About</a>
+      <a class="--lato-14-reg-white" href="/">Home</a>
+      <a class="--lato-14-reg-white" href="/case">Case study</a>
+      <a class="--lato-14-reg-white" href="/team">Team</a>
+      <a class="--lato-14-reg-white" href="/about">About</a>
     </nav>
     <button popovertarget="pop">Login</button>
     <DropdownLogin />
@@ -20,7 +20,7 @@ import DropdownLogin from "./DropdownLogin.astro";
 
 <style>
   header {
-    background-color: var(--color-text);
+    background-color: var(--color-neutrals-1000);
     padding-block: 2rem;
 
     div {
@@ -28,18 +28,11 @@ import DropdownLogin from "./DropdownLogin.astro";
       grid-template-columns: 1fr 2fr 1fr;
     }
 
-    nav a {
-      font-family: "Inter", sans-serif;
-      font-optical-sizing: auto;
-      font-size: x-large;
-      font-style: normal;
-    }
-
     nav {
       display: flex;
       gap: 20px;
-      justify-content: center; /* centrer horisontalt */
-      align-items: center;
+      justify-content: center;
+      align-items: flex-end;
     }
 
     img {

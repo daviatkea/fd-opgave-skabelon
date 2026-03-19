@@ -2,11 +2,13 @@
 import { Image } from "astro:assets";
 import Services from "./Services.astro";
 import CEOImage from "@assets/images/ceo.webp";
+import Banner from "@components/Banner.astro";
 ---
 
 <section class="hero full-bleed">
   <div class="hero-top">
     <div class="hero-content">
+      <Banner />
       <h1 class="--cabin-50-bold-white">Empowering Your Business Growth</h1>
       <p class="--lato-18-reg-400muted">
         Discover tailored strategies and expert insights to take your business
@@ -58,9 +60,10 @@ import CEOImage from "@assets/images/ceo.webp";
 
     @layer components {
       .ceo {
-        width: 1670.318px;
-        aspect-ratio: 256/167;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
+        display: block;
       }
       .hero {
         background-color: #030712;
@@ -69,7 +72,7 @@ import CEOImage from "@assets/images/ceo.webp";
       .hero-content {
         /***HERO BACCKGROUND ***/
 
-        padding: 8lh 1lh;
+        padding: 3lh;
         --grid-color: oklch(from #ffcc4a l c h / 0.18);
         --grid-size: 60px;
 
@@ -91,8 +94,8 @@ import CEOImage from "@assets/images/ceo.webp";
 
       .hero-top {
         display: grid;
-        grid-template-columns: 2fr 3fr;
-        grid-template-rows: auto;
+        grid-template-columns: 1fr 1fr;
+        align-items: stretch;
       }
       .service {
         display: flex;
