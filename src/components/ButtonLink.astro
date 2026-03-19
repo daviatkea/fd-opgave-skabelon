@@ -1,0 +1,33 @@
+---
+import ArrowRight from "../icons/arrow--right.svg";
+const { text = "Go", href = "#", target = "_self" } = Astro.props;
+---
+
+<a href={href} target={target} class="btn-link">
+  <span class="btn-text">{text}</span>
+  <ArrowRight class="btn-icon" />
+</a>
+
+<style>
+  @layer components {
+    .btn-link {
+      display: inline-block;
+      padding: 0.3rem 1.5rem;
+      border-radius: 1rem;
+      background-color: var(--color-neutrals-900);
+      border: 1px solid var(--color-neutrals-50);
+      color: var(--color-neutrals-50);
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-icon {
+      width: 16px;
+      height: 13.091px;
+      display: inline-block;
+      stroke: var(--color-neutrals-50);
+      stroke-width: 2px;
+    }
+  }
+</style>
