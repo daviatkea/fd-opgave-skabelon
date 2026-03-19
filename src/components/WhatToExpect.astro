@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import whattoecpectimage from "@assets/images/whattoexpect.png";
+import greenboximage from "@assets/images/greenbox.png";
+---
+
+---
+
+<section class="whattoexpect_grid">
+  <div class="grid_overlap">
+    <Image src={greenboximage} alt="greenbox" class="greenbox" />
+    <Image src={whattoecpectimage} alt="overlapimg" class="overlapimg" />
+  </div>
+  <p>we'll work with you</p>
+  <h2>What to expect</h2>
+  <p>Our collaboration is built on transparency</p>
+</section>
+<style>
+  .whattoexpect_grid {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+  }
+  .grid_overlap {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: 1fr 7fr 1fr;
+    padding: 25px;
+  }
+
+  .greenbox {
+    width: 15%;
+    aspect-ratio: 1/1;
+    display: grid;
+    grid-column: 1/3;
+    grid-row: 1/3;
+  }
+
+  .overlapimg {
+    display: grid;
+    max-width: 55%;
+    grid-column: 2/4;
+    grid-row: 2/4;
+  }
+</style>

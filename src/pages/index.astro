@@ -1,8 +1,22 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Hero from "@components/Hero.astro";
+import Header from "@components/Header.astro";
+import FactCard from "@components/FactCard.astro";
+import FooterCard from "@components/FooterCard.astro";
+import WhatToExpect from "@components/WhatToExpect.astro";
+import FinalProjects from "@components/FinalProjects.astro";
+import ExperienceData from "@components/ExperienceData.astro";
 ---
 
 <Layout>
+  <Header />
   <Hero />
+  <WhatToExpect />
+  <FinalProjects>
+    <ExperienceData />
+    <FooterCard />
+  </FinalProjects>
+
+  <style></style>
 </Layout>

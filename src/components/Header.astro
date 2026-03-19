@@ -1,0 +1,65 @@
+---
+import Logo from "@data/images/Logo.gul.svg";
+import "../styles/tokens.css";
+import DropdownLogin from "./DropdownLogin.astro";
+---
+
+<header class="full-bleed">
+  <div>
+    <Logo />
+    <nav>
+      <a class="--lato-16-reg-white" href="/">Home</a>
+      <a class="--lato-16-reg-white" href="/fakta">Case study</a>
+      <a class="--lato-16-reg-white" href="/planer">Team</a>
+      <a class="--lato-16-reg-white" href="/planside">About</a>
+    </nav>
+    <button popovertarget="pop">Login</button>
+    <DropdownLogin />
+  </div>
+</header>
+
+<style>
+  header {
+    background-color: var(--color-text);
+    padding-block: 2rem;
+
+    div {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+    }
+
+    nav a {
+      font-family: "Inter", sans-serif;
+      font-optical-sizing: auto;
+      font-size: x-large;
+      font-style: normal;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      justify-content: center; /* centrer horisontalt */
+      align-items: center;
+    }
+
+    img {
+      width: 20%;
+      height: auto;
+      padding-left: 3rem;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  button {
+    margin-right: 200px;
+    background: #b1b1b1;
+    color: #000000;
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+    cursor: pointer;
+  }
+</style>
