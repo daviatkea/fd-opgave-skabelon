@@ -1,11 +1,13 @@
 ---
 import "../styles/tokens.css";
+
+const { title } = Astro.props;
 ---
 
 <section>
-  <div class="banner">
-    <h3>ABOUT</h3>
-    <h2>Igniting innovation</h2>
+  <div>
+    <h2>{title}</h2>
+    <h3>Igniting innovation</h3>
 
     <p>
       Our strength lies in the collaboration between our talented teams and
@@ -15,4 +17,11 @@ import "../styles/tokens.css";
   </div>
 </section>
 
-<style></style>
+<style>
+  section {
+    place-items: center;
+  }
+  h2 {
+    text-transform: uppercase;
+  }
+</style>

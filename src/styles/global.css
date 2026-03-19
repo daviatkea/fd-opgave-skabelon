@@ -13,9 +13,8 @@ body {
 
   display: grid;
   grid-template-columns:
-    [full-bleed-start] var(--margin) [content-start] var(--content) var(
-      --content
-    )
+    [full-bleed-start] var(--margin) [content-start] var(--content)
+    [content-middle] var(--content)
     [content-end] var(--margin)
     [full-bleed-end];
   grid-template-rows: auto 1fr auto;
@@ -45,6 +44,10 @@ body {
       }
     }
   }
+}
+
+p {
+  max-width: 70ch;
 }
 
 /* CAR STYLING */
