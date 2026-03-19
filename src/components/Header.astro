@@ -1,0 +1,140 @@
+---
+import Logo from "@icons/logo.svg";
+---
+
+<header>
+  <nav>
+    <Logo />
+
+    <!-- Lav siderne og link til dem -->
+    <ul>
+      <li><a href="/">Home </a></li>
+      <li><a href="/case">Case Study </a></li>
+      <li><a href="/">Team </a></li>
+      <li><a href="/">About </a></li>
+    </ul>
+
+    <button popovertarget="pop">Login</button>
+
+    <aside id="pop" popover="manual">
+      <div>
+        <h2>Dashboard Login</h2>
+        <form>
+          <p>Email address</p>
+          <input type="email" />
+          <p>Password</p>
+          <input type="password" />
+          <button type="submit">Go to dashboard</button>
+        </form>
+      </div>
+    </aside>
+  </nav>
+</header>
+
+<style>
+  @layer components {
+    header {
+      background: var(--color-surface-elevated-transparent);
+      padding: 38px;
+    }
+
+    nav {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+
+    ul {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+
+      li {
+        list-style: none;
+      }
+
+      a {
+        display: inline flex;
+        text-decoration: none;
+        color: var(--color-on-ui-primary);
+        font-size: var(--step--2);
+      }
+    }
+
+    button {
+      background: var(--color-on-ui-primary);
+      font-size: var(--step--2);
+      border-radius: 999px;
+      border: none;
+      color: var(--color-text);
+
+      width: 94px;
+      height: 36px;
+
+      justify-content: center;
+      align-items: center;
+      place-self: end;
+      align-self: center;
+    }
+
+    /*POPUP BUTTON  */
+
+    /* button:active {
+      background: #b1b1b1;
+    }*/
+
+    #pop {
+      border-radius: 20px;
+      border: none;
+      max-width: 394px;
+    }
+
+    div {
+      background: var(--color-surface-primary);
+      font-size: var(--step--3);
+      color: var(--color-text);
+      padding: 32px;
+
+      h2 {
+        font-size: var(--step-3);
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 42px;
+      }
+
+      input {
+        border-radius: 44px;
+        border: 1px solid var(--color-text-weak);
+
+        width: 330px;
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+
+      button[type="submit"] {
+        background: var(--color-action);
+        font-size: var(--step--2);
+        font-weight: 600;
+        text-align: center;
+
+        border-radius: 42px;
+        width: 330px;
+        height: 59px;
+        padding: 15px 56px;
+      }
+    }
+
+    [popovertarget] {
+      anchor-name: --dash-login;
+    }
+    [popover] {
+      position: absolute;
+      position-anchor: --dash-login;
+      position-area: bottom span-left;
+      justify-self: anchor-center;
+    }
+  }
+</style>

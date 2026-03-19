@@ -1,0 +1,29 @@
+---
+import ExpectCard from "./ExpectCard.astro";
+import { Image } from "astro:assets";
+import img1 from "@assets/images/ceo.webp";
+---
+
+<section>
+  <div>
+    <Image src={img1} alt="CEO" />
+    <ExpectCard
+      FirstTitle="WE'LL WORK WITH YOU"
+      HovedTitle="What To Expect"
+      Information="Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals."
+    />
+  </div>
+</section>
+
+<style>
+  section {
+    margin-top: 10rlh;
+  }
+
+  div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+  }
+ 
+</style>

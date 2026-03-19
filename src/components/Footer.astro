@@ -1,0 +1,35 @@
+---
+import Logo from "@icons/logo.svg";
+---
+
+<footer>
+  <div>
+    <Logo />
+    <p>©2025 Consultalk. All rights reserved</p>
+    <p>Terms of Service | Privacy Policy</p>
+  </div>
+</footer>
+
+<style>
+  @layer components {
+    footer {
+      background: var(--color-ui-primary);
+      color: var(--color-text-weak);
+      padding: 38px;
+    }
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+
+      margin: 0 auto;
+      max-width: 1200px;
+
+      p {
+        font-size: var(--step--1);
+      }
+    }
+  }
+</style>
