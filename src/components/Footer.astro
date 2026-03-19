@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+import logo from "@assets/images/logo.svg";
+---
+
+<section class="footer">
+  <a href="/">
+    <Image src={logo} alt="Logo" />
+  </a>
+  <ul>
+    <li>©2025 Consultalk. All rights reserved</li>
+    <li>Terms of Service | Privacy Policy</li>
+  </ul>
+</section>
+
+<style>
+  @layer components {
+    .footer {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: var(--color-neutrals-900);
+      padding: 20px;
+    }
+  }
+
+  ul {
+    color: var(--color-neutrals-400);
+    list-style: none;
+    display: flex;
+    gap: 15rem;
+    font-size: 13px;
+  }
+</style>
