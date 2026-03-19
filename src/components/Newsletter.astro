@@ -1,0 +1,73 @@
+<section class="newsletter">
+  <p class="updated">STAY UPDATED</p>
+  <h4>Subscribe Our Newsletter</h4>
+  <p class="description">
+    Build stronger Customer Relationships with
+    <span class="brand">Consultalk</span>
+  </p>
+
+  <div class="newsletter_subscribe">
+    <input type="email" placeholder="your mail address" class="email" />
+    <button class="subscribe">Subscribe</button>
+  </div>
+</section>
+
+<style>
+  @layer components {
+    .newsletter {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background-color: var(--color-neutrals-900);
+      padding: 28px;
+    }
+
+    h4 {
+      font-size: 29px;
+    }
+
+    .newsletter .updated {
+      color: var(--color-yellow-500);
+      letter-spacing: 2.5px;
+    }
+
+    .newsletter h4 {
+      color: var(--color-neutrals-50);
+      font-weight: 500;
+    }
+
+    .newsletter .description {
+      color: var(--color-neutrals-700);
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    .newsletter .brand {
+      color: var(--color-yellow-500);
+    }
+
+    /* KNAPPER */
+
+    .newsletter_subscribe {
+      padding: 30px;
+    }
+
+    .email {
+      border-radius: 20px;
+      padding: 7px 40px;
+      border-color: var(--color-neutrals-700);
+      border-style: solid;
+    }
+
+    .email::placeholder {
+      color: var(--color-neutrals-400);
+    }
+    .subscribe {
+      border-radius: 20px;
+      background-color: var(--color-yellow-500);
+      padding: 7px 20px;
+      border: none;
+    }
+  }
+</style>
