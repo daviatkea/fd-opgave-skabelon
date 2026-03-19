@@ -1,0 +1,61 @@
+---
+const { variant = "primary", href = "#" } = Astro.props;
+---
+
+<a href={href} class={variant}>
+  <slot />
+</a>
+
+<style>
+  @layer components {
+    .yellow_link {
+      background: var(--color-action);
+      color: var(--color-text);
+      border: none;
+      padding: 12px 25px;
+      border-radius: var(--border-radius-btn);
+      font-weight: var(--weight-regular);
+      cursor: pointer;
+    }
+
+    .white_link {
+      background: var(--color-on-ui-primary);
+      color: var(--color-text);
+      border: none;
+      padding: 12px 25px;
+      border-radius: var(--border-radius-btn);
+      font-weight: var(--weight-regular);
+      cursor: pointer;
+    }
+
+    .black_link {
+      background: var(--color-ui-primary);
+      color: var(--color-on-ui-primary);
+      border: none;
+      padding: 12px 25px;
+      border-radius: var(--border-radius-btn);
+      font-weight: var(--weight-regular);
+      cursor: pointer;
+    }
+
+    .border_link {
+      background: var(--color-ui-primary);
+      color: var(--color-on-ui-primary);
+      border: 1px solid
+        color-mix(in srgb, var(--color-on-ui-primary) 50%, transparent);
+      padding: 12px 25px;
+      border-radius: var(--border-radius-btn);
+      font-weight: var(--weight-regular);
+      cursor: pointer;
+    }
+    .ghost_link {
+      background: transparent;
+      color: var(--color-action);
+      border: none;
+      padding: 12px 25px;
+      border-radius: var(--border-radius-btn);
+      font-weight: var(--weight-regular);
+      cursor: pointer;
+    }
+  }
+</style>

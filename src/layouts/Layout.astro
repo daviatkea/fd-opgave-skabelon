@@ -1,5 +1,8 @@
 ---
 import "@styles/main.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Newsletter from "../components/Newsletter.astro";
 ---
 
 <html lang="en">
@@ -8,14 +11,42 @@ import "@styles/main.css";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>DIN TITEL HER. MÅSKE SOM PROP?</title>
+    <title>Frontend design opgave</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
     <style is:inline>
       @layer reset, global, tokens, components, overrides;
     </style>
   </head>
   <body>
-    <slot />
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Newsletter />
+    <Footer />
   </body>
 </html>
 
-<style></style>
+<style is:global>
+  @layer global {
+    body {
+      display: grid;
+      grid-template-columns:
+        [full-start] 1fr
+        [content-start] minmax(0, 45ch)
+        [content-mid] minmax(0, 45ch)
+        [content-end] 1fr [full-end];
+
+      main {
+        display: grid;
+        grid-template-columns: subgrid;
+        grid-column: full;
+      }
+    }
+  }
+</style>

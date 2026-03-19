@@ -1,1 +1,10 @@
 /* Globale styles her */
+
+/* body {
+  display: grid;
+  grid-template-columns:
+    [full-start] 1fr
+    [content-start] minmax(0, 45ch)
+    [content-mid] minmax(0, 45ch)
+    [content-end] 1fr [full-end];
+} */
