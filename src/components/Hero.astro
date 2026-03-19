@@ -13,8 +13,10 @@ import CEOImage from "@assets/images/ceo.webp";
         to the next level. Let us help you navigate challenges and achieve
         sustainable success.
       </p>
-      <a href="#0">Book a Meeting</a>
-      <a href="#0">Learn More</a>
+      <div class="knapper">
+        <a class="yellowBtn" href="#0">Book a Meeting</a>
+        <a class="clearBtn" href="#0">Learn More</a>
+      </div>
     </div>
     <Image src={CEOImage} alt="CEO" class="ceo" />
   </div>
@@ -23,6 +25,37 @@ import CEOImage from "@assets/images/ceo.webp";
 
   <style>
     /* Styles her */
+
+    .yellowBtn {
+      background-color: #ffcc4a;
+      padding: 20px 30px 20px 30px;
+      border-radius: 50px;
+      color: #030712;
+      font-weight: 600;
+      &:hover {
+        background-color: #fff;
+      }
+    }
+
+    .clearBtn {
+      border: 1px solid #fff;
+      padding: 20px 30px 20px 30px;
+      border-radius: 50px;
+      color: #fff;
+      font-weight: 600;
+      &:hover {
+        background-color: #fff;
+        color: #030712;
+      }
+    }
+
+    .knapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-items: start;
+      margin-top: 20px;
+    }
+
     @layer components {
       .ceo {
         width: 1670.318px;
