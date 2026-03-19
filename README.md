@@ -91,4 +91,4 @@ Når det er CSS der skal gå igen på flere sider, har vi lagt det globalt eller
 
 Der har været mange udfordriner i gennem denne opgave. Nogen vi har måtte give afkald på i slutspurten og andre vi har løst med stolthed.
 Et par punkter, vi fælles har rykket os på, er steder som at forstå CSS på et mere avanceret niveau og læse kode bedere, på generelt plan. Vores forståelse af kodeopsætningen og strukturen er noget som vi, bare på denne uge, har lavet om i flere gange, fordi vi undervejs i processen, har fundet en berede sturktur, som gjorde koden mere overkuelig at arbejde med og flowet bedere.
-Vi har lært rigitg meget igennem hele UI forløbet og fået det ekstra godt ind under hunden i denne opgave.
+Vi har lært rigitg meget igennem hele UI forløbet og fået det ekstra godt ind under huden i denne opgave.
