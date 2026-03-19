@@ -3,9 +3,9 @@ import FooterContact from "@data/images/footercontact.svg";
 import "../styles/tokens.css";
 ---
 
-<section class="full-bleed">
+<footer class="full-bleed">
   <article>
-    <h2>STAY UPDATED</h2>
+    <h2>Stay Updated</h2>
     <h3>Subscribe Our Newsletter</h3>
     <p>Build stronger Customer Relationships with <a href="">Consultalk</a></p>
     <div>
@@ -13,13 +13,12 @@ import "../styles/tokens.css";
       <button>Subscribe </button>
     </div>
   </article>
-  <div>
-    <FooterContact />
-  </div>
-</section>
+
+  <FooterContact />
+</footer>
 
 <style>
-  section {
+  footer {
     background-color: var(--color-neutrals-900);
     padding-block: 2rem;
 
@@ -27,22 +26,27 @@ import "../styles/tokens.css";
       text-align: center;
     }
 
-    h2 {
-      color: var(--color-yellow-600);
-      font-size: 16px;
-    }
+    article {
+      place-items: center;
 
-    h3 {
-      color: var(--color-neutrals-50);
-      font-size: 35px;
-    }
-
-    p {
-      font-size: 16px;
-      color: var(--color-text-weak);
-      a {
+      h2 {
         color: var(--color-yellow-600);
-        text-decoration: none;
+        font-size: 16px;
+        text-transform: uppercase;
+      }
+
+      h3 {
+        color: var(--color-neutrals-50);
+        font-size: 35px;
+      }
+
+      p {
+        font-size: 16px;
+        color: var(--color-text-weak);
+        a {
+          color: var(--color-yellow-600);
+          text-decoration: none;
+        }
       }
     }
 
