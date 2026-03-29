@@ -1,0 +1,88 @@
+---
+import { Image } from "astro:assets";
+import whattoecpectimage from "@assets/images/whattoexpect.png";
+import greenboximage from "@assets/images/greenbox.png";
+---
+
+<section class="whattoexpect_grid">
+  <div class="grid_overlap">
+    <Image src={greenboximage} alt="greenbox" class="greenbox" />
+    <Image src={whattoecpectimage} alt="overlapimg" class="overlapimg" />
+  </div>
+  <div>
+    <h2 class="--lato-16-reg-black">we'll work with you</h2>
+    <h3 class="--cabin-45-bold-black">What to expect</h3>
+    <p class="--lato-18-reg-black">
+      Our collaboration is built on transparency, efficiency, and measurable
+      results. Together, we create strategies tailored to your unique needs and
+      goals.
+    </p>
+    <ul>
+      <li>
+        Collaborate to build actionable strategies that drive sustainable growth
+        and deliver tangible outcomes.
+      </li>
+      <li>
+        Identify opportunities to optimize processes and implement impactful
+        solutions with measurable results.
+      </li>
+    </ul>
+  </div>
+</section>
+<style>
+  .whattoexpect_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .whattoexpect_grid div {
+    padding-top: 200px;
+    padding-bottom: 100px;
+  }
+
+  ul {
+    display: grid;
+    gap: 1rem;
+    max-width: 45ch;
+    list-style: none;
+    line-height: 1.5;
+    padding: 0;
+    margin-block: 2rlh;
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+  }
+
+  li:before {
+    content: "";
+    width: 1.6rem;
+    height: 1lh;
+    background: var(--checkmark-icon) 50% 50% / 100% auto no-repeat;
+  }
+
+  .greenbox {
+    z-index: -1;
+
+    max-width: 196px;
+    margin: 3rem;
+    margin-left: -56px;
+    display: block;
+    position: relative;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    right: -1rem;
+    top: -1rem;
+  }
+
+  img {
+    inline-size: 85%;
+    display: block;
+    margin-top: -184px;
+  }
+</style>

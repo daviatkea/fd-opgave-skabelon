@@ -1,0 +1,199 @@
+---
+import json from "@data/financialProjections.json";
+---
+
+<section class="financial-section full-bleed">
+  <div class="top-content">
+    <div class="header-text">
+      <h2 class="--lato-16-reg-black">FINANCIAL TOOLS</h2>
+      <h3 class="--cabin-45-bold-black">Financial Projects</h3>
+      <p class="--lato-18-reg-muted">
+        Financial projections are essential for planning and monitoring a
+        company’s performance.
+      </p>
+    </div>
+
+    <div class="arrow-content">
+      <button id="prevBtn" class="arrowBtn" aria-label="Scroll left">
+        <svg
+          width="25"
+          height="21"
+          viewBox="0 0 25 21"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M22.6947 10.3839L1.82227 10.3839M1.82227 10.3839L10.3609 18.9222M1.82227 10.3839L10.3609 1.84473"
+            stroke="white"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </button>
+      <button id="nextBtn" class="arrowBtn" aria-label="Scroll right">
+        <svg
+          width="25"
+          height="22"
+          viewBox="0 0 25 22"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1.68262 10.8491H22.8341M22.8341 10.8491L14.1812 2.19629M22.8341 10.8491L14.1812 19.5021"
+            stroke="white"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <ul class="cards-slider" id="cardList">
+    {
+      json.values.map(({ icon, title, description }) => (
+        <li class="card">
+          <div class="icon-wrapper">
+            <img class="icon-img" src={`/src/icons/${icon}.svg`} alt="" />
+          </div>
+          <div class="card-text">
+            <h4>{title}</h4>
+            <p>{description}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<script>
+  const list = document.getElementById("cardList");
+  const prev = document.getElementById("prevBtn");
+  const next = document.getElementById("nextBtn");
+
+  if (list && prev && next) {
+    const scrollStep = 416; // Bredde (400) + gap (16)
+    next.addEventListener("click", () => {
+      list.scrollBy({ left: scrollStep, behavior: "smooth" });
+    });
+    prev.addEventListener("click", () => {
+      list.scrollBy({ left: -scrollStep, behavior: "smooth" });
+    });
+  }
+</script>
+
+<style>
+  /* Grundlæggende opsætning */
+  .financial-section {
+    --content-width: 50rem;
+    padding-block: 4rem;
+    display: grid;
+    /* Dette skaber 'full-bleed' systemet */
+    grid-template-columns:
+      [full-start] 1fr
+      [content] minmax(0, var(--content-width))
+      1fr [full-end];
+    background-color: #f3f3f3;
+    overflow-x: hidden;
+  }
+
+  /* Tekst og knapper holder sig til midten (content) */
+  .top-content {
+    grid-column: content;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    padding-inline: 1rem; /* Sikrer luft på mobil */
+  }
+
+  /* Selve slideren går fra kant til kant (full) */
+  .cards-slider {
+    grid-column: full;
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    list-style: none;
+    margin: 0;
+    padding-block: 1rem 2rem;
+
+    /* Dette sørger for at kortene starter på linje med teksten */
+    padding-inline: max(1rem, (100% - var(--content-width)) / 2);
+    scroll-padding-inline: max(1rem, (100% - var(--content-width)) / 2);
+
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  /* Selve kortet */
+  .card {
+    flex: 0 0 400px; /* Tvinger kortet til at være 400px bredt */
+    scroll-snap-align: start;
+    background: #ebebeb;
+    padding: 2.75rem 2.1875rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* FIX: Ikon størrelse */
+  .icon-wrapper {
+    width: 50px; /* Juster denne størrelse til dine ikoner */
+    height: 50px;
+    display: flex;
+    align-items: center;
+  }
+
+  .icon-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Tekst styling */
+  .card h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #181818;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .card p {
+    color: #595566;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Pilene */
+  .arrow-content {
+    display: flex;
+    gap: 1rem;
+  }
+  .arrowBtn {
+    background-color: #111827;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: background 0.2s;
+  }
+  .arrowBtn:hover {
+    background-color: var(--color-surface-highlight);
+    path {
+      stroke: #111827;
+    }
+  }
+
+  @media (max-width: 450px) {
+    .card {
+      flex: 0 0 85vw; 
+    }
+  }
+</style>

@@ -1,0 +1,61 @@
+<aside id="pop" popover>
+  <div>
+    <h2>Dashboard login</h2>
+    <form>
+      <p>Email address</p>
+      <input type="email" />
+      <p>Password</p>
+      <input type="password" />
+      <button type="submit"> Go to dashboard</button>
+    </form>
+  </div>
+</aside>
+
+<style>
+  [popover] {
+    position-area: bottom span-left;
+    position-try: flip-inline;
+
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    padding: 1rem;
+    min-width: 240px;
+    z-index: 50;
+    border-radius: 25px;
+  }
+  [popover] div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  [popover] h2 {
+    margin: 0 0 0.4rem;
+    font-size: 3rem;
+    font-weight: 700;
+  }
+
+  [popover] form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  [popover] input {
+    border: 1px solid #bbb;
+    border-radius: 25px;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.95rem;
+  }
+
+  [popover] button {
+    margin-top: 0.25rem;
+    background: #ffcc4a;
+    color: #000000;
+    border: none;
+    border-radius: 25px;
+    padding: 0.45rem 0.7rem;
+    cursor: pointer;
+  }
+</style>

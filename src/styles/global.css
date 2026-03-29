@@ -1,1 +1,288 @@
 /* Globale styles her */
+
+@view-transition {
+  navigation: auto;
+}
+
+/* LAYOUT */
+
+body {
+  --content-width: 1200px;
+  --content: minmax(0, calc(var(--content-width) / 2));
+  --margin: minmax(1rem, 1fr);
+
+  display: grid;
+  grid-template-columns:
+    [full-bleed-start] var(--margin) [content-start] var(--content)
+    [content-middle] var(--content)
+    [content-end] var(--margin)
+    [full-bleed-end];
+  grid-template-rows: auto 1fr auto;
+
+  min-height: 100svh;
+
+  > header,
+  > main,
+  > footer {
+    grid-column: full-bleed;
+
+    display: grid;
+    grid-template-columns: subgrid;
+
+    > * {
+      grid-column: content;
+    }
+
+    > .full-bleed {
+      grid-column: full-bleed;
+
+      display: grid;
+      grid-template-columns: subgrid;
+
+      > * {
+        grid-column: content;
+      }
+    }
+  }
+}
+
+p {
+  max-width: 70ch;
+}
+
+/* CARD STYLING */
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+
+    border-radius: 20px;
+    padding: 30px;
+    width: 280px;
+    min-height: 250px;
+  }
+
+  .icon-img {
+    width: 32px;
+    height: auto;
+  }
+
+  .card-text h1 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: var(--color-text-primary);
+  }
+
+  .card-text p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+}
+
+/* FONT */
+
+.lato-regular {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lato-bold {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.cabin {
+  font-family: "Cabin", sans-serif;
+  font-optical-sizing: auto;
+  font-variation-settings: "wdth" 100;
+}
+
+/* CABIN BLACK CLASSES */
+
+.--cabin-60-bold-black {
+  font-family: "Cabin", sans-serif;
+  font-weight: 700;
+  font-size: var(--step-7);
+  line-height: var(--space-3xl);
+  color: var(--color-neutrals-900);
+}
+
+.--cabin-50-bold-black {
+  font-family: "Cabin", sans-serif;
+  font-weight: 700;
+  font-size: var(--step-6);
+  line-height: var(--space-2xl);
+  color: var(--color-neutrals-900);
+}
+
+.--cabin-45-bold-black {
+  font-family: "Cabin", sans-serif;
+  font-size: 45px;
+  font-weight: 700;
+  line-height: var(--space-xl);
+  letter-spacing: -0.02em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.--cabin-25-semibold-black {
+  font-family: "Cabin", sans-serif;
+  font-weight: 600;
+  font-size: var(--step-2);
+  line-height: var(--space-m);
+  color: var(--color-neutrals-900);
+}
+
+.--cabin-20-semibold-black {
+  font-family: "Cabin", sans-serif;
+  font-weight: 600;
+  font-size: var(--step-1);
+  line-height: var(--space-s);
+  color: var(--color-neutrals-900);
+}
+
+.--cabin-18-reg-muted {
+  font-family: "Cabin", sans-serif;
+  font-weight: 400;
+  font-size: var(--step-0);
+  line-height: var(--space-m);
+  color: var(--color-neutrals-700);
+}
+
+/* CABIN WHITE CLASSES */
+
+.--cabin-50-bold-white {
+  font-family: "Cabin", sans-serif;
+  font-weight: 700;
+  font-size: var(--step-6);
+  line-height: var(--space-xl);
+  color: var(--color-neutrals-100);
+}
+
+.--cabin-45-bold-white {
+  font-family: "Cabin", sans-serif;
+  font-weight: 700;
+  font-size: var(--step-5);
+  line-height: var(--space-xl);
+  color: var(--color-neutrals-100);
+}
+
+.--cabin-25-semibold-white {
+  font-family: "Cabin", sans-serif;
+  font-weight: 600;
+  font-size: var(--step-2);
+  line-height: var(--space-m);
+  color: var(--color-neutrals-100);
+}
+
+.--cabin-20-semibold-white {
+  font-family: "Cabin", sans-serif;
+  font-weight: 600;
+  font-size: var(--step-1);
+  line-height: var(--space-s);
+  color: var(--color-neutrals-100);
+}
+
+.--cabin-16-reg-white {
+  font-family: "Cabin", sans-serif;
+  font-weight: 400;
+  font-size: var(--step-0);
+  line-height: var(--space-m);
+  color: var(--color-neutrals-100);
+}
+
+/* LATO CLASSES */
+
+.--lato-14-reg-white {
+  font-family: "Lato", sans-serif;
+  font-weight: 200;
+  font-size: var(--step--1);
+  line-height: var(--space-2xs);
+  color: var(--color-neutrals-100);
+  margin-bottom: 20px;
+}
+
+.--lato-16-reg-black {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: var(--step-1);
+  line-height: var(--space-2xs);
+  color: var(--color-neutrals-900);
+  letter-spacing: 0.1em;
+  margin-bottom: 0;
+}
+
+.--lato-16-reg-white {
+  font-family: "Lato", sans-serif;
+  font-weight: 200;
+  font-size: var(--step-1);
+  line-height: var(--space-2xs);
+  color: var(--color-neutrals-100);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.--lato-18-reg-black {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: var(--step-0);
+  line-height: var(--space-m);
+  color: var(--color-neutrals-900);
+}
+
+.--lato-18-minibold-black {
+  font-family: "Lato", sans-serif;
+  font-weight: 550;
+  font-size: var(--step-0);
+  line-height: var(--space-m);
+  color: var(--color-neutrals-900);
+}
+
+.--lato-18-reg-400muted {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: var(--step-0);
+  line-height: var(--space-m);
+  color: var(--color-neutrals-400);
+}
+
+.--lato-18-reg-muted {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: var(--step-0);
+  line-height: var(--space-m);
+  color: var(--color-text-muted);
+}
+
+.--lato-18-reg-white {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: var(--step-0);
+  line-height: var(--space-m);
+  color: var(--color-neutrals-100);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.--lato-18-bold-yellow-underline {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: var(--step-0);
+  line-height: var(--space-m);
+  color: var(--color-yellow-600);
+  text-decoration: underline;
+}
+
+:root {
+  --checkmark-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="%234EAF4E" d="M176.49 95.51a12 12 0 0 1 0 17l-56 56a12 12 0 0 1-17 0l-24-24a12 12 0 1 1 17-17L112 143l47.51-47.52a12 12 0 0 1 16.98.03M236 128A108 108 0 1 1 128 20a108.12 108.12 0 0 1 108 108m-24 0a84 84 0 1 0-84 84a84.09 84.09 0 0 0 84-84"/></svg>');
+}

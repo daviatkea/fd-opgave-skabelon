@@ -1,0 +1,182 @@
+---
+import ContactItem from "./ContactItem.astro";
+import { Image } from "astro:assets";
+import "../styles/tokens.css";
+import indeximg1 from "@assets/images/indeximg1.svg";
+import indeximg2 from "@assets/images/indeximg2.svg";
+import indeximg3 from "@assets/images/indeximg3.svg";
+---
+
+<section class="contact-section full-bleed">
+  <div class="container">
+    <div class="text-content">
+      <span class="--lato-16-reg-black">Process</span>
+      <h2 class="--cabin-45-bold-black">Contact Us. It's Easy.</h2>
+      <p class="--lato-18-reg-muted">
+        Leverage agile frameworks to provide a robust synopsis for high level
+        overviews. Iterative approaches to corporate strategy foster
+        collaborative.
+      </p>
+
+      <div class="info-list">
+        <ContactItem title="Call Today" value="+1 800 100 900" variant="yellow">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            ><path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+            ></path></svg
+          >
+        </ContactItem>
+
+        <ContactItem title="Monday To Friday" value="9AM - 5PM" variant="green">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            ><circle cx="12" cy="12" r="10"></circle><polyline
+              points="12 6 12 12 16 14"></polyline></svg
+          >
+        </ContactItem>
+
+        <ContactItem
+          title="USA Office"
+          value="195 Devonshire St Boston, MA 02110"
+          variant="gray"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            ><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+            ></path><circle cx="12" cy="10" r="3"></circle></svg
+          >
+        </ContactItem>
+      </div>
+    </div>
+    <article>
+      <div>
+        <div class="grid">
+          <div class="card large">
+            <div class="overlap"></div>
+          </div>
+          <div class="card top-right"></div>
+          <div class="card bottom-right"></div>
+        </div>
+      </div>
+
+      <div class="image-grid-container">
+        <div class="accent-box"></div>
+        <div class="main-image">
+          <Image src={indeximg1} alt="" />
+        </div>
+        <div class="side-images">
+          <Image src={indeximg2} alt="" />
+          <Image src={indeximg3} alt="" />
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    padding: 80px 20px;
+    font-family: sans-serif;
+    padding-block: 200px;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .category {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    color: #6b7280;
+    font-weight: bold;
+  }
+
+  .title {
+    font-size: 42px;
+    margin: 10px 0 20px 0;
+    color: #111827;
+  }
+
+  .--lato-16-reg-black {
+    text-transform: uppercase;
+  }
+
+  .description {
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+
+  .image-grid-container {
+    position: relative;
+    display: flex;
+    gap: 15px;
+    height: 500px;
+  }
+
+  .accent-box {
+    position: absolute;
+    bottom: -30px;
+    left: -40px;
+    width: 200px;
+    height: 120px;
+    background-color: #a7f3d0;
+    border-radius: 25px;
+    z-index: 0;
+  }
+
+  .main-image,
+  .side-images {
+    flex: 1;
+    z-index: 1;
+  }
+
+  .side-images {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 40px;
+  }
+
+  .side-images img {
+    height: calc(50% - 7.5px);
+  }
+
+  /* Mobil-venlighed */
+  @media (max-width: 900px) {
+    .container {
+      grid-template-columns: 1fr;
+    }
+    .image-grid-container {
+      height: 400px;
+    }
+  }
+</style>

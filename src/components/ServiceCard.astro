@@ -4,9 +4,11 @@ import ArrowRight from "@icons/arrow--right.svg";
 ---
 
 <article>
-  <h2>{service.title}</h2>
-  <p>{service.description}</p>
-  <a href="#0">{service.buttonText} <ArrowRight stroke-width={2.5} /></a>
+  <h2 class="--cabin-25-semibold-white">{service.title}</h2>
+  <p class="--lato-18-reg-white">{service.description}</p>
+  <a class="--lato-18-bold-yellow-underline" href="#0"
+    >{service.buttonText} <ArrowRight stroke-width={2.5} /></a
+  >
   <!-- <a> burde måske være en variant af en component -->
 </article>
 
@@ -15,8 +17,8 @@ import ArrowRight from "@icons/arrow--right.svg";
     article {
       background: var(--color-blue-700-transparent);
       color: var(--color-on-surface-elevated);
-      padding: 2rem; /* Dette burde være en token */
-      border-radius: 20px; /* Dette burde være en token */
+      padding: 2rem;
+      border-radius: 20px;
     }
     a {
       display: inline flex;

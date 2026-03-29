@@ -1,0 +1,55 @@
+---
+// src/components/ContactItem.astro
+const { title, value, variant } = Astro.props;
+---
+
+<div class="contact-item">
+  <div class={`icon-wrapper ${variant}`}>
+    <slot />
+  </div>
+  <div class="content">
+    <span class="label">{title}</span>
+    <p class="value --lato-18-reg-black">{value}</p>
+  </div>
+</div>
+
+<style>
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .yellow {
+    background-color: #fef3c7;
+    color: #d97706;
+  }
+  .green {
+    background-color: #dcfce7;
+    color: #16a34a;
+  }
+  .gray {
+    background-color: #e5e7eb;
+    color: #4b5563;
+  }
+
+  .label {
+    color: var(--color-text-weak);
+  }
+
+  .value {
+    margin: 0;
+    font-weight: 700;
+  }
+</style>
