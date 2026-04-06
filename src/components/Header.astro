@@ -1,0 +1,59 @@
+---
+import Button from "./Button.astro";
+import Logo from "../icons/AskExperts.svg";
+import "../styles/tokens.css";
+---
+
+<header>
+  <a href="/">
+    <Logo />
+  </a>
+
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Case Study</a></li>
+      <li><a href="#">Team</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </nav>
+
+  <Button text="Login" />
+</header>
+
+<style>
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background-color: var(--color-blue-700);
+
+    a {
+      display: flex;
+      align-items: center;
+
+      svg {
+        width: 120px;
+        height: auto;
+      }
+    }
+
+    nav {
+      ul {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+
+        li {
+          a {
+            text-decoration: none;
+            color: var(--color-neutrals-50);
+            font-weight: 500;
+            transition: color 0.3s;
+          }
+        }
+      }
+    }
+  }
+</style>

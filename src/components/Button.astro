@@ -1,0 +1,19 @@
+---
+const { text = "Button", type = "button" } = Astro.props;
+---
+
+<button type={type} class="btn">
+  {text}
+</button>
+
+<style>
+  .btn {
+    padding: 0.3rem 1.5rem;
+    border-radius: 1rem;
+    background-color: var(--color-neutrals-50);
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--color-neutrals-900);
+  }
+</style>
