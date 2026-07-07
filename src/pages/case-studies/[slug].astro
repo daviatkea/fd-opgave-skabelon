@@ -1,11 +1,12 @@
 ---
+//@ts-nocheck
+import { getCaseStudies } from "@lib/api";
 import { Image } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 
 export async function getStaticPaths() {
-  const caseStudies = await fetch(
-    "https://ftk-api.pages.dev/case-studies",
-  ).then((res) => res.json());
+  const caseStudies = await getCaseStudies();
+
   return caseStudies.map((caseStudy) => ({
     params: { slug: caseStudy.slug },
     props: { caseStudy },

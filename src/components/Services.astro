@@ -1,11 +1,14 @@
 ---
+//@ts-nocheck
 import ServiceCard from "@components/ServiceCard.astro";
-import servicesData from "@data/services.json";
-import DynamicImage from "@helpers/DynamicImage.astro";
+
+const serviceData = await fetch("https://ftk-api.pages.dev/services").then(
+  (res) => res.json(),
+);
 ---
 
 <div class="services">
-  {servicesData.services.map((service) => <ServiceCard service={service} />)}
+  {serviceData.map((service) => <ServiceCard service={service} />)}
 </div>
 
 <style>
