@@ -134,7 +134,7 @@ textarea {
 }
 
 textarea:not([rows]) {
-  min-height: 10em;
+  min-height: 10lh;
 }
 
 :target {
@@ -153,14 +153,4 @@ textarea:not([rows]) {
   overflow: hidden;
   position: absolute;
   white-space: nowrap;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  ::before,
-  ::after {
-    transition-duration: 0.01s !important;
-    animation-iteration-count: 1 !important;
-    animation: 0.01s !important;
-  }
 }
