@@ -1,91 +1,196 @@
 # Opgaveskabelon til "Figma til kode"
 
-Se opgavebeskrivelsen på Fronter.
+Se opgavebeskrivelsen på ItsLearning.
 
-## Medfølgende Data
+## Data i opgaven
 
-Der medfølger indholdsdata i form af lokale JSON-filer, som du kan bruge til din opgave. Det er ikke et krav til opgaven, men det kan gøre det nemmere og hurtigere at få tekst og billeder ind i dit projekt.
+I opgaven skal du som udgangspunkt hente data fra API'et:
+
+[https://ftk-api.pages.dev](https://ftk-api.pages.dev)
+
+API'et simulerer et eksternt data-endpoint, så du kan øve `fetch()`.
+
+Eksempel:
+
+```js
+const response = await fetch("https://ftk-api.pages.dev/team");
+const team = await response.json();
+```
+
+Du kan se de tilgængelige endpoints og eksempler her:
+
+[https://ftk-api.pages.dev](https://ftk-api.pages.dev)
 
 > [!NOTE]
 > Bemærk, at CaseStudy-siden allerede inkluderer data fra en lokal JSON-fil.
 > Bemærk også, at ikke alle billeder fra Figma-filen er i det lokale indholdsdata.
 
-Dokumentationen til anvendelsen af dataene finder du på: [https://frontend-design-theme.netlify.app/](https://frontend-design-theme.netlify.app/).
+## Billeder fra API'et
 
-Her er et eksempel på, hvordan du kan bruge dataene i dine Astro-komponenter:
+Billeder fra API'et returneres som billeddata:
+
+```json
+{
+  "image": {
+    "src": "https://ftk-api.pages.dev/images/sarah.webp",
+    "alt": "Sarah Jasmine",
+    "width": 732,
+    "height": 784
+  }
+}
+```
+
+Skabelonen er sat op til at kunne bruge billeder fra `ftk-api.pages.dev` med Astros `Image`-komponent.
 
 ```astro
-import employees from "@data/employees.json";
+---
+import { Image } from "astro:assets";
+---
 
-console.log(employees);
+<Image
+  src={employee.image.src}
+  alt={employee.image.alt}
+  width={employee.image.width}
+  height={employee.image.height}
+/>
 ```
 
 ## Brug af hjælpekomponenter
 
-### DynamicImage.astro (`@helpers/DynamicImage.astro`)
-
-Brug denne komponent til at vise billeder dynamisk fra lokale datafiler. Komponenten slår billedet op i `src/data/images/` ud fra den sti, du sender ind via `src`.
-
-`DynamicImage` forventer mindst:
-
-- `src`: stien til billedet fra dine data
-- `alt`: alt-tekst til billedet
-
-Den forwarder desuden almindelige `<img>`-attributter som fx `class`, `style`, `loading` og `sizes`, samt udvalgte Astro `<Image>`-options som `width`, `height`, `format`, `quality`, `priority` og `layout`.
-
-Eksempel med data:
-
-```astro
-{employees.map((employee) => (
-  <DynamicImage
-    src={employee.img}
-    alt={employee.name}
-    width={200}
-    height={200}
-    class="employee-image"
-  />
-))}
-```
-
-Eksempel på styling:
-
-```astro
-<DynamicImage src={employee.img} alt={employee.name} class="employee-image" />
-
-<style>
-  .employee-image {
-    max-width: 300px;
-    border-radius: 1rem;
-  }
-</style>
-```
-
 ### DynamicIcon.astro (`@helpers/DynamicIcon.astro`)
 
-`DynamicIcon` bruges til at vise SVG-ikoner dynamisk baseret på et navn fra dine data. `name` skal matche filnavnet på et ikon i `src/icons/`.
+`DynamicIcon` bruges til at vise SVG-ikoner ud fra et ikonnavn fra data.
 
-Komponenten forwarder øvrige props direkte til SVG-komponenten, så du fx kan sende `class`, `width`, `height` og lignende med.
+API'et returnerer fx:
 
-Eksempel med data:
+```json
+{
+  "platform": "instagram",
+  "icon": "instagram"
+}
+```
+
+Det matcher en lokal SVG-fil i `src/icons/`:
+
+```txt
+src/icons/instagram.svg
+src/icons/facebook.svg
+src/icons/layers.svg
+```
+
+Eksempel:
 
 ```astro
+---
+import DynamicIcon from "@helpers/DynamicIcon.astro";
+---
+
 {employee.social_links.map((link) => (
-  <DynamicIcon name={link.icon} width={24} height={24} class="social-icon" />
+  <a href={link.url} aria-label={link.platform}>
+    <DynamicIcon name={link.icon} width={24} height={24} class="social-icon" />
+  </a>
 ))}
 ```
+
+Foruden `name`-prop'en, som er obligatorisk, forwarder komponenten øvrige props direkte til SVG-komponenten. Du kan derfor fx sende `class`, `width`, `height` og lignende med.
 
 Hvis ikonet ikke findes, vises der ikke noget output, og komponenten logger en advarsel i konsollen.
 
----
+## Links fra data
+
+Nogle datafelter indeholder linkdata, fx:
+
+```json
+{
+  "link": {
+    "text": "Read More",
+    "url": "#"
+  }
+}
+```
+
+Du kan bruge dem sådan:
+
+```astro
+<a href={item.link.url}>{item.link.text}</a>
+```
+
+Hvis et link kun indeholder et ikon og ingen synlig tekst, skal du give linket et tilgængeligt navn, fx med `aria-label`.
+
+```astro
+<a href={link.url} aria-label={link.platform}>
+  <DynamicIcon name={link.icon} />
+</a>
+```
 
 ## Import af SVG-ikoner direkte
 
-Du kan importere SVG-ikoner direkte i dine komponenter ved at importere dem:
+Du kan også importere SVG-ikoner direkte i dine komponenter:
 
 ```astro
+---
 import Checkmark from "@icons/checkmark.svg";
+---
 
 <Checkmark width={32} height={32} class="my-icon" />
 ```
 
 Se evt. `src/pages/svgs.astro` for flere eksempler på direkte import og brug af SVG-ikoner.
+
+---
+
+---
+
+---
+
+## Lokal backup-data
+
+Der ligger også lokale JSON-filer i `src/data/`. De kan bruges som backup, hvis API'et ikke virker, eller hvis du vil teste uden netværkskald.
+
+Dokumentation til lokal data findes her:
+
+[https://ftk-api.pages.dev/local.html](https://ftk-api.pages.dev/local.html)
+
+Bemærk, at lokal data ikke nødvendigvis har præcis samme struktur som API-svarene. API'et kan fx normalisere data, gøre billedstier absolutte eller returnere lister direkte.
+
+Eksempel med lokal data:
+
+```astro
+---
+import employees from "@data/employees.json";
+---
+
+{employees.map((employee) => (
+  <article>
+    <h2>{employee.name}</h2>
+    <p>{employee.title}</p>
+  </article>
+))}
+```
+
+### DynamicImage.astro (`@helpers/DynamicImage.astro`)
+
+`DynamicImage` er kun relevant, hvis du arbejder med lokale billeder fra `src/data/images/`.
+
+Du skal som udgangspunkt ikke bruge `DynamicImage` til billeder fra API'et, fordi API'et allerede returnerer offentlige billed-URL'er og dimensioner. Brug i stedet Astros `Image`-komponent som vist ovenfor.
+
+`DynamicImage` kan stadig bruges, hvis du vælger at arbejde med lokal backup-data, hvor billedstierne peger på lokale filer i projektet.
+
+Eksempel med lokal data, hvis billedstien ligger i et lokalt `img`-felt:
+
+```astro
+---
+import DynamicImage from "@helpers/DynamicImage.astro";
+import employees from "@data/employees.json";
+---
+
+{employees.map((employee) => (
+  <DynamicImage
+    src={employee.img}
+    alt={employee.name}
+    width={300}
+    height={320}
+    class="employee-image"
+  />
+))}
+```
