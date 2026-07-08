@@ -20,7 +20,12 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
 <Layout>
   <article>
     <header>
-      <Image src={image} inferSize alt={caseName} />
+      <Image
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+      />
       <div class="case-details">
         <dl>
           <div>
@@ -66,10 +71,10 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
           )}
           {section.image && (
             <Image
-              src={section.image}
-              alt={section.title}
-              width={600}
-              height={400}
+              src={section.image.src}
+              alt={section.image.alt}
+              width={section.image.width}
+              height={section.image.height}
             />
           )}
         </section>
