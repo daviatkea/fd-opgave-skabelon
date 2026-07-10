@@ -1,0 +1,67 @@
+<nav>
+  <div class="nav">
+    <a class="logo" href="index.html">Ask<span>Experts</span></a>
+
+    <ul class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="">Case study</a></li>
+      <li><a href="">Team</a></li>
+      <li><a href="">About</a></li>
+    </ul>
+
+    <button>Login</button>
+  </div>
+</nav>
+
+<style>
+  nav {
+    background-color: var(--color-surface-elevated);
+  }
+
+  .nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 75rem;
+    margin-inline: auto;
+    align-items: center;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0;
+  }
+
+  .logo {
+    color: var(--color-surface-tertiary);
+    font-size: var(--step-1);
+    font-weight: 600;
+    text-box: trim-both cap alphabetic;
+
+    @supports not (text-box-trim: trim-both) {
+      margin-top: calc(0.5cap- 0.5lh);
+    }
+  }
+
+  .logo span {
+    color: var(--color-surface-highlight);
+  }
+
+  li {
+    list-style: none;
+
+    & a {
+      color: var(--color-on-ui-primary);
+      text-decoration: none;
+      font-size: var(--step--1);
+    }
+  }
+
+  button {
+    background-color: var(--color-on-ui-primary);
+    width: 100px;
+    justify-self: end;
+    border-radius: var(--border-radius-xl);
+  }
+</style>
