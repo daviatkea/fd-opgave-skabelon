@@ -31,9 +31,10 @@
   --color-text-weak: var(--color-neutrals-400);
   --color-surface-highlight: var(--color-yellow-600);
   --color-on-ui-primary-muted: var(--color-neutrals-400);
-}
 
-/* ==== Spacing ==== */
+  /* ==== Spacing ==== */
+  --card-gap: 36px;
+}
 
 /* ==== Typography ==== */
 
