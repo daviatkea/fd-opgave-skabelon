@@ -19,11 +19,7 @@ const team = await response.json();
 
 Du kan se de tilgængelige endpoints og eksempler her:
 
-[https://ftk-api.pages.dev](https://ftk-api.pages.dev)
-
-> [!NOTE]
-> Bemærk, at CaseStudy-siden allerede inkluderer data fra en lokal JSON-fil.
-> Bemærk også, at ikke alle billeder fra Figma-filen er i det lokale indholdsdata.
+[https://ftk-api.pages.dev/endpoints](https://ftk-api.pages.dev/endpoints)
 
 ## Billeder fra API'et
 
@@ -54,6 +50,10 @@ import { Image } from "astro:assets";
   height={employee.image.height}
 />
 ```
+
+> [!NOTE]
+> Bemærk, at CaseStudy-siden allerede er sat op.
+> Bemærk også, at ikke alle billeder fra Figma-filen findes i API'et.
 
 ## Brug af hjælpekomponenter
 
