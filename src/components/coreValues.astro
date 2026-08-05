@@ -1,0 +1,38 @@
+---
+import coreValues from "../data/coreValues.json";
+import "../styles/tokens.css";
+---
+
+<section class="core-values">
+  <p class="eyebrow">{coreValues.eyebrow}</p>
+  <h2>{coreValues.title}</h2>
+  <p>{coreValues.subtitle}</p>
+
+  <div class="values">
+    {
+      coreValues.values.map((value) => (
+        <div class="core-value">
+          <h3>{value.title}</h3>
+          <p>{value.description}</p>
+          <a href={value.link.url}>{value.link.text}</a>
+        </div>
+      ))
+    }
+  </div>
+
+  <a href={coreValues.button.link}>
+    {coreValues.button.text}
+  </a>
+</section>
+
+<style>
+  .core-values {
+    background-color: var(--color-neutrals-50);
+  }
+  .values {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: var(--color-surface-primary);
+    gap: var(--card-gap);
+  }
+</style>
