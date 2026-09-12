@@ -18,7 +18,7 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
 ---
 
 <Layout>
-  <article>
+  <article class="case-story-article">
     <header>
       <Image
         src={image.src}
@@ -70,12 +70,15 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
             </ul>
           )}
           {section.image && (
-            <Image
-              src={section.image.src}
-              alt={section.image.alt}
-              width={section.image.width}
-              height={section.image.height}
-            />
+            <figure>
+              <Image
+                src={section.image.src}
+                alt={section.image.alt}
+                width={section.image.width}
+                height={section.image.height}
+              />
+              <figcaption>{section.image.caption}</figcaption>
+            </figure>
           )}
         </section>
       ))
