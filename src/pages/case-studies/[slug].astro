@@ -44,45 +44,49 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
         <a href="#0" class="button">{buttonLabel}</a>
       </div>
     </header>
-    {
-      caseStudy.sections.map((section) => (
-        <section>
-          {caseStudy.sections[0] === section ? (
-            <h2>{section.title}</h2>
-          ) : (
-            <h3>{section.title}</h3>
-          )}
+    <section class="case-story-content">
+      {
+        caseStudy.sections.map((section, index) => (
+          <>
+            {index === 0 ? (
+              <h2>{section.title}</h2>
+            ) : (
+              <h3>{section.title}</h3>
+            )}
 
-          {Array.isArray(section.content) ? (
-            <>
-              {section.content.map((item) => (
-                <p>{item}</p>
-              ))}
-            </>
-          ) : (
-            <p>{section.content}</p>
-          )}
-          {section.highlights && (
-            <ul>
-              {section.highlights.map((highlight) => (
-                <li>{highlight}</li>
-              ))}
-            </ul>
-          )}
-          {section.image && (
-            <figure>
-              <Image
-                src={section.image.src}
-                alt={section.image.alt}
-                width={section.image.width}
-                height={section.image.height}
-              />
-              <figcaption>{section.image.caption}</figcaption>
-            </figure>
-          )}
-        </section>
-      ))
-    }
+            {Array.isArray(section.content) ? (
+              <>
+                {section.content.map((item) => (
+                  <p>{item}</p>
+                ))}
+              </>
+            ) : (
+              <p>{section.content}</p>
+            )}
+            {section.highlights && (
+              <ul>
+                {section.highlights.map((highlight) => (
+                  <li>{highlight}</li>
+                ))}
+              </ul>
+            )}
+            {section.image && (
+              <figure>
+                <Image
+                  src={section.image.src}
+                  alt={section.image.alt}
+                  width={section.image.width}
+                  height={section.image.height}
+                />
+                {section.image.caption && (
+                  <figcaption>{section.image.caption}</figcaption>
+                )}
+              </figure>
+            )}
+          </>
+        ))
+      }
+    </section>
   </article>
 </Layout>
 
