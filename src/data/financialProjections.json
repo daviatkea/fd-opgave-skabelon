@@ -38,6 +38,33 @@
         "text": "Read More",
         "url": "#"
       }
+    },
+    {
+      "icon": "gear",
+      "title": "Operating Budget",
+      "description": "An operating budget estimates the revenue and expenses involved in running your business and helps you allocate resources effectively throughout the year.",
+      "link": {
+        "text": "Read More",
+        "url": "#"
+      }
+    },
+    {
+      "icon": "bars",
+      "title": "Sales Forecast",
+      "description": "A sales forecast uses historical performance, market trends, and business goals to estimate future revenue and support informed decision-making.",
+      "link": {
+        "text": "Read More",
+        "url": "#"
+      }
+    },
+    {
+      "icon": "clock",
+      "title": "Cash Flow Projection",
+      "description": "A cash flow projection tracks when money is expected to enter and leave the business, helping you prepare for future needs and avoid shortfalls.",
+      "link": {
+        "text": "Read More",
+        "url": "#"
+      }
     }
   ]
 }
