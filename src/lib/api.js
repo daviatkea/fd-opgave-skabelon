@@ -10,3 +10,7 @@ function apiFetch(url, options = {}) {
 export function getCaseStudies() {
   return apiFetch("https://ftk-api.pages.dev/case-studies");
 }
+
+export function getTeamMembers() {
+  return apiFetch("https://ftk-api.pages.dev/team");
+}

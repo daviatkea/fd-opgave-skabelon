@@ -2,6 +2,10 @@
 
 Se opgavebeskrivelsen på ItsLearning.
 
+## Refleksion
+
+Skriv jeres fælles refleksion i [REFLEKSION.md](./REFLEKSION.md). Filen indeholder en kort Markdown-guide, en demo og en skabelon, I kan udfylde. Refleksionen skal ikke skrives i README.
+
 ## Data i opgaven
 
 I opgaven skal du som udgangspunkt hente data fra API'et:
@@ -20,6 +24,26 @@ const team = await response.json();
 Du kan se de tilgængelige endpoints og eksempler her:
 
 [https://ftk-api.pages.dev/endpoints](https://ftk-api.pages.dev/endpoints)
+
+## Sider i skabelonen
+
+- `src/pages/index.astro` → `/`: Forsiden med en påbegyndt Hero-komponent.
+- `src/pages/about.astro` → `/about`: Fælles Layout og en overskrift.
+- `src/pages/team/index.astro` → `/team`: Fælles Layout og en overskrift.
+- `src/pages/team/[slug].astro` → `/team/[slug]`: Data og grundindhold for den enkelte medarbejder.
+- `src/pages/case-studies/[slug].astro` → `/case-studies/[slug]`: Data og markup til caseartiklen.
+
+Siderne bruger `src/layouts/Layout.astro`. I skal selv bygge den fælles navigation og færdiggøre sidernes indhold, komponenter og styling.
+
+## Et enkelt eksempel: API-data i en komponent
+
+Start med `src/components/Services.astro`, som allerede vises gennem `Hero.astro` på forsiden:
+
+1. I komponentens frontmatter hentes listen fra `/services` med `fetch()`, og svaret læses med `.json()`.
+2. `serviceData.map(...)` opretter en `ServiceCard` for hver service og sender data som en prop: `<ServiceCard service={service} />`.
+3. I `ServiceCard.astro` læses den med `const { service } = Astro.props`. Felterne bruges derefter i HTML, fx `<h2>{service.title}</h2>`.
+
+I dette statiske Astro-projekt hentes data ved build (og under udvikling på dev-serveren), ikke med JavaScript i brugerens browser. Brug mønstret som reference, når I bygger flere komponenter. Caseartiklen viser desuden, hvordan data bruges til at oprette sider med `getStaticPaths()`.
 
 ## Billeder fra API'et
 
