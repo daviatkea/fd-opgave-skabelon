@@ -1,0 +1,33 @@
+---
+const { theme = "default", ...props } = Astro.props;
+---
+
+<section data-theme={theme} {...props}>
+  <div>
+    <slot />
+  </div>
+</section>
+
+<style>
+  [data-theme] {
+    --theme: attr(data-theme type(<custom-ident>));
+  }
+  section {
+    grid-column: full;
+    display: grid;
+    grid-template-columns: subgrid;
+    padding-block: 3rem;
+    > div {
+      grid-column: content;
+    }
+  }
+
+  [data-theme="dark"] {
+    background: var(--color-neutrals-900);
+    color: contrast-color(var(--color-neutrals-900));
+  }
+  [data-theme="muted"] {
+    background: var(--color-neutrals-200);
+    color: var(--color-neutrals-900);
+  }
+</style>

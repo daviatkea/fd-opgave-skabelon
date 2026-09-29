@@ -1,0 +1,46 @@
+---
+import Grid from "@components/Grid.astro";
+import Section from "@components/Section.astro";
+import SectionIntro from "@components/SectionIntro.astro";
+import sectionImage from "@assets/images/ceo.webp";
+import { Image } from "astro:assets";
+import DecoratedMedia from "@components/DecoratedMedia.astro";
+---
+
+<Section>
+  <Grid cols="2">
+    <div>
+      <SectionIntro
+        title="Contact Us. It’s Easy."
+        subtitle="Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative."
+        eyebrow="Process"
+      />
+      <ul>
+        <li>list Item 1</li>
+        <li>list Item 2</li>
+        <li>list Item 3</li>
+      </ul>
+    </div>
+    <DecoratedMedia width="11rem" height="10rem" location="bottom-left">
+      <div class="image-grid">
+        <Image src={sectionImage} alt="" />
+        <Image src={sectionImage} alt="" />
+        <Image src={sectionImage} alt="" />
+      </div>
+    </DecoratedMedia>
+  </Grid>
+</Section>
+
+<style>
+  .image-grid {
+    display: grid;
+    gap: 1rlh;
+    grid: auto / 1fr 1fr;
+
+    img:first-child {
+      grid-row: span 2;
+      align-self: stretch;
+      object-fit: cover;
+    }
+  }
+</style>

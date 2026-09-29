@@ -1,0 +1,20 @@
+---
+import Button from "@components/Button.astro";
+import CoreValueCard from "@components/CoreValueCard.astro";
+import Grid from "@components/Grid.astro";
+import Section from "@components/Section.astro";
+import SectionIntro from "@components/SectionIntro.astro";
+import { getCoreValuesData } from "@lib/api";
+const { theme = "muted" } = Astro.props;
+const coreValuesData = await getCoreValuesData();
+const { title, subtitle, eyebrow, button, values } = coreValuesData;
+---
+
+<Section theme={theme}>
+  <SectionIntro title={title} subtitle={subtitle} eyebrow={eyebrow}>
+    <Button slot="actions">{button.text}</Button>
+  </SectionIntro>
+  <Grid cols="4">
+    {values.map((card) => <CoreValueCard {...card} />)}
+  </Grid>
+</Section>

@@ -17,8 +17,47 @@ import { Font } from "astro:assets";
     </style>
   </head>
   <body>
-    <slot />
+    <header>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/team">Team</a>
+      <a href="/case-studies">Case Studies</a>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>Footer</footer>
   </body>
 </html>
 
-<style></style>
+<style is:global>
+  body {
+    display: grid;
+    align-items: start;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns:
+      [full-start]
+      minmax(1rlh, 1fr)
+      [content-start]
+      minmax(0, 37.5rem)
+      [center]
+      minmax(0, 37.5rem)
+      [content-end]
+      minmax(1rlh, 1fr)
+      [full-end];
+
+    > * {
+      grid-column: full;
+      display: grid;
+      grid-template-columns: subgrid;
+    }
+  }
+  @scope (body) to (main) {
+    header,
+    footer {
+      > * {
+        grid-column: content;
+      }
+    }
+  }
+</style>

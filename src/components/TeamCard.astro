@@ -1,0 +1,29 @@
+---
+import DynamicIcon from "./helpers/DynamicIcon.astro";
+import { Image } from "astro:assets";
+const { m } = Astro.props;
+---
+
+<article>
+  <Image
+    style={`view-transition-name: img-${m.slug}`}
+    src={m.image.src}
+    alt=""
+    width={m.image.width}
+    height={m.image.height}
+  />
+  <h3>
+    <a href={`/team/${m.slug}`}>{m.name}</a>
+  </h3>
+  <p class="title">{m.title}</p>
+  <p>{m.description}</p>
+  <div class="socials">
+    {
+      m.social_links.map((s) => (
+        <a href={s.url}>
+          <DynamicIcon name={s.icon} />
+        </a>
+      ))
+    }
+  </div>
+</article>

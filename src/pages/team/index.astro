@@ -1,7 +1,39 @@
 ---
+import { getTeamMembers } from "@lib/api";
 import Layout from "@layouts/Layout.astro";
+import TeamCard from "@components/TeamCard.astro";
+import Section from "@components/Section.astro";
+import SectionIntro from "@components/SectionIntro.astro";
+import Grid from "@components/Grid.astro";
+
+const team = await getTeamMembers();
 ---
 
 <Layout>
-  <h1>Her skal TEAM-siden være</h1>
+  <Section>
+    <Grid>
+      <SectionIntro
+        title="Meet Our Great Team"
+        subtitle="Welcome to our amazing team! We are a group of passionate individuals dedicated to excellence and innovation. Each member brings unique skills and experiences, working together to achieve our goals. Join us as we embark on exciting projects and create lasting impacts."
+      />
+      <div class="team-container">
+        <div class="team-grid">
+          {team.map((m) => <TeamCard {m} />)}
+        </div>
+      </div>
+    </Grid>
+  </Section>
 </Layout>
+
+<style>
+  .team-container {
+    container: team / inline-size;
+  }
+  .team-grid {
+    display: grid;
+    gap: 1rem;
+    @container team (width > 700px) {
+      grid: auto / 1fr 1fr 1fr;
+    }
+  }
+</style>

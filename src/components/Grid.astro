@@ -1,0 +1,29 @@
+---
+const { cols = 1, direction = "normal", gridcolumn } = Astro.props;
+---
+
+<div data-cols={cols} data-direction={direction} data-grid-column={gridcolumn}>
+  <slot />
+</div>
+
+<style>
+  div {
+    --cols: attr(data-cols type(<integer>), 1);
+    --grid-col: attr(data-grid-column type(*));
+    container: grid / inline-size;
+    display: grid;
+    gap: 1rlh;
+    @media (width > 800px) {
+      /* grid-template-columns: repeat(var(--cols), auto); */
+      grid-template-columns: var(--grid-col, repeat(var(--cols), auto));
+      figure {
+        width: calc((50cqi - 1rlh) + 2rlh);
+      }
+      &[data-direction="flipped"] {
+        > :global(:first-child) {
+          order: 1;
+        }
+      }
+    }
+  }
+</style>

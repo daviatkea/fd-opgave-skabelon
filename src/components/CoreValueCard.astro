@@ -1,0 +1,18 @@
+---
+import DynamicIcon from "@components/helpers/DynamicIcon.astro";
+const { title, icon, description } = Astro.props;
+---
+
+<article>
+  <DynamicIcon name={icon} />
+  <h3>{title}</h3>
+  <p>{description}</p>
+</article>
+
+<style>
+  article {
+    background: var(--color-surface-primary);
+    color: contrast-color(var(--color-surface-primary));
+    padding: 1rlh;
+  }
+</style>

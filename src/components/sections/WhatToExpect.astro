@@ -1,0 +1,28 @@
+---
+import Grid from "@components/Grid.astro";
+import Section from "@components/Section.astro";
+import SectionIntro from "@components/SectionIntro.astro";
+import sectionImage from "@assets/images/ceo.webp";
+import { Image } from "astro:assets";
+import DecoratedMedia from "@components/DecoratedMedia.astro";
+---
+
+<Section>
+  <Grid cols="2" direction="flipped">
+    <div>
+      <SectionIntro
+        title="What to Expect"
+        subtitle="Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals."
+        eyebrow="WE'LL WORK WITH YOU"
+      />
+      <ul>
+        <li>list Item 1</li>
+        <li>list Item 2</li>
+        <li>list Item 3</li>
+      </ul>
+    </div>
+    <DecoratedMedia width="11rem" height="10rem" location="top-left">
+      <Image src={sectionImage} alt="" />
+    </DecoratedMedia>
+  </Grid>
+</Section>
