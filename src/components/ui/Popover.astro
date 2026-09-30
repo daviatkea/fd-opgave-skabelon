@@ -1,5 +1,5 @@
 ---
-import Button from "./Button.astro";
+import Button from "@components/ui/Button.astro";
 const { id, label } = Astro.props;
 ---
 
@@ -53,34 +53,6 @@ const { id, label } = Astro.props;
       @starting-style {
         --move: 0 15%;
         --opacity: 0;
-      }
-    }
-  }
-
-  [popover]:popover-open {
-    form > :global(*) {
-      transition: 0.5s;
-      transition-delay: calc(sibling-index() * 0.1s);
-      transition-timing-function: linear(
-        0,
-        0.013 1%,
-        0.051 2.2%,
-        0.404 9.8%,
-        0.51 12.6%,
-        0.602 15.5%,
-        0.683 18.7%,
-        0.754 22.2%,
-        0.813 26%,
-        0.861 30.2%,
-        0.9 34.8%,
-        0.931 40%,
-        0.972 52.7%,
-        0.992 70.2%,
-        1
-      );
-      @starting-style {
-        translate: 0 2rem;
-        opacity: 0;
       }
     }
   }
