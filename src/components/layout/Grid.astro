@@ -15,7 +15,7 @@ const { cols = 1, direction = "normal", gridcolumn } = Astro.props;
     gap: 1rlh;
     @media (width > 800px) {
       /* grid-template-columns: repeat(var(--cols), auto); */
-      grid-template-columns: var(--grid-col, repeat(var(--cols), auto));
+      grid-template-columns: var(--grid-col, repeat(var(--cols), 1fr));
       figure {
         width: calc((50cqi - 1rlh) + 2rlh);
       }
