@@ -27,3 +27,15 @@ const { m } = Astro.props;
     }
   </div>
 </article>
+
+<style>
+  article {
+    position: relative;
+
+    h3 a::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+  }
+</style>

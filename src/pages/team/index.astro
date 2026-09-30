@@ -5,11 +5,17 @@ import TeamCard from "@components/TeamCard.astro";
 import Section from "@components/Section.astro";
 import SectionIntro from "@components/SectionIntro.astro";
 import Grid from "@components/Grid.astro";
+import Banner from "@components/Banner.astro";
 
 const team = await getTeamMembers();
 ---
 
 <Layout>
+  <Banner
+    title="The Consultors"
+    eyebrow="TEAM"
+    subtitle="Our success stems from the synergy between dedicated teams and our valued clients. We prioritize a company culture that fosters exceptional productivity, ensures customer satisfaction."
+  />
   <Section>
     <Grid>
       <SectionIntro

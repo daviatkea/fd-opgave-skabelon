@@ -1,0 +1,28 @@
+---
+import Button from "./Button.astro";
+---
+
+<form>
+  <h2>Dashboard Login</h2>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" />
+  </div>
+  <div class="form-group">
+    <label for="email">Password</label>
+    <input type="password" />
+  </div>
+  <Button disabled>Submit</Button>
+</form>
+
+<style>
+  form {
+    padding: 1rlh;
+    display: grid;
+    gap: 1rlh;
+  }
+  .form-group {
+    display: grid;
+    gap: 0.1rlh;
+  }
+</style>

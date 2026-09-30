@@ -1,4 +1,5 @@
 ---
+import Header from "@components/Header.astro";
 import "@styles/main.css";
 import { Font } from "astro:assets";
 ---
@@ -17,12 +18,7 @@ import { Font } from "astro:assets";
     </style>
   </head>
   <body>
-    <header>
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/team">Team</a>
-      <a href="/case-studies">Case Studies</a>
-    </header>
+    <Header />
     <main>
       <slot />
     </main>

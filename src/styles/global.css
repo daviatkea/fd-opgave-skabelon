@@ -5,10 +5,15 @@
 
 html {
   font-family: var(--font-lato);
+  --fluid: progress(100vw, 400px, 1200px);
 }
 
 h1,
 h2,
 h3 {
   font-family: var(--font-cabin);
+}
+
+h1 {
+  font-size: calc(var(--fluid) * 1.75rem + 2rem);
 }

@@ -1,0 +1,64 @@
+---
+import Section from "./Section.astro";
+const { eyebrow, title, subtitle, direction = "left" } = Astro.props;
+---
+
+<Section theme="banner" tag="header">
+  <p class="eyebrow">{eyebrow}</p>
+  <h1 data-direction={direction}>{title}</h1>
+  <p class="subtitle">{subtitle}</p>
+</Section>
+
+<style>
+  header {
+    div {
+      display: grid;
+      place-items: center;
+      width: min(100%, 75ch);
+      place-self: center;
+      > * + * {
+        margin-top: var(--flow, 0.75rlh);
+      }
+    }
+  }
+
+  .subtitle {
+    --flow: 2.5rlh;
+  }
+
+  h1 {
+    text-decoration: underline 7px var(--color-action);
+    text-underline-offset: 7px;
+    line-height: 1.15;
+    text-box: cap alphabetic;
+    &[data-direction="left"] {
+      text-decoration-inset: -100vmax 0;
+    }
+    &[data-direction="right"] {
+      text-decoration-inset: 0 -100vmax;
+    }
+    @supports not (text-decoration-inset: -100vmax 0) {
+      anchor-name: --title;
+      width: fit-content;
+      margin-inline: auto;
+      &::before {
+        content: "";
+        position: absolute;
+        position-anchor: --title;
+        block-size: 7px;
+        margin-block-start: 7px;
+        -mask: linear-gradient(90deg, #0000, #000 40%);
+        background: var(--color-action);
+        top: calc(anchor(top) + 1cap);
+      }
+      &[data-direction="left"]::before {
+        right: calc(anchor(left) - 1px);
+        left: 0;
+      }
+      &[data-direction="right"]::before {
+        left: calc(anchor(right) - 1px);
+        right: 0;
+      }
+    }
+  }
+</style>

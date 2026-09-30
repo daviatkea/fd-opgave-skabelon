@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import DecoratedMedia from "@components/DecoratedMedia.astro";
 import Section from "@components/Section.astro";
+import Grid from "@components/Grid.astro";
 
 export async function getStaticPaths() {
   const team = await getTeamMembers();
@@ -20,18 +21,22 @@ const { employee } = Astro.props;
 
 <Layout>
   <Section>
-    <DecoratedMedia width="300px" height="100px">
-      <Image
-        style={`view-transition-name: img-${employee.slug}`}
-        src={employee.image.src}
-        alt={employee.image.alt}
-        width={employee.image.width}
-        height={employee.image.height}
-      />
-    </DecoratedMedia>
-    <h2>{employee.name}</h2>
-    <p>{employee.description_long}</p>
-    <h3>Past Experience</h3>
-    <p>{employee.past_experience}</p>
+    <Grid cols="2">
+      <DecoratedMedia width="300px" height="100px">
+        <Image
+          style={`view-transition-name: img-${employee.slug}`}
+          src={employee.image.src}
+          alt={employee.image.alt}
+          width={employee.image.width}
+          height={employee.image.height}
+        />
+      </DecoratedMedia>
+      <div class="content">
+        <h2>{employee.name}</h2>
+        <p>{employee.description_long}</p>
+        <h3>Past Experience</h3>
+        <p>{employee.past_experience}</p>
+      </div>
+    </Grid>
   </Section>
 </Layout>

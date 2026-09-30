@@ -1,0 +1,81 @@
+---
+const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/";
+const navItems = [
+  {
+    url: "/",
+    label: "Home",
+  },
+  {
+    url: "/case-studies",
+    label: "Case Studies",
+  },
+  {
+    url: "/team",
+    label: "Team",
+  },
+  {
+    url: "/about",
+    label: "About",
+  },
+];
+---
+
+<nav aria-label="Primary">
+  <ul>
+    {
+      navItems.map(({ url, label }) => {
+        const isCurrentPage = pathname === url;
+        const isCurrentSection = url !== "/" && pathname.startsWith(`${url}/`);
+
+        return (
+          <li>
+            <a
+              href={url}
+              aria-current={
+                isCurrentPage
+                  ? "page"
+                  : isCurrentSection
+                    ? "location"
+                    : undefined
+              }
+            >
+              {label}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>
+
+<style>
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    display: inline-block;
+    padding-block: 0.75rem;
+    color: #fff;
+    text-decoration: none;
+    text-underline-offset: 0.3em;
+  }
+
+  a:hover,
+  a[aria-current="page"],
+  a[aria-current="location"] {
+    text-decoration: underline;
+    text-decoration-thickness: 0.125em;
+  }
+
+  a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+  }
+</style>
